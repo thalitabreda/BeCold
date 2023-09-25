@@ -2,7 +2,7 @@
 Projeto DataCenter 
 
 
-## Regras Do Projetos
+## Regras Do Projeto
 
 0. A atividade/entregável/código só será contada como entregue (done) depois de uma etapa de testes de validação pelos demais membros do grupo;
 1. Os prazos para entrega estarão especificados dentro da plataforma de gestão, respeitando a complexidade da tarefa;
