@@ -10,7 +10,7 @@ Projeto DataCenter
 3. Registrar na ferramenta de gestão toda e qualquer atualização, trabalho ou adição;
 4. Ser proativo, procure ajuda caso necessario, ofereça ajuda se tiver livre;
 5. Se houver algum imprevisto que interfira no projeto avisar com antecendência;
-6. Para todas as reuniões do grupo teremos uma tolerancia de 10 minutos;
+6. Para todas as reuniões do grupo teremos uma tolerancia de 5 minutos;
 7. Se for usar matérial que não for seu, citar a fonte e destacar que não é algo autoral do projeto;
 8. SEM I.A. (se for usar não de copie e cole e não use dados dela);
 9. Procure ter profundidade nos temas que for abordar ou trabalhar;
