@@ -56,6 +56,10 @@ INSERT INTO Registros (Temperatura, Umidade, idSensor) VALUES
 (24, null, 1), 
 (null, 38, 2), 
 (20, null, 4);
+UPDATE registros SET umidade = 50 Where idRegistro = 3;
+UPDATE registros SET umidade = 22 Where idRegistro = 4;
+UPDATE registros SET tempertura = 22 Where idRegistro = 4;
+UPDATE registros SET umidade = 65 Where idRegistro = 5;
 
 
 SELECT * FROM Registros;
