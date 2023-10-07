@@ -53,5 +53,101 @@ align-items: center;
     }
 
 
-    
-    
+    .centrocontainer {
+text-align: center;
+height: 547px;
+top: 50%;
+left: 50%;
+width: 1349px;
+background-color: rgb(82, 161, 161,);
+background-image: url(https://www.serpro.gov.br/menu/noticias/noticias-2022/o-que-e-data-center-3.0/datacenter30-artigo2-materia-portalexterno.png/@@images/image/large);
+background-repeat: no-repeat;
+background-size: cover;
+z-index: -1;
+    }
+
+    .quemsomosnos {
+        width: 100%;
+        height: 134px;
+        background-color: white;
+    }
+    .quemsomosnoscontainertexto {
+        display: inline-block;
+background-color: white;
+width: 500px;
+height: 520px;
+
+    }
+    .divImagemquemsomosnos {
+background-image: url(https://www.infranewstelecom.com.br/wp-content/uploads/2018/11/82-noticias-infra-news-telecom-nuvem-matrix.jpg);
+display: inline-block;
+width: 300px;
+height: 200px;
+background-repeat: no-repeat;
+background-size: cover;
+align-items: center;
+justify-content: center;
+margin-left: 20%;
+
+
+    }
+    .cultura {
+        width: 100%;
+        height: 134px;
+        background-color: white;
+    }
+    .divImagemcultura{
+background-image: url(https://f.hubspotusercontent10.net/hubfs/9475110/Imported_Blog_Media/20943526-scaled-1.jpg);
+display: inline-block;
+width: 300px;
+height: 200px;
+background-repeat: no-repeat;
+background-size: cover;
+align-items: center;
+justify-content: center;
+margin-left: 10%;
+
+    }
+.culturacontainertexto {     display: inline-block;
+    background-color: white;
+    width: 500px;
+    height: 520px;
+margin-left: 17%;
+}
+.qualidadecontainertexto{
+    display: inline-block;
+    background-color: white;
+    width: 500px;
+    height: 520px;
+}
+.divimagemqualidade {background-image: url(https://media.istockphoto.com/id/1168757141/pt/vetorial/gold-trophy-with-the-name-plate-of-the-winner-of-the-competition.jpg?s=612x612&w=0&k=20&c=kRh29kwjG5wbjj8mUzpwTFUPs5X-30ltfsOmWMWEELo=);
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20%;
+
+
+}
+.divimagemcrescimento {background-image: url(https://cdn.create.vista.com/api/media/small/424385706/stock-vector-vector-illustration-partnership-cooperation-exchange-idea-knowledge-money-creative-trading);
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20%;
+
+
+}
+.crescimentocontainertexto {    display: inline-block;
+    background-color: white;
+    width: 500px;
+    height: 520px;
+
+
+}
