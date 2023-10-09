@@ -97,15 +97,15 @@ margin-left: 20%;
         background-color: white;
     }
     .divImagemcultura{
-background-image: url(https://f.hubspotusercontent10.net/hubfs/9475110/Imported_Blog_Media/20943526-scaled-1.jpg);
+background-image: url(imagemcultura.png);
 display: inline-block;
-width: 300px;
-height: 200px;
+width: 195px;
+height: 255px;
 background-repeat: no-repeat;
 background-size: cover;
 align-items: center;
 justify-content: center;
-margin-left: 10%;
+margin-left: 20%;
 
     }
 .culturacontainertexto {     display: inline-block;
@@ -120,10 +120,10 @@ margin-left: 17%;
     width: 500px;
     height: 520px;
 }
-.divimagemqualidade {background-image: url(https://media.istockphoto.com/id/1168757141/pt/vetorial/gold-trophy-with-the-name-plate-of-the-winner-of-the-competition.jpg?s=612x612&w=0&k=20&c=kRh29kwjG5wbjj8mUzpwTFUPs5X-30ltfsOmWMWEELo=);
+.divimagemqualidade {background-image: url(qualidade.png);
     display: inline-block;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 325px;
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
@@ -132,10 +132,10 @@ margin-left: 17%;
 
 
 }
-.divimagemcrescimento {background-image: url(https://cdn.create.vista.com/api/media/small/424385706/stock-vector-vector-illustration-partnership-cooperation-exchange-idea-knowledge-money-creative-trading);
+.divimagemcrescimento {background-image: url(imagemcrescimento.png);
     display: inline-block;
-    width: 400px;
-    height: 300px;
+    width: 200px;
+    height: 230px;
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
