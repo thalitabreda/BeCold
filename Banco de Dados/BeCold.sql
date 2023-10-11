@@ -1,5 +1,5 @@
-CREATE DATABASE ColdTech;
-USE ColdTech;
+CREATE DATABASE Becol;
+USE Becol;
 
 CREATE TABLE Cliente (
 idCliente INT PRIMARY KEY AUTO_INCREMENT,
@@ -8,13 +8,15 @@ CNPJ Char(14) UNIQUE,
 Email VARCHAR(45),
 Telefone VARCHAR(12),
 Responsável VARCHAR(50),
-Endereço VARCHAR(100)
+cep char (8),
+numero varchar (10),
+complemento varchar (45)
 );
 
 INSERT INTO Cliente VALUES
-(null, 'ColdTech', 12345678912345, 'coldtech@hotmail.com', 11987654321, 'Kaiqui', 'Rua Hadddock Lobo 595'),
-(null, 'SPTech', 36578024000172, 'sptech@sptech.school', 1135894043, 'Goulart', 'Rua Hadddock Lobo 595'),
-(null, 'DataBasers', 98765432101234, 'databasers@gmail.com', 11912345678, 'Murilo', 'Rua Centro de Dado 372');
+(null, 'ColdTech', 12345678912345, 'coldtech@hotmail.com', 11987654321, 'Kaiqui', '09298090', '595', 'rua haddock lobo' ),
+(null, 'SPTech', 36578024000172, 'sptech@sptech.school', 1135894043, 'Goulart', '05792050', '595', 'quinto andar' ),
+(null, 'DataBasers', 98765432101234, 'databasers@gmail.com', 11912345678, 'Murilo', '05898090', '372', 'americanbasers' );
 
 SELECT * FROM Cliente;
 
