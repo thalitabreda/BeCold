@@ -26,8 +26,8 @@ idSensor INT PRIMARY KEY AUTO_INCREMENT,
 Tipo VARCHAR(23),
 DiaInstalado DATE,
 Localização VARCHAR(45),
-idCliente INT,
-	CONSTRAINT FK_Cliente FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+fkCliente INT,
+	CONSTRAINT FK_Cliente FOREIGN KEY (fkCliente) REFERENCES Cliente (idCliente)
 );
 
 INSERT INTO Sensor VALUES
@@ -37,32 +37,32 @@ INSERT INTO Sensor VALUES
 (null, 'Temperatura', '2023-09-15', 'Rua Centro de Dado 372', 3);
 
 SELECT * FROM Sensor;
-alter table sensor rename column idcliente to Fk_cliente;
+
 
 
 CREATE TABLE Registros ( 
-idRegistro INT PRIMARY KEY AUTO_INCREMENT, 
+idRegistro INT AUTO_INCREMENT, 
 Temperatura VARCHAR(5),
 Umidade VARCHAR(5),
 Horario DATETIME DEFAULT CURRENT_TIMESTAMP,
-idSensor INT,
-	CONSTRAINT FK_Sensor FOREIGN KEY (idSensor) REFERENCES Sensor(idSensor)
+fkSensor INT,
+primary key(idRegistro, fkSensor),
+	CONSTRAINT FK_Sensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
 );
-alter table registros rename column idsensor to Fk_sensor;
 
-INSERT INTO Registros (Temperatura, Umidade, idSensor) VALUES
+INSERT INTO Registros (Temperatura, Umidade, fkSensor) VALUES
 (25, 40, 3), 
 (27, 52, 3), 
 (24, null, 1), 
 (null, 38, 2), 
 (20, null, 4);
-UPDATE registros SET umidade = 50 Where idRegistro = 3;
-UPDATE registros SET umidade = 22 Where idRegistro = 4;
-UPDATE registros SET tempertura = 22 Where idRegistro = 4;
-UPDATE registros SET umidade = 65 Where idRegistro = 5;
+UPDATE Registros SET umidade = 50 Where idRegistro = 3;
+UPDATE Registros SET umidade = 22 Where idRegistro = 4;
+UPDATE Registros SET Temperatura = 22 Where idRegistro = 4;
+UPDATE Registros SET umidade = 65 Where idRegistro = 5;
 
 
 SELECT * FROM Registros;
 
-select * from cliente join sensor on idCliente = Fk_cliente;
-select * from sensor join registros on fk_sensor = idsensor;
+select * from Cliente join Sensor on fkCliente = idCliente;
+select * from Sensor join Registros on fkSensor = idSensor;
