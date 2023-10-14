@@ -52,11 +52,14 @@ void loop() {
   Serial.print(";");
   Serial.print(lm35_temperatura);
   Serial.print(";");
+  // este if ocorre pois o valor inicial de quando há um objeto identificado é de 0, então foi alterado para aparecer 1 quando o objeto for detectado e não 0 
   if (chave == 0) {
     Serial.print("1");
   } else {
     Serial.print("0");
   }
+  // println para haver a quebra de linha
   Serial.println();
+  // intervalo que os dados serão captados e exibidos
   delay(2000);
 }
