@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro</title>
+    
+</head>
+
+<body>
+    <div>
+
+
+    </div>
+    <div >
+        <h1>Cadastre-se</h1>
+
+        <div >
+            <input type="text" id="input_nome" placeholder="Nome">
+        </div>
+
+        <div id="div_nome" style="color: red;"></div> <br>
+
+        <div>
+            <input type="email" id="input_email" placeholder="Email">
+        </div>
+
+        <div id="div_email" style="color: red;"></div> <br>
+
+        <div >
+            <input type="number" id="input_CPF" max="11" placeholder="CPF">
+        </div>
+
+        <div id="div_cpf" style="color: red;"></div> <br>
+
+        <div>
+            <input type="text" id="input_empresa" placeholder="Empresa">
+        </div>
+
+        <div>
+            <input type="password" id="input_senha" placeholder="Senha">
+        </div>
+
+        <div id="div_senha" style="color: red;"></div>
+
+        <button onclick="cadastrar()">Criar conta</button>
+
+
+            <div id="div_wellcome" style="color: greenyellow;"></div>
+
+        <div>
+            <a href="login.html" >Já possui uma conta? Login.</a> <br>
+            <a href="#">Esqueceu a senha?</a> <br>
+            
+
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+        var nome = input_nome.value
+        var email = input_email.value
+        var cpf = input_CPF.value
+        var empresa = input_empresa.value
+        var senha = input_senha.value
+        var nome_especial =
+            nome.indexOf('1') >= 0 ||
+            nome.indexOf('2') >= 0 ||
+            nome.indexOf('3') >= 0 ||
+            nome.indexOf('4') >= 0 ||
+            nome.indexOf('5') >= 0 ||
+            nome.indexOf('6') >= 0 ||
+            nome.indexOf('7') >= 0 ||
+            nome.indexOf('8') >= 0 ||
+            nome.indexOf('9') >= 0 ||
+            nome.indexOf('0') >= 0 ||
+            nome.indexOf('!') >= 0 ||
+            nome.indexOf('@') >= 0 ||
+            nome.indexOf('#') >= 0 ||
+            nome.indexOf('$') >= 0 ||
+            nome.indexOf('%') >= 0 ||
+            nome.indexOf('¨') >= 0 ||
+            nome.indexOf('&') >= 0 ||
+            nome.indexOf('*') >= 0 ||
+            nome.indexOf('(') >= 0 ||
+            nome.indexOf(')') >= 0 ||
+            nome.indexOf('-') >= 0 ||
+            nome.indexOf('_') >= 0 ||
+            nome.indexOf('+') >= 0 ||
+            nome.indexOf('=') >= 0 ||
+            nome.indexOf('ç') >= 0 ||
+            nome.indexOf('{') >= 0 ||
+            nome.indexOf('}') >= 0 ||
+            nome.indexOf('[') >= 0 ||
+            nome.indexOf('/') >= 0 ||
+            nome.indexOf('?') >= 0 ||
+            nome.indexOf(',') >= 0 ||
+            nome.indexOf(':') >= 0 ||
+            nome.indexOf(';') >= 0 ||
+            nome.indexOf('|') >= 0 ||
+            nome.indexOf('º') >= 0 ||
+            nome.indexOf('°') >= 0;
+
+        var emailValido = email.endsWith('@gmail.com') ||
+            email.endsWith('@hotmail.com') ||
+            email.endsWith('@outlook.com') ||
+            email.endsWith('@sptech.school')
+
+        if (nome_especial) {
+            div_nome.innerHTML = 'O Nome deve conter apenas letras <br>'
+        }
+        if (emailValido)
+            div_email.innerHTML = ''
+        else { div_email.innerHTML = 'Digite um endereço de email valido ' }
+
+
+        
+      
+        if (cpf.length !==11) {
+
+            div_cpf.innerHTML = 'Digite um CPF valido'
+             
+
+        }else{ div_cpf.innerHTML = ""
+         }    
+
+
+        if (senha.length < 8) {
+            div_senha.innerHTML = 'A senha deve conter pelo menos oito digitos'
+        } else{
+
+        div_wellcome.innerHTML = 'Cadastro bem sucedido '}
+
+
+      
+
+
+
+
+
+        /* var primeiraLetra = nome[0]; // armazena a primeira letra do texto
+         var primeiraLetra = nome[0]; // armazena a primeira letra do texto
+        var primeiraLetraMaiuscula = primeiraLetra.toUpperCase(); // deixa a primeira letra do texto maiúscula
+        var letrasRestantes = nome.replace(primeiraLetra, ""); // remove a primeira letra do texto
+        var nomeFormatado = primeiraLetraMaiuscula + letrasRestantes.toLowerCase(); // junta a primeira letra com o resto do texto   
+
+        div_mensagem.innerHTML = nomeFormatado;*/
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
