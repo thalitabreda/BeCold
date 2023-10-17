@@ -1,31 +1,120 @@
-
-*{
-    margin: 0;
-    padding: 0;
-
+@import url(global.css);
+body{
+  background-color: #fafbfd;
+}
+.header-background{
+  background-color: #012569;
+}
+.header-container{
+  margin: 0px 90px 0px 90px ;
+  max-width: 1366px;
+  height: 76px;
+  display:grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  align-items: center;
+}
+.logo p{
+  display: flex;
+  align-items: center;
+  color: #fafbfd;
+  font-size: 24px;
+}
+.logo img{
+  max-width: 40px;
+}
+.navbar li{
+  display: inline-block;
+}
+.home-contato a{
+  color: #fafbfd;
+  padding-right: 36px;
 }
 
-
-   
-
-.header{
-    background-color: #000000;
-    width: 100%;
-    height: 100px;
-    border-bottom: 4px solid cornflowerblue ;
+.login-botao li:last-child{
+    text-align: center;
+    position: relative;
+    width: 80px;
+    color:#010203;
+    border-radius: 100px;
+    padding: 10px 10px ;
+    background-color: #fafbfd;
+    position: relative;
+}
+.login-botao li:first-child{
+  color: #fafbfd;
+}
+.login-botao li:last-child::after{
+  content:"";
+  color: #fafbfd;
+  position: absolute;
+  right: 60px;
+  top: 0px;
+  height: 20px;
+  width: 120px;
+  border-radius: 100px;
+  padding: 10px 14px ;
+  background-color: rgba(245, 245, 245, 0.58);
+  z-index:;
+}
+.inicial{
+  display: grid;
+  grid-template-columns: 500px 2fr;
+  margin: 120px 90px 0px 90px;
+  justify-items: left;
+  margin-bottom: 120px;
+}
+.inicial-conteudo h1{
+  font-size: 36px;
+  max-width: 22ch;
+  padding-bottom: 48px;
+}
+.inicial-conteudo p{
+  font-size: 20px;
+  max-width: 30ch;
+  padding-bottom: 48px;
+}
+.inicial-img img{
+  padding-left: 96px;
+  width: 540px;
+  padding-top: 30px;
+}
+.inicial-conteudo a{
+  margin-left: 80px;
+  background-color: #012569;
+  padding: 10px 18px;
+  border-radius: 100px;
+  color: #fafbfd;
+  box-shadow: 0px 3px 1px #868C9F;
 }
 
-.logo{
-    width: 100px; 
-    height: 75px;;
-    margin: 0px;
-    float:inline-start;
-    border: #ff8e05 solid; 
-background-image: url("C.png");
-    
-      
+.sobre-nos{
+  display: grid;
+  grid-template-columns: 500px 2fr;
+  margin: 120px 90px 0px 90px;
+  justify-items: left;
+  margin-bottom: 120px;
+  padding-top: 32px;
+  align-items: center;
 }
-
+.sobre-nos-img img{
+  padding-left: 96px;
+  width: 540px;
+  padding-top: 30px;
+}
+.sobre-nos-conteudo h3{
+  color: #08102B;
+  font-size: 20px;
+  max-width: 22ch;
+  padding-bottom: 64px;
+}
+.sobre-nos-conteudo h2{
+  font-size: 32px;
+  padding-bottom: 32px;
+}
+.sobre-nos-conteudo p{
+  font-size: 16px;
+  padding-bottom: 28px;
+}
 .header .container{
  width: 80%;
 height: 100px;

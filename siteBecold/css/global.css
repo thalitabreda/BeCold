@@ -1,0 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Lexend;
+  list-style: none;
+  text-decoration: none;
+}
+a{
+  color: inherit;  
+}
