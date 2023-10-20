@@ -5,44 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Cadastro</title>
-    
+
+    <link rel="stylesheet" href="/css/estilo.css">
+        <link rel="stylesheet" href="cadastro.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Merriweather:ital,wght@0,900;1,900&display=swap');
+      </style>
 </head>
 
 <body>
+
+    <header class="header-background">
+        <div class="header-container">
+           
+            <div class="logo">
+              <p><img src="img/Servers Group.png" alt="">BeCold</p>
+            </div>
+            <div class="navbar home-contato">
+
+
+              <ul>
+                  <li><a href="site.html">Home</a></li>
+                  <li><a href="site.html">contato</a></li>
+              </ul>
+
+            </div>
+
+        </div>    
+      </header>
     <div>
 
+        <div style="margin-top: 120px; margin-left: 100px;"  >
+        <h1>comece já a monitorar seus servidores, o <br> futuro te aguarda</h1>
+        </div>
+                
+    <div style="align-items: center;
+    display: flex;
+    display: inline-flex;">
+    
 
-    </div>
-    <div >
-        <h1>Cadastre-se</h1>
-
+    
+        <div style="padding-top: 100px ; width: fit-content; padding-left: 100px;  ">
         <div >
-            <input type="text" id="input_nome" placeholder="Nome">
+            <input style="width: 350px;" type="text" id="input_nome" placeholder="seu nome">
         </div>
 
         <div id="div_nome" style="color: red;"></div> <br>
 
         <div>
-            <input type="email" id="input_email" placeholder="Email">
+            <input style="width: 350px;" type="email" id="input_email" placeholder="xxxxxx@gmail.com">
         </div>
 
         <div id="div_email" style="color: red;"></div> <br>
 
         <div >
-            <input type="number" id="input_CPF" max="11" placeholder="CPF">
+            <input style="width: 350px;"  type="number" id="input_CPF" max="11" placeholder="seu cpf">
         </div>
-
         <div id="div_cpf" style="color: red;"></div> <br>
+        
+    </div>
+
+
+                  
+    <div style="padding-top: 37px; padding-left: 50px;  width: fit-content; align-items: center;" >
 
         <div>
-            <input type="text" id="input_empresa" placeholder="Empresa">
-        </div>
+            <input style="width: 350px;" type="text" id="input_empresa" placeholder="Becold">
+        </div> <br>
 
         <div>
-            <input type="password" id="input_senha" placeholder="Senha">
+            <input style="width: 350px;" type="password" id="input_senha" placeholder="Senha">
         </div>
 
         <div id="div_senha" style="color: red;"></div>
+         
+     </div>
+
+
+    </div>
+            <div style="padding-left: 500px; ">
 
         <button onclick="cadastrar()">Criar conta</button>
 
@@ -50,11 +91,14 @@
             <div id="div_wellcome" style="color: greenyellow;"></div>
 
         <div>
-            <a href="login.html" >Já possui uma conta? Login.</a> <br>
-            <a href="#">Esqueceu a senha?</a> <br>
-            
+
+            <ul>
+            <li><a href="login.html" >Já possui uma conta? <br> Login.</a></li> <br>
+            <li><a href="#">Esqueceu a senha?</a></li> <br>
+           </ul>
 
 
+            </div>
         </div>
     </div>
 </body>
@@ -62,6 +106,9 @@
 </html>
 <script>
     function cadastrar() {
+
+        
+
         var nome = input_nome.value
         var email = input_email.value
         var cpf = input_CPF.value
@@ -111,57 +158,38 @@
             email.endsWith('@sptech.school')
 
         if (nome_especial) {
+            div_wellcome.innerHTML= ""
             div_nome.innerHTML = 'O Nome deve conter apenas letras <br>'
-        }
-        if (emailValido)
-            div_email.innerHTML = ''
-        else { div_email.innerHTML = 'Digite um endereço de email valido ' }
+        } else  {div_nome.innerHTML= ""  
+        div_wellcome.innerHTML = 'Cadastro bem sucedido '}
+        
+        if (emailValido){
+            div_wellcome.innerHTML = 'Cadastro bem sucedido '
+            div_email.innerHTML = ""
+        }else { div_email.innerHTML = 'Digite um endereço de email valido '
+        div_wellcome.innerHTML= "" }
 
 
         
       
         if (cpf.length !==11) {
-
+            
+            div_wellcome.innerHTML= ""
             div_cpf.innerHTML = 'Digite um CPF valido'
              
 
         }else{ div_cpf.innerHTML = ""
+        div_wellcome.innerHTML = 'Cadastro bem sucedido '
          }    
 
 
         if (senha.length < 8) {
+            
+            div_wellcome.innerHTML= ""
+
             div_senha.innerHTML = 'A senha deve conter pelo menos oito digitos'
         } else{
-
-        div_wellcome.innerHTML = 'Cadastro bem sucedido '}
-
-
-      
-
-
-
-
-
-        /* var primeiraLetra = nome[0]; // armazena a primeira letra do texto
-         var primeiraLetra = nome[0]; // armazena a primeira letra do texto
-        var primeiraLetraMaiuscula = primeiraLetra.toUpperCase(); // deixa a primeira letra do texto maiúscula
-        var letrasRestantes = nome.replace(primeiraLetra, ""); // remove a primeira letra do texto
-        var nomeFormatado = primeiraLetraMaiuscula + letrasRestantes.toLowerCase(); // junta a primeira letra com o resto do texto   
-
-        div_mensagem.innerHTML = nomeFormatado;*/
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            div_senha.innerHTML= "" 
+            div_wellcome.innerHTML = 'Cadastro bem sucedido '}
+ }
 </script>

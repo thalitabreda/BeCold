@@ -1,0 +1,12 @@
+.h1{ margin-left: 36; display: flex;
+
+  }
+  .imagemcadastro{
+    background-image: src= "imagemcadastro.png";
+    display: inline-flex;
+    align-items: center;
+    width: 1px;
+    height: 1px;
+  }
+
+  

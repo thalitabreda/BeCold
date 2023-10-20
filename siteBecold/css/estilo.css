@@ -24,10 +24,11 @@ body{
 }
 .navbar li{
   display: inline-block;
+  width: fit-content;
 }
 .home-contato a{
   color: #fafbfd;
-  padding-right: 36px;
+  padding-right: 50px;
 }
 
 .login-botao li:last-child{
@@ -54,7 +55,6 @@ body{
   border-radius: 100px;
   padding: 10px 14px ;
   background-color: rgba(245, 245, 245, 0.58);
-  z-index:;
 }
 .inicial{
   display: grid;
@@ -256,3 +256,5 @@ margin-left: 17%;
 
 
 }
+
+
