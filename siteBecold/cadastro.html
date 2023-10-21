@@ -7,7 +7,7 @@
     <title>Tela de Cadastro</title>
 
     <link rel="stylesheet" href="css/cadastro.css">
-        <link rel="stylesheet" href="css/estilo.css">
+        
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Merriweather:ital,wght@0,900;1,900&display=swap');
       </style>
@@ -47,22 +47,25 @@
     
     <div class="inputs_left">
          
-            Digite seu Nome
+            Digite seu Nome <span style="color: red;">*</span>
         <div >
-            <input style="width: 350px;" type="text" id="input_nome" >
+            <input class="inputs" type="text" id="input_nome"  >
         </div>
-        <div id="div_nome" style="color: red;"></div> <br>
-        Nome do usuário
+        <div id="div_nome" style="color: red;"></div> 
+        <br> 
+        
+        Nome do usuário <span style="color: red;">*</span>
         <div>
 
-            <input style="width: 350px;" type="text" id="input_usuario" >
+            <input class="inputs" " type="text" id="input_usuario" >
 
             <div id="div_usuario" style="color: red;"></div> 
-        </div>  <br>
+        </div>  
+        <br> 
                  
         CPF <span style="color: red;">*</span>
         <div >
-            <input style="width: 350px;"  type="number" id="input_CPF" max="11"  >
+            <input class="inputs" "  type="number" id="input_CPF" max="11"  >
                     </div>
                     <div id="div_cpf" style="color: red;"></div> <br>
                     
@@ -74,29 +77,30 @@
 
                     Email <span style="color: red;">*</span>
                     <div>
-                        <input style="width: 350px;" type="email" id="input_email" >
+                        <input class="inputs" ;" type="email" id="input_email" >
                     </div> 
                     <div id="div_email" style="color: red;"></div> <br>
-                  Senha  
+                  Senha  <span style="color: red;">*</span>
         <div>
-            <input style="width: 350px;" type="password" id="input_senha" >
+            <input class="inputs" " type="password" id="input_senha" >
         </div>
         
         <div id="div_senha" style="color: red;"></div> <br>
-            Repetir Senha
+            Repetir Senha <span style="color: red;">*</span>
         <div>
-            <input style="width: 350px;" type="password" id="input_confirma" >
+            <input class="inputs" ;" type="password" id="input_confirma" >
         </div>
         
         <div id="div_confirmasenha" style="color: red;"></div> 
 
         
     </div>
-     <img src="img/cadastro.png" alt="cadastre-se">
+     <img style="margin: 0px; width: 800px;padding-bottom: 110px;" src="img/cadastro.png" alt="cadastre-se">
     </div>
     
     
-    <span style="display: flex; align-items: center; padding-top: 100px; padding-left: 1100px; ">
+    
+    <span class="login"">
         
         <ul>
             <li><a href="login.html" >Já possui uma conta? faça Login.</a></li> <br>
@@ -106,14 +110,13 @@
 </div>
 
 
-<div style="margin-left:  500px; width: fit-content; ">
-<button  style="padding: 15px 50px 15px 50px; border-style:groove; border-color: black ; background-color: #010169; color: aliceblue; border-radius: 50px; " onclick="cadastrar()">Criar conta</button>
-<div id="div_wellcome" style="color: greenyellow; margin-left: 500px;">
-</div>
+<div class="divbotao">
+<button  class="botão" onclick="cadastrar()">Criar conta</button>
 
 </div> 
+<h3  id="div_wellcome" style="color: #010169; margin-left: 550px;"> 
+</h3>
 
-   
 
 </div>
 
@@ -123,7 +126,7 @@
 </html>
 <script>
     function cadastrar() {
-
+        div_wellcome.innerHTML=""
         div_cpf.innerHTML= ""
         div_email.innerHTML=""
         div_nome.innerHTML=""
@@ -184,14 +187,14 @@
             div_wellcome.innerHTML=""
 
         } else {div_nome.innerHTML= ""
-        div_wellcome.innerHTML= `cadastrado com êxito`}
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
         
          if (usuario == ""){
             div_usuario.innerHTML= "digite um nome de usuário"
             div_wellcome.innerHTML=""
 
         }else {div_usuario.innerHTML=""
-        div_wellcome.innerHTML= `cadastrado com êxito`}
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
         
         if (cpf.length !==11) {
                 
@@ -200,7 +203,7 @@
                  
                 
             }else {div_cpf.innerHTML=""
-            div_wellcome.innerHTML= `cadastrado com êxito`}
+            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
 
 
         if (emailValido == false){
@@ -208,7 +211,7 @@
             div_wellcome.innerHTML=""
             
         } else {div_email.innerHTML=""
-        div_wellcome.innerHTML= `cadastrado com êxito`}
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
         
 
         
@@ -221,7 +224,7 @@
             div_wellcome.innerHTML=""
             
         } else {div_senha.innerHTML=""
-        div_wellcome.innerHTML= `cadastrado com êxito`}
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
         
          if (confirma == "" ||  confirma!= senha){
             div_confirmasenha.innerHTML= "incorreto, tente novamente"
@@ -229,7 +232,7 @@
 
         } else {div_confirmasenha.innerHTML=""
         
-    div_wellcome.innerHTML= `cadastrado com êxito`
+    div_wellcome.innerHTML= `seja bem vindo ${nome}`
 
         }
         }
