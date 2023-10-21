@@ -1,12 +1,18 @@
-.h1{ margin-left: 36; display: flex;
+.titulo{
+  margin-top: 80px; margin-left: 250px; padding-bottom: 100px;
+}
 
-  }
-  .imagemcadastro{
-    background-image: src= "imagemcadastro.png";
-    display: inline-flex;
-    align-items: center;
-    width: 1px;
-    height: 1px;
-  }
+.conteiner{
+  align-items: center;
+    display: block;
+    display: inline-flex; height: 100px; padding-left: 200px
+}
 
+.conteiner .inputs_left{
+  padding-left: 50px;  width: fit-content; align-items: center; padding-top: 70px;
+}
   
+.conteiner .inputs_right{
+  padding-left: 50px; padding-top: 35px;  width: fit-content; align-items: center;
+}
+

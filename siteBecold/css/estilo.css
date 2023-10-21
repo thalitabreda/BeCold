@@ -10,7 +10,7 @@ body{
   max-width: 1366px;
   height: 76px;
   display:grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr ;
   align-items: center;
 }
 .logo p{
@@ -29,6 +29,7 @@ body{
 .home-contato a{
   color: #fafbfd;
   padding-right: 50px;
+  
 }
 
 .login-botao li:last-child{
