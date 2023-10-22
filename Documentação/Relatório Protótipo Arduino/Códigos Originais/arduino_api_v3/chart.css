@@ -1,0 +1,15 @@
+.imagemfundo{
+    background-image: url(https://www.infomoney.com.br/wp-content/uploads/2019/11/shutterstock_1059335747.jpg?fit=1024%2C540&quality=75&strip=all); 
+    background-repeat: 
+    no-repeat;
+     background-size: cover;
+}
+.container{
+    width: 90%; 
+    background-color: rgba(0, 13, 112, 0.557);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;margin-top: 25px;
+    padding-bottom: 50px; border-radius: 20px;
+}
+.grafico{
+    width: 65%; display: flex; background-color: rgba(255, 255, 255, 0.818); border-radius: 20px; border-style: groove;
+}
