@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Cadastro</title>
 
-    <link rel="stylesheet" href="/css/estilo.css">
-        <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+        
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Merriweather:ital,wght@0,900;1,900&display=swap');
       </style>
 </head>
-
+   
 <body>
-
+      
     <header class="header-background">
         <div class="header-container">
            
             <div class="logo">
               <p><img src="img/Servers Group.png" alt="">BeCold</p>
             </div>
-            <div class="navbar home-contato">
+            <div class="navbar home-contato"> 
 
 
               <ul>
@@ -30,81 +30,95 @@
               </ul>
 
             </div>
-
-        </div>    
+            
+             
       </header>
 
     <div >
 
-        <div style="margin-top: 120px; margin-left: 100px;"  >
-        <h1>comece já a monitorar seus servidores, o <br> futuro te aguarda</h1>
-        </div>
-                
-    <div style="align-items: center;
-    display: flex;
-    display: inline-flex;">
+        <div class="titulo" >
+        <h1 >comece já a monitorar seus servidores. <br> 
+             o  futuro te aguarda!!</h1>
+    </div>
+    
+    <div class="conteiner" >
     
 
     
-        <div style="padding-top: 100px ; width: fit-content; padding-left: 100px;  ">
+    <div class="inputs_left">
+         
+            Digite seu Nome <span style="color: red;">*</span>
         <div >
-            <input style="width: 350px;" type="text" id="input_nome" placeholder="seu nome">
+            <input class="inputs" type="text" id="input_nome"  >
         </div>
-
-        <div id="div_nome" style="color: red;"></div> <br>
-
+        <div id="div_nome" style="color: red;"></div> 
+        <br> 
+        
+        Nome do usuário <span style="color: red;">*</span>
         <div>
-            <input style="width: 350px;" type="email" id="input_email" placeholder="insira seu email">
-        </div>
 
-        <div id="div_email" style="color: red;"></div> <br>
+            <input class="inputs" " type="text" id="input_usuario" >
 
+            <div id="div_usuario" style="color: red;"></div> 
+        </div>  
+        <br> 
+                 
+        CPF <span style="color: red;">*</span>
         <div >
-            <input style="width: 350px;"  type="number" id="input_CPF" max="11" placeholder="seu cpf">
+            <input class="inputs" "  type="number" id="input_CPF" max="11"  >
+                    </div>
+                    <div id="div_cpf" style="color: red;"></div> <br>
+                    
+                </div>
+                
+                
+                
+                <div class="inputs_right" >
+
+                    Email <span style="color: red;">*</span>
+                    <div>
+                        <input class="inputs" ;" type="email" id="input_email" >
+                    </div> 
+                    <div id="div_email" style="color: red;"></div> <br>
+                  Senha  <span style="color: red;">*</span>
+        <div>
+            <input class="inputs" " type="password" id="input_senha" >
         </div>
-        <div id="div_cpf" style="color: red;"></div> <br>
+        
+        <div id="div_senha" style="color: red;"></div> <br>
+            Repetir Senha <span style="color: red;">*</span>
+        <div>
+            <input class="inputs" ;" type="password" id="input_confirma" >
+        </div>
+        
+        <div id="div_confirmasenha" style="color: red;"></div> 
+
         
     </div>
-
-
-                  
-    <div style="padding-top: 37px; padding-left: 50px;  width: fit-content; align-items: center;" >
-
-        <div>
-            <input style="width: 350px;" type="text" id="input_empresa" placeholder="nome da empresa">
-        </div> <br>
-
-        <div>
-            <input style="width: 350px;" type="password" id="input_senha" placeholder="Senha">
-        </div>
-
-        <div id="div_senha" style="color: red;"></div>
-         
-     </div>
-
-
+     <img style="margin: 0px; width: 800px;padding-bottom: 110px;" src="img/cadastro.png" alt="cadastre-se">
     </div>
-            <div style="padding-left: 500px; ">
-
-        <button onclick="cadastrar()">Criar conta</button>
-
-
-            <div id="div_wellcome" style="color: greenyellow;"></div>
-
-        <div>
-
-            <ul>
-            <li><a href="login.html" >Já possui uma conta? <br> Login.</a></li> <br>
-            <li><a href="#">Esqueceu a senha?</a></li> <br>
-           </ul>
+    
+    
+    
+    <span class="login"">
+        
+        <ul>
+            <li><a href="login.html" >Já possui uma conta? faça Login.</a></li> <br>
+        </ul>
+        
+    </span>
+</div>
 
 
-            </div>
-            <img src="img/imagemcadastro.png" alt="">
-        </div>
-    </div>
+<div class="divbotao">
+<button  class="botão" onclick="cadastrar()">Criar conta</button>
+
+</div> 
+<h3  id="div_wellcome" style="color: #010169; margin-left: 550px;"> 
+</h3>
 
 
+</div>
 
 
 </body>
@@ -112,90 +126,114 @@
 </html>
 <script>
     function cadastrar() {
-
-        
-
+        div_wellcome.innerHTML=""
+        div_cpf.innerHTML= ""
+        div_email.innerHTML=""
+        div_nome.innerHTML=""
+        div_senha.innerHTML=""
         var nome = input_nome.value
         var email = input_email.value
         var cpf = input_CPF.value
-        var empresa = input_empresa.value
+        var usuario = input_usuario.value
         var senha = input_senha.value
-        var nome_especial =
-            nome.indexOf('1') >= 0 ||
-            nome.indexOf('2') >= 0 ||
-            nome.indexOf('3') >= 0 ||
-            nome.indexOf('4') >= 0 ||
-            nome.indexOf('5') >= 0 ||
-            nome.indexOf('6') >= 0 ||
-            nome.indexOf('7') >= 0 ||
-            nome.indexOf('8') >= 0 ||
-            nome.indexOf('9') >= 0 ||
-            nome.indexOf('0') >= 0 ||
-            nome.indexOf('!') >= 0 ||
-            nome.indexOf('@') >= 0 ||
-            nome.indexOf('#') >= 0 ||
-            nome.indexOf('$') >= 0 ||
-            nome.indexOf('%') >= 0 ||
-            nome.indexOf('¨') >= 0 ||
-            nome.indexOf('&') >= 0 ||
-            nome.indexOf('*') >= 0 ||
-            nome.indexOf('(') >= 0 ||
-            nome.indexOf(')') >= 0 ||
-            nome.indexOf('-') >= 0 ||
-            nome.indexOf('_') >= 0 ||
-            nome.indexOf('+') >= 0 ||
-            nome.indexOf('=') >= 0 ||
-            nome.indexOf('ç') >= 0 ||
-            nome.indexOf('{') >= 0 ||
-            nome.indexOf('}') >= 0 ||
-            nome.indexOf('[') >= 0 ||
-            nome.indexOf('/') >= 0 ||
-            nome.indexOf('?') >= 0 ||
-            nome.indexOf(',') >= 0 ||
-            nome.indexOf(':') >= 0 ||
-            nome.indexOf(';') >= 0 ||
-            nome.indexOf('|') >= 0 ||
-            nome.indexOf('º') >= 0 ||
-            nome.indexOf('°') >= 0;
-
+        var confirma = input_confirma.value
+        var nome_invalido = 
+        nome.indexOf('1') >= 0 ||
+         nome.indexOf('2') >= 0 ||
+         nome.indexOf('3') >= 0 ||
+         nome.indexOf('4') >= 0 ||
+         nome.indexOf('5') >= 0 ||
+         nome.indexOf('6') >= 0 ||
+         nome.indexOf('7') >= 0 ||
+         nome.indexOf('8') >= 0 ||
+         nome.indexOf('9') >= 0 ||
+         nome.indexOf('0') >= 0 ||
+         nome.indexOf('!') >= 0 ||
+         nome.indexOf('@') >= 0 ||
+         nome.indexOf('#') >= 0 ||
+         nome.indexOf('$') >= 0 ||
+         nome.indexOf('%') >= 0 ||
+         nome.indexOf('¨') >= 0 ||
+         nome.indexOf('&') >= 0 ||
+         nome.indexOf('*') >= 0 ||
+         nome.indexOf('(') >= 0 ||
+         nome.indexOf(')') >= 0 ||
+         nome.indexOf('-') >= 0 ||
+         nome.indexOf('_') >= 0 ||
+         nome.indexOf('+') >= 0 ||
+         nome.indexOf('=') >= 0 ||
+         nome.indexOf('ç') >= 0 ||
+         nome.indexOf('{') >= 0 ||
+         nome.indexOf('}') >= 0 ||
+         nome.indexOf('[') >= 0 ||
+         nome.indexOf('/') >= 0 ||
+         nome.indexOf('?') >= 0 ||
+         nome.indexOf(',') >= 0 ||
+         nome.indexOf(':') >= 0 ||
+         nome.indexOf(';') >= 0 ||
+         nome.indexOf('|') >= 0 ||
+         nome.indexOf('°') >= 0;
+         
         var emailValido = email.endsWith('@gmail.com') ||
-            email.endsWith('@hotmail.com') ||
+        email.endsWith('@hotmail.com') ||
             email.endsWith('@outlook.com') ||
             email.endsWith('@sptech.school')
 
-        if (nome_especial) {
-            div_wellcome.innerHTML= ""
-            div_nome.innerHTML = 'O Nome deve conter apenas letras <br>'
-        } else  {div_nome.innerHTML= ""  
-        div_wellcome.innerHTML = 'Cadastro bem sucedido '}
-        
-        if (emailValido){
-            div_wellcome.innerHTML = 'Cadastro bem sucedido '
-            div_email.innerHTML = ""
-        }else { div_email.innerHTML = 'Digite um endereço de email valido '
-        div_wellcome.innerHTML= "" }
+        var cpfinvalido =  cpf.indexOf(0) == 0;
 
 
+        if ( nome_invalido || nome == "" ) {
+            div_nome.innerHTML = 'digite apenas letras <br>'
+            div_wellcome.innerHTML=""
+
+        } else {div_nome.innerHTML= ""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
         
-      
+         if (usuario == ""){
+            div_usuario.innerHTML= "digite um nome de usuário"
+            div_wellcome.innerHTML=""
+
+        }else {div_usuario.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
         if (cpf.length !==11) {
+                
+                div_cpf.innerHTML = 'cpf invalido'
+                div_wellcome.innerHTML=""
+                 
+                
+            }else {div_cpf.innerHTML=""
+            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+
+
+        if (emailValido == false){
+            div_email.innerHTML = " endereço de email invalido"
+            div_wellcome.innerHTML=""
             
-            div_wellcome.innerHTML= ""
-            div_cpf.innerHTML = 'Digite um CPF valido'
-             
+        } else {div_email.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
 
-        }else{ div_cpf.innerHTML = ""
-        div_wellcome.innerHTML = 'Cadastro bem sucedido '
-         }    
-
-
-        if (senha.length < 8) {
+        
+        
+        
+        
+        if (senha.length < 8 || senha == "") {
             
-            div_wellcome.innerHTML= ""
+            div_senha.innerHTML = 'mínimo permitido: 8 digitos'
+            div_wellcome.innerHTML=""
+            
+        } else {div_senha.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+         if (confirma == "" ||  confirma!= senha){
+            div_confirmasenha.innerHTML= "incorreto, tente novamente"
+            div_wellcome.innerHTML=""
 
-            div_senha.innerHTML = 'A senha deve conter pelo menos oito digitos'
-        } else{
-            div_senha.innerHTML= "" 
-            div_wellcome.innerHTML = 'Cadastro bem sucedido '}
- }
-</script>
+        } else {div_confirmasenha.innerHTML=""
+        
+    div_wellcome.innerHTML= `seja bem vindo ${nome}`
+
+        }
+        }
+    </script>
