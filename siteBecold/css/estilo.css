@@ -6,8 +6,6 @@ body{
   background-color: #012569;
 }
 .header-container{
-  margin: 0px 90px 0px 90px ;
-  max-width: 1366px;
   height: 76px;
   display:grid;
   grid-template-columns: 3fr 1fr 1fr;
@@ -59,11 +57,9 @@ body{
 .inicial{
   display: grid;
   grid-template-columns: 500px 2fr;
-  margin: 120px 90px 0px 90px;
   justify-items: left;
-  margin-bottom: 120px;
 }
-.inicial-conteudo h1{
+.inicial-conteudo h1, .dashboard h1{
   font-size: 36px;
   max-width: 22ch;
   padding-bottom: 48px;
@@ -73,12 +69,12 @@ body{
   max-width: 30ch;
   padding-bottom: 48px;
 }
-.inicial-img img{
+.inicial-img img, .dashboard img{
   padding-left: 96px;
   width: 540px;
   padding-top: 30px;
 }
-.inicial-conteudo a{
+.inicial-conteudo a, .dashboard a{
   margin-left: 80px;
   background-color: #012569;
   padding: 10px 18px;
@@ -90,10 +86,7 @@ body{
 .sobre-nos{
   display: grid;
   grid-template-columns: 500px 2fr;
-  margin: 120px 90px 0px 90px;
   justify-items: left;
-  margin-bottom: 120px;
-  padding-top: 32px;
   align-items: center;
 }
 .sobre-nos-img img{
@@ -101,160 +94,142 @@ body{
   width: 540px;
   padding-top: 30px;
 }
-.sobre-nos-conteudo h3{
+.sobre-nos-conteudo h3, .cultura h3{
   color: #08102B;
   font-size: 20px;
   max-width: 22ch;
-  padding-bottom: 64px;
+  padding-bottom: 100px;
 }
-.sobre-nos-conteudo h2{
+.sobre-nos-conteudo h2, .cultura h2{
   font-size: 32px;
   padding-bottom: 32px;
 }
-.sobre-nos-conteudo p{
+.sobre-nos-conteudo p, .cultura p{
   font-size: 16px;
   padding-bottom: 28px;
 }
-.header .container{
- width: 80%;
-height: 100px;
-margin:  0 10%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-    
+.cultura-conteudo{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 84px;
+  align-items: start;
+  padding-bottom: 64px;
+  
+}
+.cultura-conteudo p{
+  max-width: 28ch;
+  
+}
+.cultura-segurança, .cultura-relacionamento{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-items: center;
+  gap: 32px;
+  align-items: center;
+}
+.cultura-segurança h2, .cultura-relacionamento h2{
+  grid-column: 1/3;
+}
+.cultura-conteudo img{
+  max-width: 230px;
 
 }
-
-
-.header .container li{
-
-    display: inline;
-    text-decoration: none;
-
+.cultura-segurança{
+  justify-self: left;
 }
-
-    .header .container li a{
-    
-        text-decoration: none;
-     color: #ff8e05;
-     padding: 0 15px;
-    }
-
-
-    .centrocontainer {
-text-align: center;
-height: 547px;
-top: 50%;
-left: 50%;
-width: 1349px;
-background-color: rgb(82, 161, 161,);
-z-index: -1;
-
-    }
-    .divImgPrimeirapagina {
-        background-image: url(imagemhome.png);
-        display: inline-block;
-        width: 300px;
-        height: 300px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .quemsomosnos {
-        width: 100%;
-        height: 134px;
-        background-color: white;
-    }
-    .quemsomosnoscontainertexto {
-        display: inline-block;
-background-color: white;
-width: 500px;
-height: 520px;
-
-    }
-    .divImagemquemsomosnos {
-background-image: url(quemsomosnos.png);
-display: inline-block;
-width: 300px;
-height: 300px;
-background-repeat: no-repeat;
-background-size: cover;
-align-items: center;
-justify-content: center;
-margin-left: 20%;
-
-
-    }
-    .cultura {
-        width: 100%;
-        height: 134px;
-        background-color: white;
-    }
-    .divImagemcultura{
-background-image: url(imagemcultura.png);
-display: inline-block;
-width: 195px;
-height: 255px;
-background-repeat: no-repeat;
-background-size: cover;
-align-items: center;
-justify-content: center;
-margin-left: 20%;
-
-    }
-.culturacontainertexto {     display: inline-block;
-    background-color: white;
-    width: 500px;
-    height: 520px;
-margin-left: 17%;
+.cultura, .sobre-nos, .inicial{
+  min-height: 568px;
+  align-items: center;
+  display: grid;
 }
-.qualidadecontainertexto{
-    display: inline-block;
-    background-color: white;
-    width: 500px;
-    height: 520px;
+.calculadora{
+  background-image:linear-gradient(#012569, #7AD5F2);
 }
-.divimagemqualidade {background-image: url(qualidade.png);
-    display: inline-block;
-    width: 150px;
-    height: 325px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20%;
-
-
+.calculadora-conteudo{
+  height: 340px;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  grid-template-rows: auto 1fr;
+  justify-content: center;
 }
-.divimagemcrescimento {background-image: url(imagemcrescimento.png);
-    display: inline-block;
-    width: 200px;
-    height: 230px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20%;
-
-
+.calculadora-conteudo a{
+  background-color: #012569;
+  padding: 14px 20px;
+  border-radius: 100px;
+  color: #fafbfd;
+  box-shadow: 0px 3px 1px #868C9F;
 }
-.crescimentocontainertexto {    display: inline-block;
-    background-color: white;
-    width: 500px;
-    height: 520px;
-
-
+.calculadora-conteudo h1{
+  font-size: 42px;
+  margin-top: 68px;
+  color: #fafbfd;
+  text-align: center;
+  margin-bottom: 48px;
+  text-transform: uppercase;
 }
-
-.rodape{
-    width: 100%;
-    height: 100px;
-    background-color: cadetblue;
-
-
+.dashboard-conteudo{
+  display: grid;
+  grid-template-columns: 500px 2fr;
+  justify-items: left;
+  align-items: center;
+  height: 668px;
+}
+.dashboard-conteudo h1{
+  font-size: 36px;
+  max-width: 22ch;
+  padding-bottom: 48px;
+}
+.dashboard-conteudo p{
+max-width: 40ch;
+font-size: 20px;
+}
+.footer {
+  background-color: #012569;
+}
+.footer-conteudo{
+  display:flex;
+  color: #fafbfd;
+  justify-content: space-between;
+  justify-items: center;
+padding-top: 48px;
+padding-bottom: 24px;
+}
+.footer-conteudo h3{
+  padding-bottom: 24px;
+  text-align: center;
+  font-size: 24px;
+}
+.footer-conteudo a{
+  padding-bottom: 8px;
+  align-items: center;
+  display: flex;
+ 
+}
+.footer-conteudo a img{
+  padding-right: 8px;
+}
+.redes-icon{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 14px;
+}
+.redes-icon img{
+  max-width: 47px;
+}
+.footer-direitos{
+  border-top: #868C9F solid 1px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  grid-column: 1/4;
+  color: #868C9F;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.footer-direitos span{
+  font-size: 12px;
 }
 
 
