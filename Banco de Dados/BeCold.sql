@@ -33,10 +33,10 @@ fkCliente INT,
 );
 
 INSERT INTO Sensor VALUES
-(null, 'Temperatura', '2023-09-13', 'Rua Haddock Lobo 595', 1),
-(null,  'Umidade', '2023-09-14', 'Rua Centro de Dado 372', 3),
-(null, 'Temperatura e Umidade', '2023-09-15', 'Rua Haddock Lobo 595', 2),
-(null, 'Temperatura', '2023-09-15', 'Rua Centro de Dado 372', 3);
+(null,'2023-09-13', 'Rua Haddock Lobo 595', 1),
+(null,'2023-09-14', 'Rua Centro de Dado 372', 3),
+(null,'2023-09-15', 'Rua Haddock Lobo 595', 2),
+(null, '2023-09-15', 'Rua Centro de Dado 372', 3);
 
 SELECT * FROM Sensor;
 
