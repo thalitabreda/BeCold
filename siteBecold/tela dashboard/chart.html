@@ -54,17 +54,21 @@
   </div>
 </div>
     <div style="flex: 1;">
+      <h2>Umidade nas últimas 4 horas</h2>
         <canvas id="myChart" style="position: relative; border-radius: 10px;height:40vh;"></canvas>
       </div>
       <div style="flex: 1;">
+        <h2>Umidade média nos últimos 4 meses</h2>
         <canvas id="myChart1" style="position: relative; border-radius: 10px; height:40vh; "></canvas>
       </div>
      
    
       <div style="flex: 1;">
+        <h2>Temperatura nas últimas 4 horas</h2>
         <canvas id="myChart2" style="position: relative;  border-radius: 10px;  height: 40vh;"></canvas>
       </div>
       <div style="flex: 1;">
+        <h2>Temperatura média nos últimos 4 meses</h2>
         <canvas id="myChart3" style="position: relative;  border-radius: 10px; height:40vh;"></canvas>
       </div>
 
@@ -83,12 +87,32 @@
       data: {
         labels: ['12h', '12h30', '13h', '13h30', '14h', '14h30', '15h', '15h30', '16h'],
         datasets: [{
-          label: 'Umidade Sensor 1',
+          label: 'Sensor 1',
           data: [40, 42, 48, 51, 55, 60, 59, 57, 52],
           borderColor: '#012569',
       backgroundColor: '#012569',
-          borderWidth: 3
+          borderWidth: 2
+        },{
+          label: 'Sensor 2',
+          data: [50, 48, 45, 46, 49, 50, 55, 56, 57],
+          borderColor: '#6959CD',
+      backgroundColor: '#6959CD',
+          borderWidth: 2
         },
+        {
+          label: 'Sensor 3',
+          data: [60, 62, 64, 61, 59, 57, 55, 52, 51],
+          borderColor: '#FF4500',
+      backgroundColor: '#FF4500',
+          borderWidth: 2
+        },{
+          label: 'Sensor 4',
+          data: [41, 44, 43, 47, 48, 49, 51, 54, 55],
+          borderColor: '#FFA500',
+      backgroundColor: '#FFA500',
+          borderWidth: 2
+        }
+        
     ]
       },
       options: {
@@ -105,12 +129,30 @@
   new Chart(ctx1, {
     type: 'bar',
     data: {
-      labels: ['Sensor1', 'Sensor2', 'Sensor3', 'Sensor4', 'Sensor5', 'Sensor6', 'Sensor7', 'Sensor8'],
+      labels: ['Junho', 'Julho', 'Agosto', 'Setembro'],
       datasets: [{
-        label: 'Umidade Média no último mes',
-        data: [45, 48, 50, 55, 40, 43, 49, 51],
+        label: 'Sensor 1',
+        data: [45, 48, 50, 55],
         borderColor: '#012569',
       backgroundColor: '#012569',
+        borderWidth: 3
+      },{
+        label: 'Sensor 2',
+        data: [40, 44 , 53, 58],
+        borderColor: '#6959CD',
+      backgroundColor: '#6959CD',
+        borderWidth: 3
+      },{
+        label: 'Sensor 3',
+        data: [42, 48 , 57, 59],
+        borderColor: '#FF4500',
+      backgroundColor: '#FF4500',
+        borderWidth: 3
+      },{
+        label: 'Sensor 4',
+        data: [40, 44 , 53, 58],
+        borderColor: '#FFA500',
+      backgroundColor: '#FFA500',
         borderWidth: 3
       },
   ]
@@ -131,12 +173,30 @@
     data: {
       labels: ['12h', '12h30', '13h', '13h30', '14h', '14h30', '15h', '15h30', '16h'],
       datasets: [{
-        label: 'Temperatura Sensor 1',
+        label: 'Sensor 1',
         data: [18, 22, 23 , 25, 27, 29, 28, 27, 25],
         borderColor: '#012569',
     backgroundColor: '#012569',
         borderWidth: 3
-      }
+      },{
+        label: 'Sensor 2',
+        data: [20, 23, 25 , 28, 28, 29, 28, 27, 25],
+        borderColor: '#6959CD',
+    backgroundColor: '#6959CD',
+        borderWidth: 3
+      },{
+        label: 'Sensor 3',
+        data: [18, 20, 22 , 24, 26, 27, 27, 28, 29],
+        borderColor: '#FF4500',
+    backgroundColor: '#FF4500',
+        borderWidth: 3
+      },{
+        label: 'Sensor 4',
+        data: [18, 17, 18 , 19, 20, 21, 22, 23, 24],
+        borderColor: '#FFA500',
+    backgroundColor: '#FFA500',
+        borderWidth: 3
+      },
   ]
     },
     options: {
@@ -153,12 +213,30 @@
   new Chart(ctx3, {
     type: 'bar',
     data: {
-      labels: ['Sensor1', 'Sensor2', 'Sensor3', 'Sensor4', 'Sensor5', 'Sensor6', 'Sensor7', 'Sensor8'],
+      labels: ['Junho', 'Julho', 'Agosto', 'Setembro'],
       datasets: [{
-        label: 'Temperatura Média no último mes',
-        data: [22, 24, 27 , 26, 19, 27, 21, 25, 19],
+        label: 'Sensor 1',
+        data: [22, 24, 27 , 26],
         borderColor: '#012569',
       backgroundColor: '#012569',
+        borderWidth: 3
+      },{
+        label: 'Sensor 2',
+        data: [18, 20, 22 , 24],
+        borderColor: '#6959CD',
+      backgroundColor: '#6959CD',
+        borderWidth: 3
+      },{
+        label: 'Sensor 3',
+        data: [20, 23, 27 , 28],
+        borderColor: '#FF4500',
+      backgroundColor: '#FF4500',
+        borderWidth: 3
+      },{
+        label: 'Sensor 4',
+        data: [26, 25, 17 , 19],
+        borderColor: '#FFA500',
+      backgroundColor: '#FFA500',
         borderWidth: 3
       }
   ]
