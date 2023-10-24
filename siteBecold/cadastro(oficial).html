@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro</title>
+
+    <link rel="stylesheet" href="css/cadastro.css">
+        
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Merriweather:ital,wght@0,900;1,900&display=swap');
+      </style>
+</head>
+   
+<body>
+      
+    <header class="header-background">
+        <div class="header-container">
+           
+            <div class="logo">
+              <p><img src="img/Servers Group.png" alt="">BeCold</p>
+            </div>
+            <div class="navbar home-contato"> 
+
+
+              <ul>
+                  <li><a href="site.html">Home</a></li>
+                  <li><a href="site.html">contato</a></li>
+              </ul>
+
+            </div>
+            
+             
+      </header>
+
+    <div >
+
+        <div class="titulo" >
+        <h1 >comece já a monitorar seus servidores. <br> 
+             o  futuro te aguarda!!</h1>
+    </div>
+    
+    <div class="conteiner" >
+    
+     
+        
+        
+        <div class="inputs_left">
+            
+            <!--   Digite seu Nome <span style="color: red;">*</span>
+                <div >
+                    <input class="inputs" type="text" id="input_nome"  >
+                </div>
+                <div id="div_nome" style="color: red;"></div> 
+        <br> 
+    -->
+
+    Cadastre sua empresa <span style="color: red;">*</span>
+    <div>
+
+        <input class="inputs"  type="text" id="input_usuario" >
+        
+        <div id="div_usuario" style="color: red;"></div> 
+    </div>  
+    <br> 
+     cep  <span style="color: red;">*</span> <br>
+    <input type="text" id="idcep"><br>
+    <div id="divcep" style="color: red;"></div>
+    
+    <br>
+
+    numero  <span style="color: red;">*</span> <br>
+    <input type="number" id="numeroinp"> <br>
+    <div id="num" style="color: red;"></div>
+    <br>
+
+    complemento <br>
+    <input type="text" id="complementoinp">
+    <br> 
+    <br>
+    
+    
+    CNPj <span style="color: red;">*</span>
+    <div >
+        <input class="inputs" "  type="number" id="input_Cnpj" max="14"  >
+                    </div>
+                    <div id="div_cpf" style="color: red;"></div> <br>
+                    
+                </div>
+    
+    
+    
+    
+    
+    <div class="inputs_right" >
+
+                    Email <span style="color: red;">*</span>
+                    <div>
+                        <input class="inputs" ; type="email" id="input_email" >
+                    </div> 
+                    <div id="div_email" style="color: red;"></div> <br>
+                  Senha  <span style="color: red;">*</span>
+        <div>
+            <input class="inputs"  type="password" id="input_senha" >
+        </div>
+        
+        <div id="div_senha" style="color: red;"></div> <br>
+            Repetir Senha <span style="color: red;">*</span>
+        <div>
+            <input class="inputs" ; type="password" id="input_confirma" >
+        </div>
+        
+        <div id="div_confirmasenha" style="color: red;"></div> 
+
+        
+    </div>
+     <img style="margin: 0px; width: 800px;padding-bottom: 110px;" src="img/cadastro.png" alt="cadastre-se">
+    </div>
+    
+    
+    
+    <span class="login">
+        
+        <ul>
+            <li><a href="login.html" >Já possui uma conta? faça Login.</a></li> <br>
+        </ul>
+        
+    </span>
+</div>
+
+
+<div class="divbotao">
+<button  class="botão" onclick="cadastrar()">Criar conta</button>
+
+</div> 
+<h3  id="div_wellcome" style="color: #010169; margin-left: 550px;"> 
+</h3>
+
+
+</div>
+
+
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+        
+        
+        
+        
+        div_wellcome.innerHTML=""
+        div_cpf.innerHTML= ""
+        div_email.innerHTML=""
+        div_senha.innerHTML=""
+        
+        var email = input_email.value
+        var cnpj = input_Cnpj.value
+        var usuario = input_usuario.value
+        var senha = input_senha.value
+        var confirma = input_confirma.value
+        var cep = idcep.value
+        var numero = numeroinp.value
+        
+        var emailValido = email.endsWith('@gmail.com') ||
+        email.endsWith('@hotmail.com') ||
+        email.endsWith('@outlook.com') ||
+        email.endsWith('@sptech.school')
+        
+        var cnpjinvalido =  cnpj.indexOf(0) == 0;
+        var cepinvalido = cep.indexOf("") == 0;
+        
+        
+        
+        if (usuario == ""){
+            div_usuario.innerHTML= "digite um nome de empresa"
+            div_wellcome.innerHTML=""
+            
+        }else {div_usuario.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+        
+        if (cepinvalido.length !== 8) {
+            divcep.innerHTML= `cep invalido! Necessário 8 digitos`
+            div_wellcome.innerHTML= ""
+            
+            
+        }else {divcep.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`
+        }
+        
+        if (numero == "") {
+
+            num.innerHTML= `insira um numero`
+            div_wellcome.innerHTML= ""
+
+        } else {num.innerHTML=""
+            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+
+        
+        
+        if (cnpj.length !==14) {
+                
+            div_cpf.innerHTML = 'cnpj invalido por favor necessário 14 digitos'
+            div_wellcome.innerHTML=""
+            
+            
+        }else {div_cpf.innerHTML=""
+            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+            
+            
+        if (emailValido == false){
+            div_email.innerHTML = " endereço de email invalido"
+            div_wellcome.innerHTML=""
+            
+        } else {div_email.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+        
+        
+        
+        
+        
+        if (senha.length < 8 || senha == "") {
+            
+            div_senha.innerHTML = 'mínimo permitido: 8 digitos'
+            div_wellcome.innerHTML=""
+            
+        } else {div_senha.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+        if (confirma == "" ||  confirma!= senha){
+            div_confirmasenha.innerHTML= "incorreto, tente novamente"
+            div_wellcome.innerHTML=""
+            
+        } else {div_confirmasenha.innerHTML=""
+        
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`
+        
+    }
+    input_email.value= ""
+    
+    input_Cnpj.value= ""
+    
+    input_usuario.value = ""
+    
+    input_senha.value =""
+    
+    input_confirma.value =""
+    idcep.value = ""
+    /* nome.indexOf('1') >= 0 ||
+    nome.indexOf('2') >= 0 ||
+    nome.indexOf('3') >= 0 ||
+    nome.indexOf('4') >= 0 ||
+    nome.indexOf('5') >= 0 ||
+    nome.indexOf('6') >= 0 ||
+    nome.indexOf('7') >= 0 ||
+    nome.indexOf('8') >= 0 ||
+    nome.indexOf('9') >= 0 ||
+    nome.indexOf('0') >= 0 ||
+    nome.indexOf('!') >= 0 ||
+    nome.indexOf('@') >= 0 ||
+    nome.indexOf('#') >= 0 ||
+    nome.indexOf('$') >= 0 ||
+    nome.indexOf('%') >= 0 ||
+    nome.indexOf('¨') >= 0 ||
+    nome.indexOf('&') >= 0 ||
+    nome.indexOf('*') >= 0 ||
+    nome.indexOf('(') >= 0 ||
+    nome.indexOf(')') >= 0 ||
+    nome.indexOf('-') >= 0 ||
+    nome.indexOf('_') >= 0 ||
+    nome.indexOf('+') >= 0 ||
+    nome.indexOf('=') >= 0 ||
+    nome.indexOf('ç') >= 0 ||
+    nome.indexOf('{') >= 0 ||
+    nome.indexOf('}') >= 0 ||
+     nome.indexOf('[') >= 0 ||
+     nome.indexOf('/') >= 0 ||
+     nome.indexOf('?') >= 0 ||
+     nome.indexOf(',') >= 0 ||
+     nome.indexOf(':') >= 0 ||
+     nome.indexOf(';') >= 0 ||
+     nome.indexOf('|') >= 0 ||
+     if ( nome_invalido || nome == "" ) {
+         div_nome.innerHTML = 'digite apenas letras <br>'
+         div_wellcome.innerHTML=""
+        } else {div_nome.innerHTML= ""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+     nome.indexOf('°') >= 0;*/
+}
+</script>
