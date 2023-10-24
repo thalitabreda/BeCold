@@ -32,12 +32,12 @@
         <div class="content">
             <div class="form">
                 <h1>Calculadora Financeira</h1>
-                <article>Essa é uma ferramenta para ajudá-los a indentificar a situação atual da sáude de seu negócio, tendo em vista a média de downtime médio de outras em empresas do mesmo mercado além de também apresentar a mudança que nossa solução proporciona ao seu negocio.</article>
+                <article>Essa é uma ferramenta para ajudá-los a indentificar a situação atual da sáude de seu negócio, tendo em vista a média de downtime médio de outras em empresas do mesmo mercado além de também apresentar a mudança que nossa solução proporciona ao seu negócio.</article>
                 <ul>
-                    <li><strong><span>Digite o investimento total em servidores de seu DataCenter:</strong> R$</span><input type="number" placeholder="R$ - Digite um valor em reais" id="ipt_investimento"></li>
-                    <li><strong><span>Digite o custo de dowtime por hora de sua empresa:</strong> R$</span><input type="number" placeholder="R$ - Digite um valor em reais" id="ipt_custoHora"></li>
-                    <li><strong><span>Digite o tempo médio semestral de downtime de seus servidores:</span></strong><input type="number" placeholder="Digite um valor em horas" onkeyup="Calcular()" id="ipt_tmpDowntime"><span> Horas.</span></li>
+                    <li><strong><span>Digite o custo de dowtime por hora de sua empresa:</strong> R$</span><input type="number" placeholder="Digite um valor em reais" id="ipt_custoHora"></li>
+                    <li><strong><span>Digite o tempo médio semestral de downtime de seus servidores:</span></strong><input type="number" placeholder="Digite um valor em horas" id="ipt_tmpDowntime"><span> Horas.</span></li>
                 </ul>
+                <button class="btn" onclick="Calcular()">Simular Perdas</button>
                 <div id="div_resultado"></div>
             </div>
         </div>
@@ -72,6 +72,7 @@
                 <h1>BeCold</h1>
                 <p>© 2023 BeCold. Todos os direitos reservados.</p>
             </div>
+            <span style="color: red;"></span>
         </div>
     </div>
 </body>
@@ -82,18 +83,18 @@
         var custoHora = Number(ipt_custoHora.value);
         var tmpMedio = Number(ipt_tmpDowntime.value);
 
-        var gastoSemestral = investimento + (custoHora * tmpMedio);
+        var gastoSemestral = (custoHora * tmpMedio)*-1;
         var gastoAnual = gastoSemestral*2;
 
         var tmpMedioCold = tmpMedio * 0.93;
-        var gastoSemestralCold = investimento + (custoHora * tmpMedioCold);
+        var gastoSemestralCold = (custoHora * tmpMedioCold)*-1;
         var gastoAnualCold = gastoSemestralCold*2;
 
         var mediaGasto = 87;
-        var comparação = investimento + (custoHora * mediaGasto);
+        var comparação = custoHora * mediaGasto;
 
-        var diferencaMediaCold = mediaGasto - (tmpMedioCold*2);
-        var diferencaMedia = mediaGasto - (tmpMedio*2);
+        var diferencaMediaCold = (tmpMedioCold*2) - mediaGasto;
+        var diferencaMedia = (tmpMedio*2) - mediaGasto;
 
         var checkInvestimento = isNaN(investimento) || investimento <= 0;
         var checkCusto = isNaN(custoHora) || custoHora <= 0;
@@ -101,8 +102,8 @@
 
         if (checkCusto || checkInvestimento || checkTempoMedio) {
            alert("Digite um valor válido (Os valores inseridos devem ser númericos e devem ser maiores que 0)") 
-        }
-        var frase = `<table style="width:100%">
+        } else {
+            var frase = `<table style="width:100%">
                         <tr>
                             <th>Cenário</th>
                             <th>Custo semestral causado por downtime</th>
@@ -127,15 +128,30 @@
                     </table>`;
         
         if (diferencaMedia < 0) {
-            frase += `<article>Atualmente sua empresa está abaixo da média de downtime do setor de ${mediaGasto} horas, o que corresponde a uma <strong>perda</strong> anual de R$${gastoAnual.toFixed(2)}, porém ao utilizar nossa solução sua média anual de downtime passa a ser de ${diferencaMediaCold.toFixed(2)} horas, totalizando uma <strong>redução de perda</strong> de R$${(gastoAnualCold - gastoAnual).toFixed(2)} anualmente.</article>`
+            frase += `<article>Atualmente sua empresa está abaixo da média de downtime do setor em ${diferencaMedia} horas (a média anual é 87 horas anualmente), o que corresponde a uma <strong>perda</strong> anual de <span style="color: red;">R$${gastoAnual.toFixed(2)}</span>. <br> <br>
+
+            Porém ao utilizar nossa solução sua média anual de downtime passa a estar ${diferencaMediaCold.toFixed(2)} horas abaixo da média do setor (de 87 horas anualmente), totalizando uma <strong>perda</strong> anual de <span style="color: green;">R$${(gastoAnualCold).toFixed(2)}</span>. <br> <br>
+
+            Resultando em um aumento anual de ${(diferencaMedia - diferencaMediaCold).toFixed(2)} horas de uptime, o que representa uma redução de <span style="color: green;">R$${(gastoAnual - gastoAnualCold).toFixed(2)}</span> em perdas relacionadas a dowtime.
+            </article>`
         } else if (diferencaMedia == 0) {
-            frase += `<article>Atualmente sua empresa está na média de downtime do setor de ${mediaGasto} horas, o que corresponde a uma <strong>perda</strong> anual de R$${gastoAnual.toFixed(2)}, porém ao utilizar nossa solução sua média anual de downtime passa a ser de ${(mediaGasto - diferencaMediaCold).toFixed(2)} horas, totalizando uma <strong>redução de perda</strong> de R$${(gastoAnualCold - gastoAnual).toFixed(2)} anualmente.</article>`
+            frase += `<article>Atualmente sua empresa está na média de downtime do setor de 87 horas anualmente, o que corresponde a uma <strong>perda</strong> anual de <span style="color: red;">R$${gastoAnual.toFixed(2)}</span>. <br> <br>
+
+            Porém ao utilizar nossa solução sua média anual de downtime passa a estar ${diferencaMediaCold.toFixed(2)} horas abaixo da média do setor (de 87 horas anualmente), totalizando uma <strong>perda</strong> anual de <span style="color: green;">R$${(gastoAnualCold).toFixed(2)}</span>. <br> <br>
+
+            Resultando em um aumento anual de ${(diferencaMedia - diferencaMediaCold).toFixed(2)} horas de uptime, o que representa uma redução de <span style="color: green;">R$${(gastoAnual - gastoAnualCold).toFixed(2)}</span> em perdas relacionadas a dowtime.
+            </article>`
         } else {
-            frase += `<article>Atualmente sua empresa está acima da média de downtime do setor por ${diferencaMedia.toFixed(2)} horas, o que corresponde a uma <strong>perda</strong> anual de R$${(comparação -  gastoAnual).toFixed(2)} acima da média, porém ao utilizar nossa solução sua média anual de downtime passa a ser de ${diferencaMediaCold.toFixed(2)} horas, totalizando uma <strong>redução de perda</strong> de R$${(gastoAnualCold - gastoAnual).toFixed(2)} anualmente.</article>`
+            frase += `<article>Atualmente sua empresa está acima da média de downtime do setor em ${diferencaMedia} horas (a média anual é 87 horas anualmente), o que corresponde a uma <strong>perda</strong> anual de <span style="color: red;">R$${gastoAnual.toFixed(2)}</span>. <br> <br>
+
+            Porém ao utilizar nossa solução sua média anual de downtime passa a estar ${diferencaMediaCold.toFixed(2)} horas abaixo da média do setor (de 87 horas anualmente), totalizando uma <strong>perda</strong> anual de <span style="color: green;">R$${(gastoAnualCold).toFixed(2)}</span>. <br> <br>
+
+            Resultando em um aumento anual de ${(diferencaMedia - diferencaMediaCold).toFixed(2)} horas de uptime, o que representa uma redução de <span style="color: green;">R$${(gastoAnual - gastoAnualCold).toFixed(2)}</span> em perdas relacionadas a dowtime.
+            </article>`
         }
 
         div_resultado.innerHTML = frase;
-        
+        }   
     }
 </script>
 </html>

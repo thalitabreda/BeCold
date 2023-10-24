@@ -29,13 +29,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 50%;
+    margin-right: 30%;
 }
 
 .navbar{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 700px;
 }
 
@@ -68,10 +68,12 @@
     color: white;
 }
 .center{
-    height: 850px;
+    height: fit-content ;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .center .content{
     justify-content: center;
@@ -135,6 +137,7 @@ th, td{
 .section{
     display: flex;
     justify-content: center;
+    height: 800px;
 }
 .section .content{
     display: flex;
@@ -145,17 +148,17 @@ th, td{
     height: inherit;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
 .caixa_titulo{
     display: flex;
-    width: 610px;
+    margin-bottom: 40px;
+    width: 100%;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 40px;
 }
-.box button{
+.btn{
     width: 320px;
     height: 60px;
     border-radius: 70px;
@@ -165,11 +168,17 @@ th, td{
     color: white;
     margin: 20px;
 }
+.box .alinhar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 .campo{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 30px;
+    width: 100;
 }
 .campo input{
     background-color: #EEEEEE;
@@ -178,14 +187,19 @@ th, td{
     border: 0;
     appearance: textfield;
     height: 30px;
-    width: 600px;
+    width: 100%;
     padding-left: 10px;
+    margin-bottom: 30px;
 }
 .box2{
     width: 50%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .box2 img{
-    width: 980px;
+    max-width: 100%;
 }
 .footer{
     display: flex;
