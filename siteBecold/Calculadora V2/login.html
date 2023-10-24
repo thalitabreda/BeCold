@@ -30,35 +30,48 @@
                 </div>
                 <div class="campo">
                     <span>Email</span>
-                    <input type="text">
+                    <input type="text" id="email_input">
+                    <div style="color: red;" id="div_email"></div>
                 </div>
                 <div class="campo">
                     <span>Senha</span>
-                    <input type="password">
+                    <input  id="input_senha" type="password">
+                    <div style="color: red;"  id="div_password"></div>
                 </div>
                 <button onclick="entrar()">Entrar</button>
                 <p>Novo na BeCold! <a href="#">CADRASTRE-SE</a></p>
+                <div id="div_wellcome" ></div>
             </div>
-            <div id="div_mensagem"></div>
             <div class="box2">
+
                 <img src="assets/Expenses and income monitoring on diagrams.png" alt="">
+
+
             </div>
         </div>
     </div>
 </body>
 <script>
     function entrar() {
-        var emailValido = email.endsWith('@gmail.com') || email.endsWith('@hotmail.com') || email.endsWith('@outlook.com') || email.endsWith('@sptech.school')
+        div_password.innerHTML=""
+     var senha = input_senha.value
+     var email = email_input.value
+        
+     var emailValido = email.endsWith('@gmail.com') || email.endsWith('@hotmail.com') || email.endsWith('@outlook.com') || email.endsWith('@sptech.school')
 
-        if (emailValido == false) {
-            div_mensagem.innerHTML = " endereço de email invalido"
-            div_mensagem.innerHTML = ""
-        }}
+        if (emailValido) {} else {
+            div_email.innerHTML = " endereço de email invalido"
 
-        if (senha.length < 8 || senha == "") {
+        }
+
+         if (senha.length < 8 || senha == "") {
             
-            div_senha.innerHTML = 'mínimo permitido: 8 digitos'
-            div_wellcome.innerHTML=""}
+            div_password.innerHTML= 'mínimo permitido: 8 digitos'
+            div_wellcome.innerHTML=""
+
+        }  else{ div_wellcome.innerHTML="Seja bem vindo"}
+
+        }
 </script>
 
 </html>
