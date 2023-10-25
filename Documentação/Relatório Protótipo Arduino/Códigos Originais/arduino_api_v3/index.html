@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Line Chart</title>
+    <title>chart becold</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
@@ -13,33 +13,39 @@
             -ms-user-select: none;
         }
     </style>
+    <link rel="stylesheet" href="chart.css">
 </head>
 
-<body>
-    <div>
-        <h1>Sensor DHT 11 - Umidade</h1>
-        <section style="width:50%">
-            <canvas id="dht11Umidade"></canvas>
-        </section >
-        <h1>Sensor DHT 11 - Temperatura</h1>
-        <section style="width: 50%;">
+
+<body class="imagemfundo">
+    <center>    
+        
+        <div class="container">
+             
+                <i><h2>Sensor DHT 11 - <span style="color: rgba(0, 166, 255, 0.82);">Umidade</span> </h2></i>
+                <section class="grafico">
+                    <canvas id="dht11Umidade"></canvas>
+                </section > 
+        <i></i><h2>Sensor DHT 11 - <span style="color: rgb(209, 17, 17);">Temperatura</span> </h2></i>
+        <section class="grafico" >
             <canvas id="dht11Temperatura"></canvas>
         </section>
-         <h1>Sensor Luminosidade</h1>
+        
         <section style="width: 100%; display: none;"  >
             <canvas id="luminosidade"></canvas>
         </section>
-         <h1>Sensor LM 35 - Temperatura</h1 >
+        
         <section style="width: 100%; display: none;">
             <canvas id="lm35Temperatura"></canvas>
         </section>
-        /*-- <h1>Sensor Chave</h1 > -- */
+        
         <section style="width: 100%; display: none;">
             <canvas id="chave"></canvas>
         </section>
     </div>
 
-    <script>
+</div>
+<script>
         /* -- dht11Umidade -- */
         var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
         contextoDht11Umidade.canvas.width = 1000;

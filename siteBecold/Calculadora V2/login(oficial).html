@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculadoraV2.css">
+    <link rel="icon" href="assets/Servers Group.png">
+    <title>BeCold | Login</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="content">
+            <div class="logo">
+                <img src="assets/Servers Group.png" alt="Logo BeCold">
+                <h1>BeCold</h1>
+            </div>
+            <ul class="navbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="content">
+            <div class="box">
+                <div class="caixa_titulo">
+                    <h1>Login</h1>
+                </div>
+                <div class="campo">
+                    <span>Email  <span style="color: red;">*</span></span>
+                    <input type="text" id="email_input">
+                    <div style="color: red;" id="div_email"></div>
+                </div>
+                <div class="campo">
+                    <span>Senha  <span style="color: red;">*</span></span>
+                    <input  id="input_senha" type="password">
+                    <div style="color: red;"  id="div_password"></div>
+                </div>
+                <button onclick="entrar()">Entrar</button>
+                <p>Novo na BeCold! <a href="#">CADRASTRE-SE</a></p>
+                <div id="div_wellcome" ></div>
+            </div>
+            <div class="box2">
+
+                <img src="assets/Expenses and income monitoring on diagrams.png" alt="">
+
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function entrar() {
+        div_password.innerHTML=""
+     var senha = input_senha.value
+     var email = email_input.value
+        
+     var emailValido = email.endsWith('@gmail.com') || email.endsWith('@hotmail.com') || email.endsWith('@outlook.com') || email.endsWith('@sptech.school')
+
+        if (emailValido) {} else {
+            div_email.innerHTML = " endereço de email invalido"
+
+        }
+
+         if (senha.length < 8 || senha == "") {
+            
+            div_password.innerHTML= 'mínimo permitido: 8 digitos'
+            div_wellcome.innerHTML=""
+
+        }  else{ div_wellcome.innerHTML="Seja bem vindo"}
+
+        }
+</script>
+
+</html>
