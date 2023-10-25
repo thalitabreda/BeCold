@@ -32,30 +32,27 @@ body{
 
 .login-botao li:last-child{
     text-align: center;
-    position: absolute;
-    left: 150px;
+    position: relative;
     width: 80px;
-    color:#000000;
+    color:#010203;
     border-radius: 100px;
     padding: 10px 10px ;
     background-color: #fafbfd;
     position: relative;
 }
 .login-botao li:first-child{
-  color: #fffdfd;
+  color: #fafbfd;
 }
 .back-cadastro:before{
   content:"";
-  align-items: center;
-  display: inline-flex;
-  color: #020101fa;
+  color: #fafbfd;
   position: absolute;
   right: 270px;
   top: 18px;
   height: 20px;
-  width: 200px;
+  width: 120px;
   border-radius: 100px;
-  padding: 15px 20px ;
+  padding: 10px 14px ;
   background-color: rgba(245, 245, 245, 0.58);
 }
 .inicial{
