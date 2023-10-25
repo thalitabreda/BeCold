@@ -79,7 +79,6 @@
 <script>
 
     function Calcular() {
-        var investimento = Number(ipt_investimento.value);
         var custoHora = Number(ipt_custoHora.value);
         var tmpMedio = Number(ipt_tmpDowntime.value);
 
@@ -96,11 +95,10 @@
         var diferencaMediaCold = (tmpMedioCold*2) - mediaGasto;
         var diferencaMedia = (tmpMedio*2) - mediaGasto;
 
-        var checkInvestimento = isNaN(investimento) || investimento <= 0;
         var checkCusto = isNaN(custoHora) || custoHora <= 0;
         var checkTempoMedio = isNaN(tmpMedio) || tmpMedio <= 0;
 
-        if (checkCusto || checkInvestimento || checkTempoMedio) {
+        if (checkCusto || checkTempoMedio) {
            alert("Digite um valor válido (Os valores inseridos devem ser númericos e devem ser maiores que 0)") 
         } else {
             var frase = `<table style="width:100%">
