@@ -8,7 +8,7 @@ body{
 .header-container{
   height: 76px;
   display:grid;
-  grid-template-columns: 3fr 1fr ;
+  grid-template-columns: 3fr 1fr 1fr;
   align-items: center;
 }
 .logo p{
@@ -43,12 +43,12 @@ body{
 .login-botao li:first-child{
   color: #fafbfd;
 }
-.login-botao li:last-child::after{
+.back-cadastro:before{
   content:"";
   color: #fafbfd;
   position: absolute;
-  right: 60px;
-  top: 0px;
+  right: 270px;
+  top: 18px;
   height: 20px;
   width: 120px;
   border-radius: 100px;
@@ -60,7 +60,7 @@ body{
   grid-template-columns: 500px 2fr;
   justify-items: left;
 }
-.inicial-conteudo h1, .dashboard h1{
+.inicial-conteudo h1, .dashboard h1, .site-h1{
   font-size: 36px;
   max-width: 22ch;
   padding-bottom: 48px;
@@ -154,7 +154,7 @@ body{
   grid-template-rows: auto 1fr;
   justify-content: center;
 }
-.calculadora-conteudo a{
+.calculadora-conteudo a, .botao-style{
   background-color: #012569;
   padding: 14px 20px;
   border-radius: 100px;
