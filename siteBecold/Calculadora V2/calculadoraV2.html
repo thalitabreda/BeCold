@@ -79,7 +79,6 @@
 <script>
 
     function Calcular() {
-        var investimento = Number(ipt_investimento.value);
         var custoHora = Number(ipt_custoHora.value);
         var tmpMedio = Number(ipt_tmpDowntime.value);
 
@@ -96,11 +95,10 @@
         var diferencaMediaCold = (tmpMedioCold*2) - mediaGasto;
         var diferencaMedia = (tmpMedio*2) - mediaGasto;
 
-        var checkInvestimento = isNaN(investimento) || investimento <= 0;
         var checkCusto = isNaN(custoHora) || custoHora <= 0;
         var checkTempoMedio = isNaN(tmpMedio) || tmpMedio <= 0;
 
-        if (checkCusto || checkInvestimento || checkTempoMedio) {
+        if (checkCusto || checkTempoMedio) {
            alert("Digite um valor válido (Os valores inseridos devem ser númericos e devem ser maiores que 0)") 
         } else {
             var frase = `<table style="width:100%">
@@ -109,21 +107,21 @@
                             <th>Custo semestral causado por downtime</th>
                             <th>Custo Anual causado por downtime</th>
                             <th>Projeção de custo em 5 anos</th>
-                            <th>Diferença de tempo da média do setor</th>
+                            <th>Tempo anual de Downtime</th>
                         </tr>
                         <tr>
                             <th>Sem a solução BeCold</th>
                             <td style="color: red;">R$${gastoSemestral.toFixed(2)}</td>
                             <td style="color: red;">R$${(gastoAnual).toFixed(2)}</td>
                             <td style="color: red;">R$${(gastoAnual*5).toFixed(2)}</td>
-                            <td style="color: red;">${(diferencaMedia).toFixed(2)} Horas</td>
+                            <td style="color: red;">${(tmpMedio*2).toFixed(2)} Horas</td>
                         </tr>
                         <tr>
                             <th>Com a solução BeCold</th>
                             <td style="color: green;">R$${(gastoSemestralCold).toFixed(2)}</td>
                             <td style="color: green;">R$${(gastoAnualCold).toFixed(2)}</td>
                             <td style="color: green;">R$${(gastoAnualCold*5).toFixed(2)}</td>
-                            <td style="color: green;">${(diferencaMediaCold).toFixed(2)} Horas</td>
+                            <td style="color: green;">${(tmpMedioCold*2).toFixed(2)} Horas</td>
                         </tr>
                     </table>`;
         
