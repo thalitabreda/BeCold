@@ -96,7 +96,7 @@
                     <a href="Calculadora V2/login(oficial).html" >Já possui uma conta? faça Login.</a>
                     <button  class="cadastro-botao" onclick="cadastrar()">Criar conta</button>
                 </div>
-                <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">  
+                <!-- <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">   -->
         </div>
         <div class="cadastro-img">
             <img src="img/cadastro.png" alt="cadastre-se">
@@ -137,7 +137,7 @@
         
         
         
-        div_wellcome.innerHTML=""
+    
         div_cpf.innerHTML= ""
         div_email.innerHTML=""
         div_senha.innerHTML=""
@@ -167,48 +167,46 @@
             div_input_cnpj.style.marginBottom = "0";
             div_input_email.style.marginBottom = "0";
             div_empresa.innerHTML= "digite um nome de empresa"
-            div_wellcome.innerHTML=""
+            
             
         }else {div_empresa.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+        window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}
         
         
         if (cepinvalido.length !== 8 && cepinvalido == "") {
             divcep.innerHTML= `cep invalido! Necessário 8 digitos`
-            div_wellcome.innerHTML= ""
+            
             
             
         }else {divcep.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`
-        }
+        window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}
         
         if (numero == "") {
 
             num.innerHTML= `insira um numero`
-            div_wellcome.innerHTML= ""
+            
 
         } else {num.innerHTML=""
-            div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
 
+            window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}
         
         
         if (cnpj.length !==14) {
                 
             div_cpf.innerHTML = "cnpj invalido por favor necessário 14 digitos"
-            div_wellcome.innerHTML=""
+            
             
             
         }else {div_cpf.innerHTML=""
-            div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
-            
+
+            window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}    
             
         if (emailValido == false){
             div_email.innerHTML = "endereço de email invalido"
-            div_wellcome.innerHTML=""
+            
             
         } else {div_email.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
-        
+        window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}
         
         
         
@@ -217,21 +215,21 @@
         if (senha.length < 8 || senha == "") {
             
             div_senha.innerHTML = 'mínimo permitido: 8 digitos'
-            div_wellcome.innerHTML=""
+            
             
         } else {div_senha.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+        window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}
         
         if (confirma == "" ||  confirma!= senha){
             div_confirmasenha.innerHTML= "incorreto, tente novamente"
-            div_wellcome.innerHTML=""
+            
             
         } else {div_confirmasenha.innerHTML=""
         
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`
+        
+        window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';}
         
     }
-}
 /* nome.indexOf('1') >= 0 ||
 input_email.value= ""
 
@@ -278,7 +276,7 @@ idcep.value = ""
      nome.indexOf('|') >= 0 ||
      if ( nome_invalido || nome == "" ) {
          div_nome.innerHTML = 'digite apenas letras <br>'
-         div_wellcome.innerHTML=""
+         
         } else {div_nome.innerHTML= ""
         div_wellcome.innerHTML= `seja bem vindo ${nome}`}
      nome.indexOf('°') >= 0;*/
