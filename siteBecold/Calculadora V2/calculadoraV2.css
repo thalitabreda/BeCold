@@ -8,14 +8,14 @@
     text-decoration: none;
 }
 
-.header{
+/* .header{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 125px;
     background-color: #012569;
-}
+} */
 
 .content{
     width: 80%;

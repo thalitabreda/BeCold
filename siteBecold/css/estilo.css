@@ -38,7 +38,6 @@ body{
     border-radius: 100px;
     padding: 10px 10px ;
     background-color: #fafbfd;
-    position: relative;
 }
 .login-botao li:first-child{
   color: #fafbfd;

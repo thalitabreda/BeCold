@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/cadastro copy.css">
+        
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Merriweather:ital,wght@0,900;1,900&display=swap');
+      </style>
+</head>
+   
+<body id="cadastro">
+    <header class="  header-background">
+        <div class=" margin header-container">
+            <div class="logo">
+              <p><img src="img/Servers Group.png" alt="">BeCold</p>
+            </div>
+            <div class="navbar home-contato">
+              <ul>
+                  <li><a href="site.html">Home</a></li>
+                  <li><a href="#footer">Contato</a></li>
+              </ul>
+            </div>
+        </div>                 
+      </header>
+    <div class="margin cadastro-container">
+        <div class="cadastro-conteudo">
+            <h1 >Comece já a monitorar seus servidores. <br> 
+                O  futuro te aguarda!!</h1>
+                <div class="cadastro-input">
+                    <div class="input-esquerdo">
+                        <div>
+                            <p>Cadastre sua empresa<span style="color: red;">*</span></p>
+                            <div id="div_input_empresa" class="div-input">
+                                <input class="inputs"  type="text" id="input_usuario" >
+                                <div id="div_usuario" style="color: red;"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <p>CEP<span style="color: red;">*</span></p>
+                            <div id="div_input_cep" class="div-input">
+                                <input class="inputs" type="text" id="idcep">
+                                <div id="divcep" style="color: red;"></div>
+                            </div>
+                         </div>
+                         <div>
+                            <p>Número<span style="color: red;">*</span></p>
+                            <div id="div_input_numero" class="div-input">
+                                <input class="inputs" type="number" id="numeroinp">
+                                <div id="num" style="color: red;"></div>
+                            </div>
+                         </div>
+                         <div>
+                            <p>Complemento</p>
+                            <input class="inputs" type="text" id="complementoinp">
+                         </div>
+                         
+                    </div>     
+                    <div class="input-direito">
+                        <div>
+                            <p>CNPJ<span style="color: red;">*</span></p>
+                            <div id="div_input_cnpj" class="div-input">
+                                <input class="inputs" type="number" id="input_Cnpj" max="14">
+                                <div id="div_cpf" style="color: red;"></div>
+                            </div>
+                         </div>
+                        <div>
+                            <p>Email<span style="color: red;">*</span></p>
+                            <div id="div_input_email" class="div-input">
+                                <input class="inputs" ; type="email" id="input_email">
+                                <div id="div_email" style="color: red;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Senha<span style="color: red;">*</span></p>
+                            <div id="div_input_senha" class="div-input">
+                                <input class="inputs"  type="password" id="input_senha">
+                                <div id="div_senha" style="color: red;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Repetir Senha<sid="div_input"pan style="color: red;">*</span></p>
+                            <div id="div_input_repetir_senha" class="div-input">
+                                <input class="inputs" ; type="password" id="input_confirma">
+                                <div id="div_confirmasenha" style="color: red;"></div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+                <div class="div-botao">
+                    <a href="Calculadora V2/login(oficial).html" >Já possui uma conta? faça Login.</a>
+                    <button  class="cadastro-botao" onclick="cadastrar()">Criar conta</button>
+                </div>
+                <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">  
+        </div>
+        <div class="cadastro-img">
+            <img src="img/cadastro.png" alt="cadastre-se">
+        </div>
+    </div>
+    <footer id="footer" class="footer">
+        <div class="margin footer-conteudo">
+          <div class="footer-fale-conosco">
+            <h3>Fale conosco</h3>
+            
+             <ul >
+              <li><a href="mailtobecoldsptech@gmail.com"><img src="img/Email.png" alt="">becoldsptech@gmail.com</a></li>
+              <li><a href="mailto:becold@email.com"><img src="img/Email.png" alt="">becold@email.com</a></li>
+              <li><a href="tel:9999-9999"><img src="img/Phone.png" alt="">9999-9999</a></li>
+            </ul>
+          </div>
+          <div class="footer-redes" >
+            <h3>Redes Sociais</h3>
+            <ul class="redes-icon">
+              <li><a href=""><img src="img/Instagram.png" alt=""></a></li>
+              <li><a href=""><img src="img/TwitterX.png" alt=""></a></li>
+              <li><img src="img/LinkedIn.png" alt=""></li>
+            </ul>
+          </div>
+          
+        </div>
+        <div class="margin footer-direitos">
+          <h3>BeCold</h3>
+          <span>© 2023 BeCold. Todos os direitos reservados.</span>
+        </div>
+      </footer>
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+        
+        
+        
+        
+        div_wellcome.innerHTML=""
+        div_cpf.innerHTML= ""
+        div_email.innerHTML=""
+        div_senha.innerHTML=""
+        
+        var email = input_email.value
+        var cnpj = input_Cnpj.value
+        var usuario = input_usuario.value
+        var senha = input_senha.value
+        var confirma = input_confirma.value
+        var cep = idcep.value
+        var numero = numeroinp.value
+        
+        var emailValido = email.endsWith('@gmail.com') ||
+        email.endsWith('@hotmail.com') ||
+        email.endsWith('@outlook.com') ||
+        email.endsWith('@sptech.school')
+        
+        var cnpjinvalido =  cnpj.indexOf(0) == 0;
+        var cepinvalido = cep.indexOf("") == 0;
+        
+        
+        if (usuario == ""){
+            div_input_senha.style.marginBottom = "0";
+            div_input_repetir_senha.style.marginBottom = "0";
+            div_input_empresa.style.marginBottom = "0";
+            div_input_cep.style.marginBottom = "0";
+            div_input_numero.style.marginBottom = "0";
+            div_input_cnpj.style.marginBottom = "0";
+            div_input_email.style.marginBottom = "0";
+            div_usuario.innerHTML= "digite um nome de empresa"
+            div_wellcome.innerHTML=""
+            
+        }else {div_usuario.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+        
+        if (cepinvalido.length !== 8) {
+            divcep.innerHTML= `cep invalido! Necessário 8 digitos`
+            div_wellcome.innerHTML= ""
+            
+            
+        }else {divcep.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`
+        }
+        
+        if (numero == "") {
+
+            num.innerHTML= `insira um numero`
+            div_wellcome.innerHTML= ""
+
+        } else {num.innerHTML=""
+            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+
+        
+        
+        if (cnpj.length !==14) {
+                
+            div_cpf.innerHTML = "cnpj invalido por favor necessário 14 digitos"
+            div_wellcome.innerHTML=""
+            
+            
+        }else {div_cpf.innerHTML=""
+            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+            
+            
+        if (emailValido == false){
+            div_email.innerHTML = "endereço de email invalido"
+            div_wellcome.innerHTML=""
+            
+        } else {div_email.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+        
+        
+        
+        
+        
+        if (senha.length < 8 || senha == "") {
+            
+            div_senha.innerHTML = 'mínimo permitido: 8 digitos'
+            div_wellcome.innerHTML=""
+            
+        } else {div_senha.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        
+        if (confirma == "" ||  confirma!= senha){
+            div_confirmasenha.innerHTML= "incorreto, tente novamente"
+            div_wellcome.innerHTML=""
+            
+        } else {div_confirmasenha.innerHTML=""
+        
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`
+        
+    }
+    input_email.value= ""
+    
+    input_Cnpj.value= ""
+    
+    input_usuario.value = ""
+    
+    input_senha.value =""
+    
+    input_confirma.value =""
+    idcep.value = ""
+    /* nome.indexOf('1') >= 0 ||
+    nome.indexOf('2') >= 0 ||
+    nome.indexOf('3') >= 0 ||
+    nome.indexOf('4') >= 0 ||
+    nome.indexOf('5') >= 0 ||
+    nome.indexOf('6') >= 0 ||
+    nome.indexOf('7') >= 0 ||
+    nome.indexOf('8') >= 0 ||
+    nome.indexOf('9') >= 0 ||
+    nome.indexOf('0') >= 0 ||
+    nome.indexOf('!') >= 0 ||
+    nome.indexOf('@') >= 0 ||
+    nome.indexOf('#') >= 0 ||
+    nome.indexOf('$') >= 0 ||
+    nome.indexOf('%') >= 0 ||
+    nome.indexOf('¨') >= 0 ||
+    nome.indexOf('&') >= 0 ||
+    nome.indexOf('*') >= 0 ||
+    nome.indexOf('(') >= 0 ||
+    nome.indexOf(')') >= 0 ||
+    nome.indexOf('-') >= 0 ||
+    nome.indexOf('_') >= 0 ||
+    nome.indexOf('+') >= 0 ||
+    nome.indexOf('=') >= 0 ||
+    nome.indexOf('ç') >= 0 ||
+    nome.indexOf('{') >= 0 ||
+    nome.indexOf('}') >= 0 ||
+     nome.indexOf('[') >= 0 ||
+     nome.indexOf('/') >= 0 ||
+     nome.indexOf('?') >= 0 ||
+     nome.indexOf(',') >= 0 ||
+     nome.indexOf(':') >= 0 ||
+     nome.indexOf(';') >= 0 ||
+     nome.indexOf('|') >= 0 ||
+     if ( nome_invalido || nome == "" ) {
+         div_nome.innerHTML = 'digite apenas letras <br>'
+         div_wellcome.innerHTML=""
+        } else {div_nome.innerHTML= ""
+        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+     nome.indexOf('°') >= 0;*/
+}
+</script>
