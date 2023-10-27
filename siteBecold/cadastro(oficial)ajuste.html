@@ -37,8 +37,8 @@
                         <div>
                             <p>Cadastre sua empresa<span style="color: red;">*</span></p>
                             <div id="div_input_empresa" class="div-input">
-                                <input class="inputs"  type="text" id="input_usuario" >
-                                <div id="div_usuario" style="color: red;"></div>
+                                <input class="inputs"  type="text" id="input_empresa" >
+                                <div id="div_empresa" style="color: red;"></div>
                             </div>
                         </div>
                          <div>
@@ -144,22 +144,21 @@
         
         var email = input_email.value
         var cnpj = input_Cnpj.value
-        var usuario = input_usuario.value
+        var empresa = input_empresa.value
         var senha = input_senha.value
         var confirma = input_confirma.value
-        var cep = idcep.value
-        var numero = numeroinp.value
+        var cep = Number (idcep.value)
+        var numero =  Number (numeroinp.value)
         
         var emailValido = email.endsWith('@gmail.com') ||
         email.endsWith('@hotmail.com') ||
         email.endsWith('@outlook.com') ||
         email.endsWith('@sptech.school')
         
-        var cnpjinvalido =  cnpj.indexOf(0) == 0;
-        var cepinvalido = cep.indexOf("") == 0;
+        var cepinvalido = cep
         
         
-        if (usuario == ""){
+        if (empresa == ""){
             div_input_senha.style.marginBottom = "0";
             div_input_repetir_senha.style.marginBottom = "0";
             div_input_empresa.style.marginBottom = "0";
@@ -167,20 +166,20 @@
             div_input_numero.style.marginBottom = "0";
             div_input_cnpj.style.marginBottom = "0";
             div_input_email.style.marginBottom = "0";
-            div_usuario.innerHTML= "digite um nome de empresa"
+            div_empresa.innerHTML= "digite um nome de empresa"
             div_wellcome.innerHTML=""
             
-        }else {div_usuario.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        }else {div_empresa.innerHTML=""
+        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
         
         
-        if (cepinvalido.length !== 8) {
+        if (cepinvalido.length !== 8 && cepinvalido == "") {
             divcep.innerHTML= `cep invalido! Necessário 8 digitos`
             div_wellcome.innerHTML= ""
             
             
         }else {divcep.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${nome}`
+        div_wellcome.innerHTML= `seja bem vindo ${empresa}`
         }
         
         if (numero == "") {
@@ -189,7 +188,7 @@
             div_wellcome.innerHTML= ""
 
         } else {num.innerHTML=""
-            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+            div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
 
         
         
@@ -200,7 +199,7 @@
             
             
         }else {div_cpf.innerHTML=""
-            div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+            div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
             
             
         if (emailValido == false){
@@ -208,7 +207,7 @@
             div_wellcome.innerHTML=""
             
         } else {div_email.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
         
         
         
@@ -221,7 +220,7 @@
             div_wellcome.innerHTML=""
             
         } else {div_senha.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${nome}`}
+        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
         
         if (confirma == "" ||  confirma!= senha){
             div_confirmasenha.innerHTML= "incorreto, tente novamente"
@@ -229,20 +228,21 @@
             
         } else {div_confirmasenha.innerHTML=""
         
-        div_wellcome.innerHTML= `seja bem vindo ${nome}`
+        div_wellcome.innerHTML= `seja bem vindo ${empresa}`
         
     }
-    input_email.value= ""
-    
-    input_Cnpj.value= ""
-    
-    input_usuario.value = ""
-    
-    input_senha.value =""
-    
-    input_confirma.value =""
-    idcep.value = ""
-    /* nome.indexOf('1') >= 0 ||
+}
+/* nome.indexOf('1') >= 0 ||
+input_email.value= ""
+
+input_Cnpj.value= ""
+
+input_empresa.value = ""
+
+input_senha.value =""
+
+input_confirma.value =""
+idcep.value = ""
     nome.indexOf('2') >= 0 ||
     nome.indexOf('3') >= 0 ||
     nome.indexOf('4') >= 0 ||
@@ -282,5 +282,4 @@
         } else {div_nome.innerHTML= ""
         div_wellcome.innerHTML= `seja bem vindo ${nome}`}
      nome.indexOf('°') >= 0;*/
-}
 </script>
