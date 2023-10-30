@@ -6,17 +6,20 @@ idCliente INT PRIMARY KEY AUTO_INCREMENT,
 Empresa VARCHAR(50),
 CNPJ Char(14) UNIQUE,
 Email VARCHAR(45),
-Telefone VARCHAR(12),
 senha VARCHAR(10),
+estadosigla char (2),
+cidade varchar (30),
+bairro varchar (30),
+rua varchar (30),
+numero int (10),
 cep char (8),
-numero varchar (10),
-complemento varchar (45)
+complemento varchar (30)
 );
 
 INSERT INTO Cliente VALUES
-(null, 'ColdTech', 12345678912345, 'coldtech@hotmail.com', 11987654321, '********', '09298090', '595', 'rua haddock lobo' ),
-(null, 'SPTech', 36578024000172, 'sptech@sptech.school', 1135894043, '*********', '05792050', '595', 'quinto andar' ),
-(null, 'DataBasers', 98765432101234, 'databasers@gmail.com', 11912345678, '**********', '05898090', '372', 'americanbasers' );
+(null, 'ColdTech', '12345678912345', 'coldtech@hotmail.com', '********', 'SP', 'São Paulo', 'Mooca', 'Avenida Doutor José Higino', 357, '03189040', null),
+(null, 'SPTech', '36578024000172', 'sptech@sptech.school', '*********', 'MG', 'Teófilo Otoni', 'Taquara', 'Rua Libertação', 123, '39803600', 'quinto andar'),
+(null, 'DataBasers', '98765432101234', 'databasers@gmail.com', '*********', 'RJ', 'Niterói', 'Santa Rosa', 'Rua B', 1200, '24330075', null);
 
 SELECT * FROM Cliente;
 
