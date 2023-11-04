@@ -19,7 +19,7 @@
     <header class="  header-background">
         <div class=" margin header-container">
             <div class="logo">
-              <p><img src="/img/Servers Group.png" alt="">BeCold</p>
+              <p><img src="img/Servers Group.png" alt="">BeCold</p>
             </div>
             <div class="navbar home-contato">
               <ul>
@@ -29,14 +29,13 @@
             </div>
         </div>                 
     </header>
-    <div class="section">
         <div class="margin content">
-            <div class="box">
+            <div class="login-conteudo">
                 <div class="caixa_titulo">
                     <h1>Login</h1>
                 </div>
                 <div class="div-input">
-                    <p>Email  <span style="color: red;">*</span></p>
+                    <p>Email  <span style="color: red; ">*</span></p>
                     <input class="inputs" type="text" id="email_input">
                     <div style="color: red;" id="div_email"></div>
                 </div>
@@ -47,27 +46,26 @@
                 </div>
                 <div class="div-botao">
                      <button class="login-botao" id="botao_login" onclick="entrar()">Entrar</button>
-                    <p>Novo na BeCold! <a href="file:///C:/Users/User/Desktop/BeCold/siteBecold/tela%20dashboard/chart.html">CADRASTRE-SE</a></p>
+                    <p>Novo na BeCold? <a href="file:///C:/Users/User/Desktop/BeCold/siteBecold/cadastro(oficial)ajuste.html">CADRASTRE-SE</a></p>
                 </div>
                 <div id="div_wellcome" ></div>
             </div>
             <div class="box2">
 
-                <img src="img/Expensesandincomemonitoringondiagrams.png" alt="">
+                <img style="margin-left: 20%;" src="img/Expensesandincomemonitoringondiagrams.png" alt="">
 
 
             </div>
         </div>
-    </div>
     <footer id="footer" class="footer">
       <div class="margin footer-conteudo">
         <div class="footer-fale-conosco">
           <h3>Fale conosco</h3>
           
            <ul >
-            <li><a href="mail:tobecoldsptech@gmail.com"><img src="img/Email.png" alt="">becoldsptech@gmail.com</a></li>
-            <li><a href="mailto:becold@email.com"><img src="/img/Email.png" alt="">becold@email.com</a></li>
-            <li><a href="tel:9999-9999"><img src="/img/Phone.png" alt="">9999-9999</a></li>
+            <li><a href="mailto:becoldsptech@gmail.com"><img src="img/Email.png" alt="">becoldsptech@gmail.com</a></li>
+            <li><a href="mailto:becold@email.com"><img src="img/Email.png" alt="">becold@email.com</a></li>
+            <li><a href="tel:9999-9999"><img src="img/Phone.png" alt="">9999-9999</a></li>
           </ul>
         </div>
         <div class="footer-redes" >
@@ -103,10 +101,14 @@
 
          if (senha.length < 8 || senha == "") {
             
-            div_password.innerHTML= 'Mínimo permitido: 8 digitos'
-            div_wellcome.innerHTML=""
+            div_password.innerHTML= 'Mínimo permitido: 8 digitos'}
 
-        }  //else{ div_wellcome.innerHTML="Seja bem vindo"
-        window.location.href = 'file:///C:/Users/User/Desktop/BeCold/siteBecold/tela%20dashboard/chart.html';//}
-        }
+            else {}
+
+          if(div_email.innerHTML == "" && div_password.innerHTML == ""){
+        window.location.href = 'file:///C:/Users/User/Desktop/BeCold/siteBecold/tela%20dashboard/chart.html';
+          }
+      
+      }
+        
 </script>
