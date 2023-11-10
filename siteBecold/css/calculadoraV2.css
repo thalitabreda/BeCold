@@ -209,16 +209,24 @@ th, td{
     height: 290px;
     background-color: #012569;
 }
-.footer .content{
+.footer-container{
+    background-color: #012569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 230px;
+}
+.content-footer{
     flex-direction: column;
-    justify-content: space-evenly;
+    width: 80%;
+    height: 100%;
 }
 .div_footer1{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 75%;
+    height: 80%;
 }
 .faleConosco{
     display: flex;
@@ -246,7 +254,11 @@ th, td{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 160px;
+}
+#img_linkedin{
+    height: 50px;
 }
 .redesSociais h2{
     color: white;
@@ -262,7 +274,7 @@ th, td{
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 25%;
+    height: 20%;
     border-top: solid #868C9F 1px;
 }
 .div_footer2 h1{
