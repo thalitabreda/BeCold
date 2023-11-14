@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora PI/ALGORITIMOS</title>
+</head>
+<body style="background-color: #f5f5dc">
+
+    
+    <h2> PREJUIZO DA SUA INDISPONIBILIDADE/DOWNTIME</h2>
+
+    <!-- // receber valor e quantiade de equipamentos -->
+
+    Qual valor unitario do seu equipamento servidor: <br> <input placeholder="Ex: 2000" type="number" name="" id="valor_equipamento"> <br> <br>
+    Quantos servidores você possui? <br> <input placeholder="Ex: 25" type="number" name="" id="quantidade_equipamentos"> <br> <br>
+    Qual a quantidade de equipamentos perdidos por umidade ou temperaratura? <br> <input placeholder="Ex: 5" type="number" name="" id="equipamentosPerdidos"> <br> <br>
+    Quanto você gasta em media em manuntenção por equipamento? <br> <input placeholder="Gasto manuntenção:" type="number" name="" id="inp_precoManutencao"> <br> <br>
+    Qual tempo de downtime em minutos? <br> <input placeholder="Minutos inativos ex:12" type="number" name="" id="tempoDeDowntime"> <br> (tempo de inatividade dos servidores) <br> <br>
+    
+
+    <button onclick="valorPerdido()">Calcular Prejuizo</button>
+    <div id="mostrar" ></div>
+    
+    
+</body>
+</html>
+
+<script>
+    //calcular o prejuizo
+    function valorPerdido(){
+        var precoServidor = Number(valor_equipamento.value);
+        var precoManutencao = Number(inp_precoManutencao.value)
+        var qtdEquipamentos = Number(quantidade_equipamentos.value);
+        var equipPerdidos = Number(equipamentosPerdidos.value);
+        var tempoDowntime = Number(tempoDeDowntime.value);
+
+
+        var percaEquipamentos = equipPerdidos * precoServidor; // calcular o valor que ele cliente perdeu em equipamentos
+         
+        var percaDowntime = tempoDowntime * 9000; //  media de 9k dol por minuto off 
+
+        var gastoManuntencao = precoManutencao * equipPerdidos; // pegar a media de gasto em manuntenção gasto por dispostivo e calcular o total.
+
+        var percaTotal = percaDowntime + percaEquipamentos; // valor total perdido
+
+        var valorMitigado = percaTotal * 0.4;  // 60% a menos de prejuizo
+        var valorMitigado2 = percaTotal * 0.7; // 30% a menos de prejuizo
+
+        mostrar.innerHTML = ` <br> Você teve <b style="color: red">${equipPerdidos}</b> dos seus <b>${qtdEquipamentos}</b> equipamentos perdidos, que lhe deram prejuízo de <b style="color: red">R$${percaEquipamentos}</b>, <br> 
+        e te custaria <b style="color: red">R$${percaEquipamentos}</b> para adquirir novos, ou gasto de <b style="color: red">R$${gastoManuntencao}</b> em manutenção para reparar estes dispositivos. <br>
+        Além disso, houve <b style="color: darkblue">${tempoDowntime}</b> minutos de downtime que custaram por volta de <b style="color: red">R$${percaDowntime * 5}</b> (ou <b style="color: red">${percaDowntime}USD)</b> em média de prejuízo. <br> <br>
+        
+        Com nosso dispositivo, você poderá mitigar sua perda em até <b style="color: darkgreen"> 60% </b> reduzindo de <b style="color:red"> R$${percaTotal}</b> 
+       para até <b style="color: darkgreen"> R$${valorMitigado}</b>. `
+    }
+ 
+
+</script>
