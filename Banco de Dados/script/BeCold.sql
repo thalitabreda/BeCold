@@ -1,6 +1,5 @@
 CREATE DATABASE Becold;
 USE Becold;
-
 drop database Becold;
 
 CREATE TABLE Cliente (
@@ -12,7 +11,7 @@ senha VARCHAR(10));
 
 desc Cliente;
 
-CREATE TABLE endereco(
+CREATE TABLE endereço(
 idEndereco int primary key auto_increment,
 estadoSigla char(3),
 cidade varchar(30),
@@ -20,43 +19,43 @@ bairro varchar(30),
 rua varchar(30),
 cep char (8),
 completo varchar(30),
-fkCliente int,
-constraint fkCliente foreign key (fkCliente)
+fkClienteEndereço int,
+constraint fkClienteEndereço foreign key (fkClienteEndereço)
 references Cliente (idCliente)
 )auto_increment = 10;
 
 
 desc endereço;
 
-
-CREATE TABLE Sensor (
-idSensor INT PRIMARY KEY AUTO_INCREMENT,
-DiaInstalado DATE,
-Localização VARCHAR(45),
-fkCliente INT,
-CONSTRAINT FK_Cliente FOREIGN KEY (fkCliente)
-	REFERENCES Cliente (idCliente)
-)auto_increment = 100;
-
-desc Sensor;
-
 CREATE TABLE setor(
 idSetor int primary key auto_increment,
 nomeSetor varchar(25),
-andar int,
 temperaturaMax decimal (4,2),
 temperaturaMin decimal (4,2),
 umidadeMax decimal (4,2),
 umiadeMin decimal (4,2),
 fkEndereco int,
-fkCliente int,
+fkClienteSetor int,
 constraint fkEndereco foreign key (fkEndereco)
 	references endereço(idEndereco),
-constraint fkClienteSetor foreign key (fkCliente)
+constraint fkClienteSetor foreign key (fkClienteSetor)
 	references cliente (idCliente)
 )auto_increment = 200;
 
 desc setor;
+
+
+CREATE TABLE Sensor (
+idSensor INT PRIMARY KEY AUTO_INCREMENT,
+DiaInstalado DATE,
+Localização VARCHAR(45),
+fkSetor INT,
+CONSTRAINT FKSetor FOREIGN KEY (fkSetor)
+	REFERENCES Setor (idSetor)
+)auto_increment = 100;
+
+desc Sensor;
+
 
 CREATE TABLE Registros ( 
 idRegistro INT AUTO_INCREMENT, 
