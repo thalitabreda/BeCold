@@ -70,8 +70,14 @@ primary key(idRegistro, fkSensor),
 )auto_increment = 300;
 
 desc Registros;
+<<<<<<< HEAD
 
 -- select * from Cliente join Sensor on fkCliente = idCliente;
 -- select * from Sensor join Registros on fkSensor = idSensor;
 
 
+=======
+
+-- select * from Cliente join Sensor on fkCliente = idCliente;
+-- select * from Sensor join Registros on fkSensor = idSensor;
+>>>>>>> bc29f152b6ab9bedf91ecaa4ae970a4bc93e6981

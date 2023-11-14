@@ -52,7 +52,7 @@ body{
   width: 120px;
   border-radius: 100px;
   padding: 10px 14px ;
-  background-color: rgba(245, 245, 245, 0.58);
+  background-color: rgba(132, 0, 255, 0);
 }
 .inicial{
   display: grid;
