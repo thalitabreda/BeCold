@@ -12,7 +12,7 @@ senha VARCHAR(10));
 
 desc Cliente;
 
-CREATE TABLE endereço(
+CREATE TABLE endereco(
 idEndereco int primary key auto_increment,
 estadoSigla char(3),
 cidade varchar(30),
