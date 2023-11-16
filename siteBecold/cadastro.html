@@ -14,7 +14,7 @@
     </style>
 </head>
 
-<body id="cadastro">
+<body id="body_cadastro">
     <header class="  header-background">
         <div class=" margin header-container">
             <div class="logo">
@@ -156,7 +156,7 @@
     </footer>
 </body>
 
-<body id="Sensor" style="display: block;">
+<body id="body_sensor" style="display: block;">
     <header class="  header-background">
         <div class=" margin header-container">
             <div class="logo">
@@ -185,122 +185,89 @@
                         </div>
                     </div>
                     <div>
-                        <div>
-                            <p>Sigla Estado<span style="color: red;">*</span></p>
-                            <input class="inputs" type="text" id="ipt_siglaEstado">
+                        <div id="div_temperatura">
+                            <p>Intervalo Ideal da Temperatura<span style="color: red;">*</span></p>
+                            Min:<input class="inputs" type="number" id="ipt_temperaturaMin"> Max:<input class="inputs"
+                                type="number" id="ipt_temperaturaMax">
+                            <div id="div_temperaturaErro" style="color: red;"></div>
                         </div>
-                    </div>
-                    <div>
-                        <div>
-                            <p>Cidade<span style="color: red;">*</span></p>
-                            <input class="inputs" type="text" id="ipt_cidade">
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <p>Bairro<span style="color: red;">*</span></p>
-                            <input class="inputs" type="text" id="ipt_bairro">
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <p>Rua<span style="color: red;">*</span></p>
-                            <input class="inputs" type="text" id="ipt_rua">
-                        </div>
-                    </div>
-                    <div>
-                        <p>Número<span style="color: red;">*</span></p>
-                        <div id="div_input_numero" class="div-input">
-                            <input class="inputs" type="number" id="numeroinp">
-                            <div id="num" style="color: red;"></div>
+                        <div id="div_umidade">
+                            <p>Intervalo Ideal da Umidade<span style="color: red;">*</span></p>
+                            Min:<input class="inputs" type="number" id="ipt_umidadeMin"> Max:<input class="inputs"
+                                type="number" id="ipt_umidadeMax">
+                            <div id="div_umidadeErro" style="color: red;"></div>
                         </div>
                     </div>
 
-                    <p>Complemento</p>
-                    <input class="inputs" type="text" id="complementoinp">
+                    <div class="div-botao">
+                        <a href="login(oficial).html">Já possui uma conta? faça Login.</a>
+                        <button class="cadastro-botao" onclick="seCadastrar()">cadastre-se</button>
+                    </div>
+                    <!-- <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">   -->
                 </div>
-
-                <div class="input-direito">
-                    <div>
-                        <p>Cadastre sua empresa<span style="color: red;">*</span></p>
-                        <div id="div_input_empresa" class="div-input">
-                            <input class="inputs" type="text" id="input_empresa">
-                            <div id="div_empresa" style="color: red;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>CNPJ<span style="color: red;">*</span></p>
-                        <div id="div_input_cnpj" class="div-input">
-                            <input class="inputs" type="number" id="input_Cnpj" max="14">
-                            <div id="div_cpf" style="color: red;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Email<span style="color: red;">*</span></p>
-                        <div id="div_input_email" class="div-input">
-                            <input class="inputs" ; type="email" id="input_email">
-                            <div id="div_email" style="color: red;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Senha<span style="color: red;">*</span></p>
-                        <div id="div_input_senha" class="div-input">
-                            <input class="inputs" type="password" id="input_senha">
-                            <div id="div_senha" style="color: red;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Repetir Senha<sid="div_input"pan style="color: red;">*</span></p>
-                        <div id="div_input_repetir_senha" class="div-input">
-                            <input class="inputs" ; type="password" id="input_confirma">
-                            <div id="div_confirmasenha" style="color: red;"></div>
-                        </div>
-                    </div>
+                <div class="cadastro-img">
+                    <img src="img/cadastro.png" alt="cadastre-se">
                 </div>
             </div>
-            <div class="div-botao">
-                <a href="login(oficial).html">Já possui uma conta? faça Login.</a>
-                <button class="cadastro-botao" onclick="Sensor()">Proxima Página</button>
-            </div>
-            <!-- <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">   -->
-        </div>
-        <div class="cadastro-img">
-            <img src="img/cadastro.png" alt="cadastre-se">
-        </div>
-    </div>
-    <footer id="footer" class="footer-container">
-        <div class="margin footer-conteudo">
-            <div class="footer-fale-conosco">
-                <h3>Fale conosco</h3>
+            <footer id="footer" class="footer-container">
+                <div class="margin footer-conteudo">
+                    <div class="footer-fale-conosco">
+                        <h3>Fale conosco</h3>
 
-                <ul>
-                    <li><a href="mail:tobecoldsptech@gmail.com"><img src="img/Email.png"
-                                alt="">becoldsptech@gmail.com</a></li>
-                    <li><a href="mailto:becold@email.com"><img src="img/Email.png" alt="">becold@email.com</a>
-                    </li>
-                    <li><a href="tel:9999-9999"><img src="img/Phone.png" alt="">9999-9999</a></li>
-                </ul>
-            </div>
-            <div class="footer-redes">
-                <h3>Redes Sociais</h3>
-                <ul class="redes-icon">
-                    <li><a href=""><img src="img/Instagram.png" alt=""></a></li>
-                    <li><a href=""><img src="img/TwitterX.png" alt=""></a></li>
-                    <li><a href="https://www.linkedin.com/in/be-cold-592849298/"><img src="img/LinkedIn.png" alt=""></a>
-                    </li>
-                </ul>
-            </div>
+                        <ul>
+                            <li><a href="mail:tobecoldsptech@gmail.com"><img src="img/Email.png"
+                                        alt="">becoldsptech@gmail.com</a></li>
+                            <li><a href="mailto:becold@email.com"><img src="img/Email.png" alt="">becold@email.com</a>
+                            </li>
+                            <li><a href="tel:9999-9999"><img src="img/Phone.png" alt="">9999-9999</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-redes">
+                        <h3>Redes Sociais</h3>
+                        <ul class="redes-icon">
+                            <li><a href=""><img src="img/Instagram.png" alt=""></a></li>
+                            <li><a href=""><img src="img/TwitterX.png" alt=""></a></li>
+                            <li><a href="https://www.linkedin.com/in/be-cold-592849298/"><img src="img/LinkedIn.png"
+                                        alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
 
-        </div>
-        <div class="margin footer-direitos">
-            <h3>BeCold</h3>
-            <span>© 2023 BeCold. Todos os direitos reservados.</span>
-        </div>
-    </footer>
+                </div>
+                <div class="margin footer-direitos">
+                    <h3>BeCold</h3>
+                    <span>© 2023 BeCold. Todos os direitos reservados.</span>
+                </div>
+            </footer>
 </body>
 
 </html>
 <script>
+    function seCadastrar() {
+        var NomeSensor = ipt_nomeSensor.value;
+        var TempMin = Number(ipt_temperaturaMin.value);
+        var TempMax = Number(ipt_temperaturaMax.value);
+        var UmidadeMin = Number(ipt_umidadeMin.value);
+        var UmidadeMax = Number(ipt_umidadeMax.value);
+
+        if (NomeSensor == "") {
+            divNomeSetor.innerHTML = `Obrigatório inserir um nome no Setor`;
+        } else {
+            divNomeSetor.innerHTML = ``;
+            if (TempMin >= TempMax || (TempMin <= -20 || TempMin >= 30) || (TempMax <= -20 || TempMax >= 40)) {
+                div_temperaturaErro.innerHTML = `A temperatura não foi inserida corretamente`;
+            } else {
+                div_temperaturaErro.innerHTML = ``;
+                if (UmidadeMin >= UmidadeMax || (UmidadeMin <= 20 || UmidadeMin >= 50) || (UmidadeMax <= 30 || UmidadeMax >= 70)) {
+                    div_umidadeErro.innerHTML = `A umidade não foi inserida corretamente`;
+                } else {
+                    div_umidadeErro.innerHTML = ``;
+                    window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';
+                }
+            }
+        }
+
+    }
     function cadastrar() {
         div_cpf.innerHTML = "";
         div_email.innerHTML = "";
@@ -317,14 +284,11 @@
         var bairo = ipt_bairro.value;
         var rua = ipt_rua.value;
         var numero = Number(numeroinp.value);
-
         var emailValido = email.endsWith('@gmail.com') ||
             email.endsWith('@hotmail.com') ||
             email.endsWith('@outlook.com') ||
             email.endsWith('@sptech.school');
-
         var cepinvalido = cep;
-
 
         if (empresa == "") {
             div_input_senha.style.marginBottom = "0";
@@ -374,9 +338,8 @@
     }
 
     function Sensor() {
-
+        body_sensor.innerHTML = `<body id="body_sensor">`;
         cadastrar();
-        window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';
     }
     /* nome.indexOf('1') >= 0 ||
     input_email.value= ""
