@@ -28,11 +28,11 @@
             </div>
         </div>                 
       </header>
-    <div class="margin cadastro-container">
+    <div  class="margin cadastro-container">
         <div class="cadastro-conteudo">
             <h1 >Comece já a monitorar seus servidores. <br> 
                 O  futuro te aguarda!!</h1>
-                <div class="cadastro-input">
+                <div class="cadastro-input" id="primeirocadastro">
                     <div class="input-esquerdo">
                         <div>
                             <p>Cadastre sua empresa<span style="color: red;">*</span></p>
@@ -89,19 +89,73 @@
                                 <input class="inputs" ; type="password" id="input_confirma">
                                 <div id="div_confirmasenha" style="color: red;"></div>
                             </div>
+                             
                         </div>
-                    </div>     
+
+                    </div>  
+                    <div class="div-botao">
+                        <button  class="cadastro-botao" onclick="cadastrar()">Próximo</button>
+                    </div>   
                 </div>
-                <div class="div-botao">
-                    <a href="Calculadora V2/login(oficial).html" >Já possui uma conta? faça Login.</a>
-                    <button  class="cadastro-botao" onclick="cadastrar()">Criar conta</button>
+                
+                <div id="segundocadastro" style="display: none;" class="margin cadastro-container">
+                    <div class="cadastro-input">
+                        <div class="input-esquerdo">
+                            <div>
+                                <h3>Informe os Parametros:</h3>
+                                <p>Nome do Setor<span style="color: red;">*</span></p>
+                                <div id="div_input_nomeSetor" class="div-input">
+                                    <input class="inputs" type="text" id="nomeSetor_input">
+                                    <div id="divNomeSetor" style="color: red;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Intervalo Ideal da Temperatura<span style="color: red;">*</span></p>
+                                <div>
+                                    <p>Min:<span style="color: red;">*</span></p>
+                                   <div id="div_input_tempmin">  
+                                    <input class="inputs" type="number" id="ipt_temperaturaMin">
+                                    <div id="div_temperaturaErroMin" style="color: red;"></div>
+                                </div>
+                                <div>
+                                    <p>Máx:<span style="color: red;">*</span></p>
+                                   <div id="div_input_tempmax">  
+                                    <input class="inputs" type="number" id="ipt_temperaturaMax">
+                                    <div id="div_temperaturaErroMax" style="color: red;"></div>
+                                   </div>
+                                   <p>Intervalo Ideal da Umidade<span style="color: red;">*</span></p>
+                                   <div>
+                                       <p>Min:<span style="color: red;">*</span></p>
+                                      <div id="div_input_umidademin">  
+                                       <input class="inputs" type="number" id="ipt_umidadeMin">
+                                       <div id="div_umidadeErroMin" style="color: red;"></div>
+                                   </div>
+                                   <div>
+                                       <p>Máx:<span style="color: red;">*</span></p>
+                                      <div id="div_input_umidademax">  
+                                       <input class="inputs" type="number" id="ipt_umidadeMax">
+                                       <div id="div_umidadeErroMax" style="color: red;"></div>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-botao">
+                        <button  class="cadastro-botao" onclick="seCadastrar()">Cadastre-se</button>
+                    </div>   
                 </div>
-                <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">  
+            </div>
         </div>
-        <div class="cadastro-img">
-            <img src="img/cadastro.png" alt="cadastre-se">
+                
+     
         </div>
+        
+        <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">  
     </div>
+    <div class="cadastro-img">
+        <img src="img/cadastro.png" alt="cadastre-se">
+    </div>
+</div>
     <footer id="footer" class="footer">
         <div class="margin footer-conteudo">
           <div class="footer-fale-conosco">
@@ -170,7 +224,7 @@
             div_wellcome.innerHTML=""
             
         }else {div_empresa.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+        div_wellcome.innerHTML= ``}
         
         
         if (cepinvalido.length !== 8 && cepinvalido == "") {
@@ -179,7 +233,7 @@
             
             
         }else {divcep.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`
+        div_wellcome.innerHTML= ``
         }
         
         if (numero == "") {
@@ -188,7 +242,7 @@
             div_wellcome.innerHTML= ""
 
         } else {num.innerHTML=""
-            div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+            div_wellcome.innerHTML= ``}
 
         
         
@@ -199,7 +253,7 @@
             
             
         }else {div_cpf.innerHTML=""
-            div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+            div_wellcome.innerHTML= ``}
             
             
         if (emailValido == false){
@@ -207,7 +261,7 @@
             div_wellcome.innerHTML=""
             
         } else {div_email.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+        div_wellcome.innerHTML= ``}
         
         
         
@@ -220,7 +274,7 @@
             div_wellcome.innerHTML=""
             
         } else {div_senha.innerHTML=""
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`}
+        div_wellcome.innerHTML= ``}
         
         if (confirma == "" ||  confirma!= senha){
             div_confirmasenha.innerHTML= "incorreto, tente novamente"
@@ -228,10 +282,28 @@
             
         } else {div_confirmasenha.innerHTML=""
         
-        div_wellcome.innerHTML= `seja bem vindo ${empresa}`
-        
+        div_wellcome.innerHTML= ``
+        primeirocadastro.style.display = "none"
+      segundocadastro.style.display = "block"  
     }
 }
+
+
+function seCadastrar() {
+        var NomeSetor = nomeSetor_input.value;
+        var TempMin = Number(ipt_temperaturaMin.value);
+        var TempMax = Number(ipt_temperaturaMax.value);
+        var UmidadeMin = Number(ipt_umidadeMin.value);
+        var UmidadeMax = Number(ipt_umidadeMax.value);
+        
+        if (NomeSetor == ""|| TempMin == "" ||TempMax == "" || UmidadeMin == ""|| UmidadeMax == "" || TempMin >= TempMax || TempMin <= -20 || TempMin >= 30 || TempMax <= -20 || TempMax >= 40 || UmidadeMin >= UmidadeMax || UmidadeMin <= 20 || UmidadeMin >= 50 || UmidadeMax <= 30 || UmidadeMax >= 70 ) {
+            div_umidadeErroMax.innerHTML = `Cheque todas as entradas`;
+        } 
+       
+        else {
+            window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';
+        }
+    }
 /* nome.indexOf('1') >= 0 ||
 input_email.value= ""
 
