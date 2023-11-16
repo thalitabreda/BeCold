@@ -177,11 +177,11 @@
             <div class="cadastro-input">
                 <div class="input-esquerdo">
                     <div>
-                        <h3>Informe seu Endereço:</h3>
-                        <p>CEP<span style="color: red;">*</span></p>
-                        <div id="div_input_cep" class="div-input">
+                        <h3>Informe os Parametros:</h3>
+                        <p>Nome do Setor<span style="color: red;">*</span></p>
+                        <div id="div_input_nomeSetor" class="div-input">
                             <input class="inputs" type="text" id="idcep">
-                            <div id="divcep" style="color: red;"></div>
+                            <div id="divNomeSetor" style="color: red;"></div>
                         </div>
                     </div>
                     <div>
@@ -302,11 +302,6 @@
 </html>
 <script>
     function cadastrar() {
-
-
-
-
-
         div_cpf.innerHTML = "";
         div_email.innerHTML = "";
         div_senha.innerHTML = "";
@@ -317,6 +312,10 @@
         var senha = input_senha.value;
         var confirma = input_confirma.value;
         var cep = Number(idcep.value);
+        var sigla_estado = ipt_siglaEstado.value;
+        var cidade = ipt_cidade.value;
+        var bairo = ipt_bairro.value;
+        var rua = ipt_rua.value;
         var numero = Number(numeroinp.value);
 
         var emailValido = email.endsWith('@gmail.com') ||
@@ -375,7 +374,7 @@
     }
 
     function Sensor() {
-        
+
         cadastrar();
         window.location.href = 'http://127.0.0.1:5500/Calculadora%20V2/login(oficial).html';
     }
