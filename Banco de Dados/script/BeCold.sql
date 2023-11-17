@@ -1,6 +1,7 @@
 CREATE DATABASE Becold;
 USE Becold;
 
+
 CREATE TABLE Cliente (
 idCliente INT PRIMARY KEY AUTO_INCREMENT,
 Empresa VARCHAR(50),
@@ -28,10 +29,7 @@ temperaturaMax decimal (4,2),
 temperaturaMin decimal (4,2),
 umidadeMax decimal (4,2),
 umiadeMin decimal (4,2),
-fkEndereco int,
 fkClienteSetor int,
-constraint fkEndereco foreign key (fkEndereco)
-	references endereço(idEndereco),
 constraint fkClienteSetor foreign key (fkClienteSetor)
 	references cliente (idCliente)
 );
