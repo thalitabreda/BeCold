@@ -14,7 +14,7 @@ body{
     align-items: center; 
     background-color: #012569;
     width: 15%;
-    height: 96vh;
+    transform:scale(1.0);
 }
 .menu img{
     max-width: 50%;
@@ -92,15 +92,15 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 100%;
 }
 .KPI{
     border: #012569 solid 1px;
+    width: 20% ;
     border-radius: 15px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 5px 10px 5px;
 }
 .KPI img{
     width: 25px;
