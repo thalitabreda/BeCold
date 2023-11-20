@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+  <div class="alhinhamento">
+    <div class="menu">
+      <img src="profile.png" alt="">
+      <strong>Equinix</Strong>
+      <ul>
+        <li>
+          <a href="/site.html"><img src="silhueta-de-icone-de-casa.png" alt="">Home</a>
+        </li>
+        <li>
+          <a href="mailto:becold@email.com"><img src="suporte-ao-cliente.png" alt="">Suporte</a>
+        </li>
+        <li>
+          <a href="/site.html"><img src="sair.png" alt="">Sair</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dashboard">
+      <h1>Selecione o setor que deseja visualizar</h1>
+      <div class="alinhamento-custom">
+        <select id="slct_setor">
+          <option value="1">NomeSetor</option>
+          <option value="2">NomeSetor</option>
+          <option value="3">NomeSetor</option>
+          <option value="4">NomeSetor</option>
+          <option value="5">NomeSetor</option>
+        </select>
+        <button onclick="cadastrarSetor()"><img src="more.png"></button>
+      </div>
+    <div class="linha-alhinhamento">
+      <div class="KPI">
+        <h5> Média de Umidade mais alta nas últimas 4 horas </h5>
+        <h3> Sensor 3 - 59% <img src="umidade.png"></h3>
+      </div>
+      <div class="KPI">
+        <h5>Média de Umidade mais baixa nas últimas 4 horas</h5>
+        <h3> Sensor 1 - 40% <img src="umidade.png"></h3>
+      </div>
+      <div class="KPI">
+        <h5>Média de Temperatura mais alta nas últimas 4 horas</h5>
+        <h3> Sensor 12 -  28ºC <img src="temperatura.png"></h3>
+      </div>
+      <div class="KPI">
+        <h5>Média de Temperatura mais baixa nas últimas 4 horas</h5>
+        <h3> Sensor 5 -  17ºC <img src="temperatura.png"></h3>
+      </div>
+    </div>
+    <div class="linha-alhinhamento">
+      <div class="card-metrica">
+        <h2>Métrica</h2>
+        <div class="card-background">
+          <div style="background-color: red;" class="metrica"><span>Critico</span><span>20% - 24%</span><span>5ºC - 14ºC</span></div>
+          <div style="background-color: orange;" class="metrica"><span>Emergência</span><span>25% - 29%</span><span>15ºC - 16ºC</span></div>
+          <div style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span><span>30% - 39% </span><span>17ºC - 19ºC</span></div>
+          <div style="background-color: green;" class="metrica"><span>Ideal</span><span>40% - 55%</span><span>20ºC - 27ºC</span></div>
+          <div style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span><span>56% - 65%</span><span>28ºC - 30ºC</span></div>
+          <div style="background-color: orange;" class="metrica"><span>Emergência</span><span>66% - 75%</span><span>31ºC - 35ºC</span></div>
+          <div style="background-color: red;" class="metrica"><span>Critico</span><span>76% - 80%</span><span>36ºC - 50ºC</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="linha-alhinhamento">
+        <div class="card-grafico">
+          <h2>Umidade</h2>
+          <canvas id="umiChart" style="position: relative;height:40vh;"></canvas>
+        </div>
+        <div class="card-grafico">
+          <h2>Temperatura</h2>
+          <canvas id="tempChart" style="position: relative;  height: 40vh;"></canvas>
+        </div>
+    </div>
+  </div>
+</body>
+
+<script>
+
+  // const é uma forma de declarar váriaveis, é uma constante, a primeira vez que ela é declarada, ela morrre desse jeito
+  const ctx = document.getElementById('umiChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['12h', '12h30', '13h', '13h30', '14h', '14h30', '15h', '15h30', '16h'],
+      datasets: [{
+        label: 'Sensor 1',
+        data: [40, 42, 48, 51, 55, 60, 59, 57, 52],
+        borderColor: 'rgb(252, 252, 28)',
+        backgroundColor: 'rgb(252, 252, 28)',
+        borderWidth: 2
+      }, {
+        label: 'Sensor 2',
+        data: [50, 48, 45, 46, 49, 50, 55, 56, 57],
+        borderColor: 'rgb(252, 252, 28)',
+        backgroundColor: 'rgb(252, 252, 28)',
+        borderWidth: 2
+      },
+      {
+        label: 'Sensor 3',
+        data: [60, 62, 64, 61, 59, 57, 55, 52, 41],
+        borderColor: 'green',
+        backgroundColor: 'green',
+        borderWidth: 2
+      }, {
+        label: 'Sensor 4',
+        data: [41, 44, 43, 47, 48, 49, 51, 54, 45],
+        borderColor: 'green',
+        backgroundColor: 'green',
+        borderWidth: 2
+      }
+
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  })
+
+  const ctx1 = document.getElementById('tempChart');
+
+  new Chart(ctx1, {
+    type: 'line',
+    data: {
+      labels: ['12h', '12h30', '13h', '13h30', '14h', '14h30', '15h', '15h30', '16h'],
+      datasets: [{
+        label: 'Sensor 1',
+        data: [40, 42, 48, 51, 55, 60, 59, 57, 52],
+        borderColor: 'red',
+        backgroundColor: 'red',
+        borderWidth: 2
+      }, {
+        label: 'Sensor 2',
+        data: [50, 48, 45, 46, 49, 50, 55, 56, 31],
+        borderColor: 'orange',
+        backgroundColor: 'orange',
+        borderWidth: 2
+      },
+      {
+        label: 'Sensor 3',
+        data: [60, 62, 64, 61, 59, 57, 55, 52, 41],
+        borderColor: 'green',
+        backgroundColor: 'green',
+        borderWidth: 2
+      }, {
+        label: 'Sensor 4',
+        data: [41, 44, 43, 47, 48, 49, 51, 54, 45],
+        borderColor: 'green',
+        backgroundColor: 'green',
+        borderWidth: 2
+      }
+
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  })
+
+  
+</script>
+</html>
