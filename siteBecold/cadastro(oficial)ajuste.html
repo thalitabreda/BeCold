@@ -116,6 +116,7 @@
                                    <div id="div_input_tempmin">  
                                     <input class="inputs" type="number" id="ipt_temperaturaMin">
                                     <div id="div_temperaturaErroMin" style="color: red;"></div>
+                                    </div>
                                 </div>
                                 <div>
                                     <p>Máx:<span style="color: red;">*</span></p>
@@ -123,20 +124,22 @@
                                     <input class="inputs" type="number" id="ipt_temperaturaMax">
                                     <div id="div_temperaturaErroMax" style="color: red;"></div>
                                    </div>
+                                </div>
                                    <p>Intervalo Ideal da Umidade<span style="color: red;">*</span></p>
                                    <div>
                                        <p>Min:<span style="color: red;">*</span></p>
                                       <div id="div_input_umidademin">  
                                        <input class="inputs" type="number" id="ipt_umidadeMin">
                                        <div id="div_umidadeErroMin" style="color: red;"></div>
+                                      </div>
                                    </div>
                                    <div>
                                        <p>Máx:<span style="color: red;">*</span></p>
-                                      <div id="div_input_umidademax">  
+                                       <div id="div_input_umidademax">  
                                        <input class="inputs" type="number" id="ipt_umidadeMax">
                                        <div id="div_umidadeErroMax" style="color: red;"></div>
+                                       </div>
                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,18 +147,11 @@
                         <button  class="cadastro-botao" onclick="seCadastrar()">Cadastre-se</button>
                     </div>   
                 </div>
-            </div>
         </div>
-                
-     
-        </div>
-        
-        <h3  id="div_wellcome" style="color: #010169; margin-left: 550px;">  
-    </div>
-    <div class="cadastro-img">
-        <img src="img/cadastro.png" alt="cadastre-se">
-    </div>
-</div>
+        <div class="cadastro-img">
+            <img src="img/cadastro.png" alt="cadastre-se">
+        </div>    
+    </div>            
     <footer id="footer" class="footer">
         <div class="margin footer-conteudo">
           <div class="footer-fale-conosco">
@@ -191,7 +187,6 @@
         
         
         
-        div_wellcome.innerHTML=""
         div_cpf.innerHTML= ""
         div_email.innerHTML=""
         div_senha.innerHTML=""
@@ -201,8 +196,8 @@
         var empresa = input_empresa.value
         var senha = input_senha.value
         var confirma = input_confirma.value
-        var cep = Number (idcep.value)
-        var numero =  Number (numeroinp.value)
+        var cep = Number(idcep.value);
+        var numero =  Number(numeroinp.value)
         
         var emailValido = email.endsWith('@gmail.com') ||
         email.endsWith('@hotmail.com') ||
@@ -290,11 +285,11 @@
 
 
 function seCadastrar() {
-        var NomeSetor = nomeSetor_input.value;
-        var TempMin = Number(ipt_temperaturaMin.value);
-        var TempMax = Number(ipt_temperaturaMax.value);
-        var UmidadeMin = Number(ipt_umidadeMin.value);
-        var UmidadeMax = Number(ipt_umidadeMax.value);
+        var NomeSetor = input_setor.value;
+        var TempMin = Number(input_tempMin.value);
+        var TempMax = Number(input_tempMax.value);
+        var UmidadeMin = Number(input_umidMin.value);
+        var UmidadeMax = Number(input_umidMax.value);
         
         if (NomeSetor == ""|| TempMin == "" ||TempMax == "" || UmidadeMin == ""|| UmidadeMax == "" || TempMin >= TempMax || TempMin <= -20 || TempMin >= 30 || TempMax <= -20 || TempMax >= 40 || UmidadeMin >= UmidadeMax || UmidadeMin <= 20 || UmidadeMin >= 50 || UmidadeMax <= 30 || UmidadeMax >= 70 ) {
             div_umidadeErroMax.innerHTML = `Cheque todas as entradas`;
