@@ -14,8 +14,8 @@ const serial = async (
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: 'urubu100',
-            database: 'metricas'
+            password: 'admin',
+            database: 'Becold'
         }
     ).promise();
 
@@ -41,11 +41,11 @@ const serial = async (
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
 
-        var idSensor = Math.random()+1*2;
+        var idSensor = parseInt(1+Math.random() * 9);
 
         if (true) {
             await poolBancoDados.execute(
-                'INSERT INTO sensores (Temperatura, Umidade, fkSensor) VALUES (?, ?, ?)',
+                'INSERT INTO Registros (Temperatura, Umidade, fkSensor) VALUES (?, ?, ?)',
                 [dht11Temperatura, dht11Umidade, idSensor]
             );
         }
