@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BeCold | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+  <link rel="stylesheet" href="css/estilo copy.css" />
+  <link rel="stylesheet" href="css/cadastro copy.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Merriweather:ital,wght@0,900;1,900&display=swap');
+  </style>
+</head>
+
+<body>
+  <!--header inicio-->
+  <header class="  header-background">
+    <div class=" margin header-container">
+      <div class="logo">
+        <p><img src="assets/img/Servers Group.png" alt="">BeCold</p>
+      </div>
+      <div class="navbar home-contato">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#footer">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!--header fim-->
+  <div class="margin cadastro-container">
+    <div class="cadastro-conteudo">
+      <h1>Comece já a monitorar seus servidores. <br>
+        O futuro te aguarda!!</h1>
+      <div class="cadastro-input" id="primeirocadastro">
+        <div class="input-esquerdo">
+          <div>
+            <p>Cadastre sua empresa<span style="color: red;">*</span></p>
+            <div id="div_input_empresa" class="div-input">
+              <input class="inputs" type="text" id="input_empresa">
+              <div id="div_empresa" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Rua<span style="color: red;">*</span></p>
+            <div id="div_input_rua" class="div-input">
+              <input class="inputs" type="text" id="input_rua">
+              <div id="div_rua" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Bairro<span style="color: red;">*</span></p>
+            <div id="div_input_bairro" class="div-input">
+              <input class="inputs" type="text" id="input_bairro">
+              <div id="div_bairro" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Cidade<span style="color: red;">*</span></p>
+            <div id="div_input_cidade" class="div-input">
+              <input class="inputs" type="text" id="input_cidade">
+              <div id="div_cidade" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Estado Sigla<span style="color: red;">*</span></p>
+            <div id="div_input_sigla" class="div-input">
+              <input class="inputs" type="text" id="input_sigla">
+              <div id="div_sigla" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>CEP<span style="color: red;">*</span></p>
+            <div id="div_input_cep" class="div-input">
+              <input class="inputs" type="text" id="input_cep">
+              <div id="div_cep" style="color: red;"></div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="input-direito">
+          <div>
+            <p>Número<span style="color: red;">*</span></p>
+            <div id="div_input_numero" class="div-input">
+              <input class="inputs" type="text" id="input_numero">
+              <div id="div_num" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Complemento</p>
+            <div class="div-input">
+              <input class="inputs" type="text" id="input_complemento">
+            </div>
+          </div>
+          <div>
+            <p>CNPJ<span style="color: red;">*</span></p>
+            <div id="div_input_cnpj" class="div-input">
+              <input class="inputs" type="text" id="input_Cnpj" max="14">
+              <div id="div_cpf" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Email<span style="color: red;">*</span></p>
+            <div id="div_input_email" class="div-input">
+              <input class="inputs" ; type="email" id="input_email">
+              <div id="div_email" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Senha<span style="color: red;">*</span></p>
+            <div id="div_input_senha" class="div-input">
+              <input class="inputs" type="password" id="input_senha">
+              <div id="div_senha" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Repetir Senha<sid="div_input"pan style="color: red;">*</span></p>
+            <div id="div_input_repetir_senha" class="div-input">
+              <input class="inputs" ; type="password" id="input_confirma">
+              <div id="div_confirmasenha" style="color: red;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="div-botao">
+          <button class="cadastro-botao" onclick="cadastrar()">Próximo</button>
+        </div>
+      </div>
+      <div id="segundocadastro" style="display: none;" class="margin cadastro-container">
+        <div class="cadastro-input">
+          <div class="input-esquerdo">
+            <div>
+              <h3>Informe os Parametros:</h3>
+              <p>Nome do Setor<span style="color: red;">*</span></p>
+              <div id="div_input_nomeSetor" class="div-input">
+                <input class="inputs" type="text" id="input_setor">
+                <div id="divNomeSetor" style="color: red;"></div>
+              </div>
+            </div>
+            <div>
+              <p>Intervalo Ideal da Temperatura</p>
+              <div>
+                <p>Min:<span style="color: red;">*</span></p>
+                <div id="div_input_tempmin">
+                  <input class="inputs" type="number" id="input_tempMin">
+                  <div id="div_temperaturaErroMin" style="color: red;"></div>
+                </div>
+              </div>
+              <div>
+                <p>Máx:<span style="color: red;">*</span></p>
+                <div id="div_input_tempmax">
+                  <input class="inputs" type="number" id="input_tempMax">
+                  <div id="div_temperaturaErroMax" style="color: red;"></div>
+                </div>
+              </div>
+              <p>Intervalo Ideal da Umidade<span style="color: red;">*</span></p>
+              <div>
+                <p>Min:<span style="color: red;">*</span></p>
+                <div id="div_input_umidademin">
+                  <input class="inputs" type="number" id="input_umidMin">
+                  <div id="div_umidadeErroMin" style="color: red;"></div>
+                </div>
+              </div>
+              <div>
+                <p>Máx:<span style="color: red;">*</span></p>
+                <div id="div_input_umidademax">
+                  <input class="inputs" type="number" id="input_umidMax">
+                  <div id="div_umidadeErroMax" style="color: red;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div-botao">
+          <button class="cadastro-botao" onclick="seCadastrar()">Cadastre-se</button>
+        </div>
+      </div>
+    </div>
+    <div class="cadastro-img">
+      <img src="assets/img/cadastro.png" alt="cadastre-se">
+    </div>
+  </div>
+
+  <!--footer inicio-->
+  <footer id="footer" class="footer-container">
+    <div class="margin footer-conteudo">
+      <div class="footer-fale-conosco">
+        <h3>Fale conosco</h3>
+
+        <ul>
+          <li><a href="mail:tobecoldsptech@gmail.com"><img src="assets/img/Email.png" alt="">becoldsptech@gmail.com</a>
+          </li>
+          <li><a href="mailto:becold@email.com"><img src="assets/img/Email.png" alt="">becold@email.com</a></li>
+          <li><a href="tel:9999-9999"><img src="assets/img/Phone.png" alt="">9999-9999</a></li>
+        </ul>
+      </div>
+      <div class="footer-redes">
+        <h3>Redes Sociais</h3>
+        <ul class="redes-icon">
+          <li><a href=""><img src="assets/img/Instagram.png" alt=""></a></li>
+          <li><a href=""><img src="assets/img/TwitterX.png" alt=""></a></li>
+          <li><a href="https://www.linkedin.com/in/be-cold-592849298/"><img src="assets/img/LinkedIn.png" alt=""></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="margin footer-direitos">
+      <h3>BeCold</h3>
+      <span>© 2023 BeCold. Todos os direitos reservados.</span>
+    </div>
+  </footer>
+  <!--footer fim-->
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+    var fkcliente = "";
+
+    var email = input_email.value;
+    var cnpj = input_Cnpj.value;
+    var empresa = input_empresa.value;
+    var senha = input_senha.value;
+    var confirma = input_confirma.value;
+    var cep = input_cep.value;
+    var numero = input_numero.value;
+    var complemento = input_complemento.value;
+    var rua = input_rua.value;
+    var bairro = input_bairro.value;
+    var cidade = input_cidade.value;
+    var sigla = input_sigla.value;
+
+    var emailValido = email.endsWith('@gmail.com') ||
+      email.endsWith('@hotmail.com') ||
+      email.endsWith('@outlook.com') ||
+      email.endsWith('@sptech.school');
+
+    if (empresa == "") {
+      div_input_empresa.style.marginBottom = "0";
+      div_empresa.innerHTML = "digite um nome de empresa";
+    }
+    else if (rua == "") {
+      div_input_rua.style.marginBottom = "0";
+      div_rua.innerHTML = `Insira a rua`
+    }
+    else if (bairro == "") {
+      div_input_bairro.style.marginBottom = "0";
+      div_bairro.innerHTML = `Insira o bairro`
+    }
+    else if (cidade == "") {
+      div_input_cidade.style.marginBottom = "0";
+      div_cidade.innerHTML = `Insira a cidade`
+    }
+    else if (sigla.length !== 2) {
+      div_input_sigla.style.marginBottom = "0";
+      div_sigla.innerHTML = `Insira a sigla corretamente`
+    }
+    else if (cep.length !== 8 && cep == "") {
+      div_input_cep.style.marginBottom = "0";
+      div_cep.innerHTML = `cep invalido! Necessário 8 digitos`
+    }
+    else if (numero == "") {
+      div_input_numero.style.marginBottom = "0";
+      div_num.innerHTML = `insira um numero`
+    }
+    else if (cnpj.length !== 14) {
+      div_input_cnpj.style.marginBottom = "0";
+      div_cpf.innerHTML = "cnpj invalido por favor necessário 14 digitos"
+    }
+    else if (email == "") {
+      div_input_email.style.marginBottom = "0";
+      div_email.innerHTML = "Insira um endereço de e-mail";
+    }
+    else if (!emailValido) {
+      div_input_email.style.marginBottom = "0";
+      div_email.innerHTML = "endereço de email invalido"
+    }
+    else if (senha.length < 8 || senha == "") {
+      div_input_senha.style.marginBottom = "0";
+      div_senha.innerHTML = 'mínimo permitido: 8 digitos'
+    }
+    else if (confirma != senha) {
+      div_input_repetir_senha.style.marginBottom = "0";
+      div_confirmasenha.innerHTML = "incorreto, tente novamente"
+    }
+    else {
+      primeirocadastro.style.display = "none"
+      segundocadastro.style.display = "block"
+
+      fetch("/usuarios/cadastrarUsu", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          empresaServer: empresa,
+          cnpjServer: cnpj,
+          emailServer: email,
+          senhaServer: senha
+        }),
+      })
+
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+            console.log("Usuário cadastrado com sucesso!")
+
+            fetch("/usuarios/acharfk", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                empresaServer: empresa,
+                cnpjServer: cnpj,
+                emailServer: email,
+                senhaServer: senha,
+
+              })
+            }).then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!")
+
+              if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                  console.log(json.id);
+                  console.log(JSON.stringify(json));
+
+                  fkcliente = json.id;
+                  console.log(`Esse é o fkcliente ${fkcliente}`)
+
+                  fetch("/usuarios/cadastrarEnd", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      // crie um atributo que recebe o valor recuperado aqui
+                      // Agora vá para o arquivo routes/usuario.js
+                      siglaServer: sigla,
+                      cidadeServer: cidade,
+                      bairroServer: bairro,
+                      ruaServer: rua,
+                      cepServer: cep,
+                      numeroServer: numero,
+                      complementoServer: complemento,
+                      fkclienteServer: fkcliente
+
+                    }),
+                  })
+                    .then(function (resposta) {
+                      console.log("resposta: ", resposta);
+
+                      if (resposta.ok) {
+                        console.log("endereço cadastrado com sucesso")
+                        //limparFormulario();
+                        //finalizarAguardar();
+                      } else {
+                        throw "Houve um erro ao tentar realizar o cadastro do endereço!";
+                      }
+                    })
+
+                });
+
+
+              } else {
+
+                resposta.text().then(texto => {
+                  console.error(texto);
+                });
+              }
+
+            }).catch(function (erro) {
+              console.log(erro);
+            })
+
+
+          } else {
+            throw "Houve um erro ao tentar cadastrar o usuário!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          //finalizarAguardar();
+        });
+
+      return false;
+    }
+
+  }
+  function seCadastrar() {
+    var email = input_email.value;
+    var cnpj = input_Cnpj.value;
+    var empresa = input_empresa.value;
+    var senha = input_senha.value;
+    var NomeSetor = input_setor.value;
+    var TempMin = Number(input_tempMin.value);
+    var TempMax = Number(input_tempMax.value);
+    var UmidadeMin = Number(input_umidMin.value);
+    var UmidadeMax = Number(input_umidMax.value);
+
+    if (NomeSetor == "" || TempMin == "" || TempMax == "" || UmidadeMin == "" || UmidadeMax == "" || TempMin >= TempMax | UmidadeMin >= UmidadeMax) {
+      div_umidadeErroMax.innerHTML = `Cheque todas as entradas`;
+    } else {
+      fetch("/usuarios/acharfk", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          empresaServer: empresa,
+          cnpjServer: cnpj,
+          emailServer: email,
+          senhaServer: senha,
+
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json.id);
+            console.log(JSON.stringify(json));
+
+            fkcliente = json.id;
+            console.log(`Esse é o fkcliente ${fkcliente}`)
+
+            fetch("/usuarios/cadastrarMetr", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeSetorServer: NomeSetor,
+                temperaturaMaxServer: TempMax,
+                temperaturaMinServer: TempMin,
+                umidadeMaxServer: UmidadeMax,
+                umidadeMinServer: UmidadeMin,
+                fkclientesetorServer: fkcliente
+
+
+              }),
+            })
+              .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                  console.log("métricas cadastradas com sucesso")
+
+                  setTimeout(() => {
+                    window.location = "login.html";
+                  }, "2000");
+                  //limparFormulario();
+                  //finalizarAguardar();
+                } else {
+                  throw "Houve um erro ao tentar realizar o cadastro das métricas!";
+                }
+              })
+
+          });
+
+
+        } else {
+
+          resposta.text().then(texto => {
+            console.error(texto);
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+
+    }
+  }
+
+</script>
