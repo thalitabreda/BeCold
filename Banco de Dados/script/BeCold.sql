@@ -7,7 +7,7 @@ idCliente INT PRIMARY KEY AUTO_INCREMENT,
 Empresa VARCHAR(50),
 CNPJ Char(14) UNIQUE,
 Email VARCHAR(45),
-senha VARCHAR(10));
+senha VARCHAR(45));
 
 CREATE TABLE endereço(
 idEndereco int primary key auto_increment,
@@ -28,7 +28,7 @@ nomeSetor varchar(25),
 temperaturaMax decimal (4,2),
 temperaturaMin decimal (4,2),
 umidadeMax decimal (4,2),
-umiadeMin decimal (4,2),
+umidadeMin decimal (4,2),
 fkClienteSetor int,
 constraint fkClienteSetor foreign key (fkClienteSetor)
 	references cliente (idCliente)
