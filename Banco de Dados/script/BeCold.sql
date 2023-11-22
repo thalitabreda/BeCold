@@ -1,13 +1,18 @@
 CREATE DATABASE Becold;
 USE Becold;
 
-
 CREATE TABLE Cliente (
 idCliente INT PRIMARY KEY AUTO_INCREMENT,
 Empresa VARCHAR(50),
 CNPJ Char(14) UNIQUE,
 Email VARCHAR(45),
 senha VARCHAR(45));
+
+select * from cliente;
+select * from endereço;
+SELECT * FROM SETOR;
+
+
 
 CREATE TABLE endereço(
 idEndereco int primary key auto_increment,
@@ -16,11 +21,13 @@ cidade varchar(30),
 bairro varchar(30),
 rua varchar(30),
 cep char (8),
+numero varchar (10),
 completo varchar(30),
 fkClienteEndereço int,
 constraint fkClienteEndereço foreign key (fkClienteEndereço)
 references Cliente (idCliente)
 );
+
 
 CREATE TABLE setor(
 idSetor int primary key auto_increment,
@@ -80,3 +87,6 @@ SELECT * FROM registros;
 
 -- select * from Cliente join Sensor on fkCliente = idCliente;
 -- select * from Sensor join Registros on fkSensor = idSensor;
+
+
+SELECT idcliente from Cliente where  empresa = 'wedfghjk' and cnpj = 'sdfghj' and email = 'asdfghjk' and senha = 'asdfghjk';
