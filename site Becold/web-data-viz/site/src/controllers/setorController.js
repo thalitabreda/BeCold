@@ -1,9 +1,9 @@
-var aquarioModel = require("../models/aquarioModel");
+var setorModel = require("../models/setorModel");
 
-function buscarAquariosPorEmpresa(req, res) {
-  var idUsuario = req.params.idUsuario;
+function buscarSetoresPorEmpresa(req, res) {
+  var idCliente = req.params.idCliente;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  setorModel.buscarSetoresPorEmpresa(idCliente).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -18,17 +18,17 @@ function buscarAquariosPorEmpresa(req, res) {
 
 
 function cadastrar(req, res) {
-  var descricao = req.body.descricao;
-  var idUsuario = req.body.idUsuario;
+  var nomeSetor = req.body.nomeSetor;
+  var idCliente = req.body.idCliente;
 
   if (descricao == undefined) {
-    res.status(400).send("descricao está undefined!");
+    res.status(400).send("nomeSensor está undefined!");
   } else if (idUsuario == undefined) {
-    res.status(400).send("idUsuario está undefined!");
+    res.status(400).send("idCliente está undefined!");
   } else {
 
 
-    aquarioModel.cadastrar(descricao, idUsuario)
+    sensorModel.cadastrar(nomeSetor, idCliente)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -44,6 +44,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarSetoresPorEmpresa,
   cadastrar
 }

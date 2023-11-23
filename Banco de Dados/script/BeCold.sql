@@ -12,6 +12,8 @@ select * from cliente;
 select * from endereço;
 SELECT * FROM SETOR;
 
+select * from setor where fk_empresa = 1;
+
 
 
 CREATE TABLE endereço(

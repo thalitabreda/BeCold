@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+var setorModel = require("../models/setorModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -146,14 +146,14 @@ function cadastrarMetr(req, res) {
     var temperaturaMin = req.body.temperaturaMinServer;
     var umidadeMax = req.body.umidadeMaxServer;
     var umidadeMin = req.body.umidadeMinServer;
-    var fkclientesetor = req.body.fkclientesetorServer;
+    var fkClienteSetor = req.body.fkClienteSetorServer;
 
 
     // Faça as validações dos valores
 
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarmetricas(nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, fkclientesetor
+        usuarioModel.cadastrarmetricas(nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, fkClienteSetor
             )
             .then(
                 function (resultado) {

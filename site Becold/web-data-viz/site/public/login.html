@@ -127,10 +127,10 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     //sessionStorage.CPF_USUARIO = json.cpf;
                     sessionStorage.ID_USUARIO = json.id;
-                    //sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.SETORES = JSON.stringify(json.setores)
 
                     setTimeout(function () {
-                        window.location = "../DashboardV2/chart.html";
+                        window.location = "chart.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
