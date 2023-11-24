@@ -158,7 +158,7 @@ function cadastrarMetr(req, res) {
     var temperaturaMin = req.body.temperaturaMinServer;
     var umidadeMax = req.body.umidadeMaxServer;
     var umidadeMin = req.body.umidadeMinServer;
-    var fkClienteSetor = req.body.fkClienteSetorServer;
+    var fkClienteSetor = req.body.fkclientesetorServer;
 
 
     // Faça as validações dos valores

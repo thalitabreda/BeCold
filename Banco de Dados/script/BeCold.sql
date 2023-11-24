@@ -10,11 +10,7 @@ senha VARCHAR(45));
 
 select * from cliente;
 select * from endereço;
-SELECT * FROM SETOR;
-
-select * from setor where fk_empresa = 1;
-
-
+SELECT * FROM setor;
 
 CREATE TABLE endereço(
 idEndereco int primary key auto_increment,
@@ -45,8 +41,7 @@ constraint fkClienteSetor foreign key (fkClienteSetor)
 
 CREATE TABLE Sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
-DiaInstalado DATE,
-Localização VARCHAR(45),
+nomeSensor VARCHAR(45),
 fkSetor INT,
 CONSTRAINT FKSetor FOREIGN KEY (fkSetor)
 	REFERENCES Setor (idSetor)
@@ -67,7 +62,7 @@ INSERT INTO cliente VALUES
 	(null, 'teste', '12345678910121', 'teste@gmail.com', 'teste1234');
     
 INSERT INTO endereço VALUES
-	(null, 'ABC', 'Testelandia', 'Testelandia', 'Testelandia', "12345678", 'Testelandia', 1);
+	(null, 'AB', 'Testelandia', 'Testelandia', 'Testelandia', "12345678", 'Testelandia', 1);
 
 INSERT INTO setor VALUES
 	(null, 'Testelandia', 20.6, 50.5, 30.4, 40.3, 1, 1);

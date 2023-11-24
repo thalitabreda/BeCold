@@ -9,9 +9,9 @@ function autenticar(email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrarmetricas(nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, fkclientesetor) {
+function cadastrarmetricas(nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, fkClienteSetor) {
     var instrucao =
-   ` Insert into setor (nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, fkclientesetor) VALUES ('${nomeSetor}', '${temperaturaMax}', '${temperaturaMin}', '${umidadeMax}',  '${umidadeMin}', '${fkclientesetor}');`
+   ` Insert into setor (nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umiadeMin, fkClienteSetor) VALUES ('${nomeSetor}', '${temperaturaMax}', '${temperaturaMin}', '${umidadeMax}',  '${umidadeMin}', '${fkClienteSetor}');`
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     console.log("Executando a instrução SQL: \n" + instrucao);
