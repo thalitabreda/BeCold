@@ -10,7 +10,7 @@ function buscarSetoresPorEmpresa(idCliente) {
 
 function cadastrar(idCliente, nomeSetor) {
   
-  instrucaoSql = `insert into (nomeSetor, idCliente) setor values (${nomeSetor}, ${idCliente})`;
+  instrucaoSql = `insert into (nomeSetor, fkClienteSetor) setor values (${nomeSetor}, ${idCliente})`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

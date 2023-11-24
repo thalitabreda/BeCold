@@ -19,9 +19,21 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                        res.json({id:resultadoAutenticar[0].idendereço})
 
-
+                        setorModel.buscarSetoresPorEmpresa(resultadoAutenticar[0].idCliente)
+                            .then((resultadoSetores) => {
+                                if (resultadoSetores.length > 0) {
+                                    res.json({
+                                        id: resultadoAutenticar[0].id,
+                                        email: resultadoAutenticar[0].email,
+                                        nome: resultadoAutenticar[0].nome,
+                                        senha: resultadoAutenticar[0].senha,
+                                        setores: resultadoSetores
+                                    });
+                                } else {
+                                    res.status(204).json({ setores: [] });
+                                }
+                            })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
