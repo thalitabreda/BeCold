@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: 'localhost',
     database: 'Becold',
     user: 'root',   
-    password: 'admin',
+    password: 'headoncollision',
 };
 
 function executar(instrucao) {

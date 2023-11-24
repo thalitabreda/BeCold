@@ -12,8 +12,8 @@ router.post("/cadastrarMetr", function (req, res) {
 })
 
 
-router.post("/acharfk", function (req, res) {
-    usuarioController.acharfk(req, res);
+router.post("/buscarfk", function (req, res) {
+    usuarioController.buscarfk(req, res);
 })
 
 router.post("/cadastrarEnd", function (req, res) {

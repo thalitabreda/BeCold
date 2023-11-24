@@ -8,248 +8,248 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="cadastro.html">
+  <link rel="stylesheet" href="css/estilo copy.css" />
+  <link rel="stylesheet" href="css/cadastro copy.css">
+  <link rel="stylesheet" href="css/global.css">
+  <script src="../js/sessao.js"></script>
+  <script src="../js/alerta.js"></script>
+
 </head>
 
 <body onload="exibirSetores(), validarSessao()">
   <div class="alhinhamento">
     <div class="menu">
-      <img src="assets/img/profile.png" >
-      <strong>Olá,<strong id="b_usuario">usuário</strong>!</strong>
+      <img src="assets/img/profile.png">
+      <strong>Olá, <strong id="b_usuario">usuário</strong> !</strong>
       <ul>
         <li>
-          <a href="/site.html"><img src="assets/img/silhueta-de-icone-de-casa.png" >Home</a>
+          <a href="index.html"><img src="assets/img/silhueta-de-icone-de-casa.png">Home</a>
         </li>
         <li>
-          <a href="mailto:becold@email.com"><img src="assets/img/suporte-ao-cliente.png" >Suporte</a>
+          <a href="mailto:becold@email.com"><img src="assets/img/suporte-ao-cliente.png">Suporte</a>
         </li>
         <li>
-          <a href="/site.html"><img src="assets/img/sair.png" onclick="limparSessao()">Sair</a>
+          <a href="index.html"><img src="assets/img/sair.png" onclick="limparSessao()">Sair</a>
         </li>
       </ul>
     </div>
-
-    <div class="dashboard">
-      <h1>Selecione o setor que deseja visualizar</h1>
-      <div class="alinhamento-custom">
-        <select id="slct_setor" oninput="">
-        </select>
-        <button onclick="cadastrarSetor()"><img src="assets/img/more.png"></button>
-      </div>
-    <div class="linha-alhinhamento">
-      <div class="KPI">
-        <h5> Média de Umidade mais alta nas últimas 4 horas </h5>
-        <h3> Sensor 3 - 59% <img src="assets/img/umidade.png"></h3>
-      </div>
-      <div class="KPI">
-        <h5>Média de Umidade mais baixa nas últimas 4 horas</h5>
-        <h3> Sensor 1 - 40% <img src="assets/img/umidade.png"></h3>
-      </div>
-      <div class="KPI">
-        <h5>Média de Temperatura mais alta nas últimas 4 horas</h5>
-        <h3> Sensor 12 -  28ºC <img src="assets/img/temperatura.png"></h3>
-      </div>
-      <div class="KPI">
-        <h5>Média de Temperatura mais baixa nas últimas 4 horas</h5>
-        <h3> Sensor 5 -  17ºC <img src="assets/img/temperatura.png"></h3>
-      </div>
-    </div>
-    <div class="linha-alhinhamento">
-      <div class="card-metrica">
-        <h2>Métrica</h2>
-        <div class="card-background">
-          <div id="div_critico+" style="background-color: red;" class="metrica"><span>Critico</span></div>
-          <div id="div_emergencia+" style="background-color: orange;" class="metrica"><span>Emergência</span></div>
-          <div id="div_alerta+" style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span></div>
-          <div id="div_ideal" style="background-color: green;" class="metrica"><span>Ideal</span></div>
-          <div id="div_alerta-" style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span></div>
-          <div id="div_emergencia-" style="background-color: orange;" class="metrica"><span>Emergência</span></div>
-          <div id="div_critico-" style="background-color: red;" class="metrica"><span>Critico</span></div>
+    <div id="cadastrometricas" style="display: none; height: 450px; " class="margin cadastro-container">
+      <div class="cadastro-input">
+        <div class="input-esquerdo">
+          <div>
+            <h3>Informe os Parametros:</h3>
+            <p>Nome do Setor<span style="color: red;">*</span></p>
+            <div id="div_input_nomeSetor" class="div-input">
+              <input class="inputs" type="text" id="input_setor">
+              <div id="divNomeSetor" style="color: red;"></div>
+            </div>
+          </div>
+          <div>
+            <p>Intervalo Ideal da Temperatura</p>
+            <div>
+              <p>Min:<span style="color: red;">*</span></p>
+              <div id="div_input_tempmin">
+                <input class="inputs" type="number" id="input_tempMin">
+                <div id="div_temperaturaErroMin" style="color: red;"></div>
+              </div>
+            </div>
+            <div>
+              <p>Máx:<span style="color: red;">*</span></p>
+              <div id="div_input_tempmax">
+                <input class="inputs" type="number" id="input_tempMax">
+                <div id="div_temperaturaErroMax" style="color: red;"></div>
+              </div>
+            </div>
+            <p>Intervalo Ideal da Umidade<span style="color: red;">*</span></p>
+            <div>
+              <p>Min:<span style="color: red;">*</span></p>
+              <div id="div_input_umidademin">
+                <input class="inputs" type="number" id="input_umidMin">
+                <div id="div_umidadeErroMin" style="color: red;"></div>
+              </div>
+            </div>
+            <div>
+              <p>Máx:<span style="color: red;">*</span></p>
+              <div id="div_input_umidademax">
+                <input class="inputs" type="number" id="input_umidMax">
+                <div id="div_umidadeErroMax" style="color: red;"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="div-botao">
+        <button class="cadastro-botao" onclick="exibircadastrometricas()">Cadastre</button>
+      </div>
     </div>
-    <div class="linha-alhinhamento">
-      <div id="graficos"></div>
-    </div>
-  </div>
+    <div id="dashboad" class="dashboard">
+      <h1>Selecione o setor que deseja visualizar</h1>
+      <div class="alinhamento-custom">
+        <select id="slct_setor">
+        </select>
+        <button onclick="exibircadastrometricas()"><img style="padding: 0px;" src="assets/img/more.png"></button>
+      </div>
+      <div class="linha-alhinhamento">
+        <div class="KPI">
+          <h5> Média de Umidade mais alta nas últimas 4 horas </h5>
+          <h3> Sensor 3 - 59% <img src="assets/img/umidade.png"></h3>
+        </div>
+        <div class="KPI">
+          <h5>Média de Umidade mais baixa nas últimas 4 horas</h5>
+          <h3> Sensor 1 - 40% <img src="assets/img/umidade.png"></h3>
+        </div>
+        <div class="KPI">
+          <h5>Média de Temperatura mais alta nas últimas 4 horas</h5>
+          <h3> Sensor 12 - 28ºC <img src="assets/img/temperatura.png"></h3>
+        </div>
+        <div class="KPI">
+          <h5>Média de Temperatura mais baixa nas últimas 4 horas</h5>
+          <h3> Sensor 5 - 17ºC <img src="assets/img/temperatura.png"></h3>
+        </div>
+      </div>
+      <div class="linha-alhinhamento">
+        <div class="card-metrica">
+          <h2>Métrica</h2>
+          <div class="card-background">
+            <div style="background-color: red;" class="metrica"><span>Critico</span><span>20% - 24%</span><span>5ºC -
+                14ºC</span></div>
+            <div style="background-color: orange;" class="metrica"><span>Emergência</span><span>25% -
+                29%</span><span>15ºC - 16ºC</span></div>
+            <div style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span><span>30% - 39%
+              </span><span>17ºC - 19ºC</span></div>
+            <div style="background-color: green;" class="metrica"><span>Ideal</span><span>40% - 55%</span><span>20ºC -
+                27ºC</span></div>
+            <div style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span><span>56% -
+                65%</span><span>28ºC - 30ºC</span></div>
+            <div style="background-color: orange;" class="metrica"><span>Emergência</span><span>66% -
+                75%</span><span>31ºC - 35ºC</span></div>
+            <div style="background-color: red;" class="metrica"><span>Critico</span><span>76% - 80%</span><span>36ºC -
+                50ºC</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="linha-alhinhamento">
+        <div class="card-grafico">
+          <h2>Umidade</h2>
+          <canvas id="umiChart" style="position: relative;height:40vh;"></canvas>
+        </div>
+        <div class="card-grafico">
+          <h2>Temperatura</h2>
+          <canvas id="tempChart" style="position: relative;  height: 40vh;"></canvas>
+        </div>
+      </div>
 </body>
 
 <script>
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-  let proximaAtualizacao;
+  b_usuario.innerHTML = sessionStorage.EMPRESA_USUARIO
 
   function exibirSetores() {
-        JSON.parse(sessionStorage.SETORES).forEach(item => {
-            document.getElementById("slct_setor").innerHTML += `
+    JSON.parse(sessionStorage.SETORES).forEach(item => {
+      document.getElementById("slct_setor").innerHTML += `
             <option value="${item.idSetor}">${item.nomeSetor}</option>
             `
-        });
-  }
 
-  function exibirGraficoDoUsuario() {
-        var setores = JSON.parse(sessionStorage.SETORES);
-        setores.forEach(item => {
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.idSetor}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.idSetor}">${item.nomeSetor}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.idSetor}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.idSetor}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-            obterDadosGrafico(item.idSetor)
-        })};
-
-  function obterDadosGrafico(idSetor) {
-      if (proximaAtualizacao != undefined) {
-          clearTimeout(proximaAtualizacao);
-      }
-
-      fetch(`/medidas/ultimas/${idSetor}`, { cache: 'no-store' }).then(function (response) {
-          if (response.ok) {
-              response.json().then(function (resposta) {
-                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                  resposta.reverse();
-
-                  plotarGrafico(resposta, idSetor);
-
-              });
-          } else {
-              console.error('Nenhum dado encontrado ou erro na API');
-          }
-      })
-          .catch(function (error) {
-              console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-          });
-    }
-
-    function plotarGrafico(resposta, idSetor) {
-
-  console.log('iniciando plotagem do gráfico...');
-
-  // Criando estrutura para plotar gráfico - labels
-  let labels = [];
-
-  // Criando estrutura para plotar gráfico - dados
-  let dados = {
-      labels: labels,
-      datasets: [{
-          label: 'Umidade',
-          data: [],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-      },
-      {
-          label: 'Temperatura',
-          data: [],
-          fill: false,
-          borderColor: 'rgb(199, 52, 52)',
-          tension: 0.1
-      }]
-  };
-
-  console.log('----------------------------------------------')
-  console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-  console.log(resposta)
-
-  // Inserindo valores recebidos em estrutura para plotar o gráfico
-  for (i = 0; i < resposta.length; i++) {
-      var registro = resposta[i];
-      labels.push(registro.momento_grafico);
-      dados.datasets[0].data.push(registro.umidade);
-      dados.datasets[1].data.push(registro.temperatura);
-  }
-
-  console.log('----------------------------------------------')
-  console.log('O gráfico será plotado com os respectivos valores:')
-  console.log('Labels:')
-  console.log(labels)
-  console.log('Dados:')
-  console.log(dados.datasets)
-  console.log('----------------------------------------------')
-
-  // Criando estrutura para plotar gráfico - config
-  const config = {
-      type: 'line',
-      data: dados,
-  };
-
-  // Adicionando gráfico criado em div na tela
-  let myChart = new Chart(
-      document.getElementById(`myChartCanvas${idSetor}`),
-      config
-  );
-
-  setTimeout(() => atualizarGrafico(idSetor, dados, myChart), 2000);
-}
-
-function atualizarGrafico(idSetor, dados, myChart) {
-fetch(`/medidas/tempo-real/${idSetor}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (novoRegistro) {
-
-            obterdados(idSetor);
-            // alertar(novoRegistro, idAquario);
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
-
-            // let avisoCaptura = document.getElementById(`avisoCaptura${idSetor}`)
-            // avisoCaptura.innerHTML = ""
-
-
-            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                console.log("---------------------------------------------------------------")
-                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                console.log("Horário do novo dado capturado:")
-                console.log(novoRegistro[0].momento_grafico)
-                console.log("Horário do último dado capturado:")
-                console.log(dados.labels[dados.labels.length - 1])
-                console.log("---------------------------------------------------------------")
-            } else {
-                // tirando e colocando valores no gráfico
-                dados.labels.shift(); // apagar o primeiro
-                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                myChart.update();
-            }
-
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idSetor, dados, myChart), 2000);
-        });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idSetor, dados, myChart), 2000);
-    }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
-
-}
-
+  }
 
 
+  function exibircadastrometricas() {
 
 
+    dashboad.style.display = "none"
+    cadastrometricas.style.display = "block"
 
 
+    var NomeSetor = input_setor.value;
+    var TempMin = Number(input_tempMin.value);
+    var TempMax = Number(input_tempMax.value);
+    var UmidadeMin = Number(input_umidMin.value);
+    var UmidadeMax = Number(input_umidMax.value);
 
+    if (NomeSetor == "" || TempMin == "" || TempMax == "" || UmidadeMin == "" || UmidadeMax == "" || TempMin >= TempMax | UmidadeMin >= UmidadeMax) {
+      div_umidadeErroMax.innerHTML = `Cheque todas as entradas`;
+    } else {
+
+      fetch("/usuarios/buscarfk", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          empresaServer: empresa,
+          cnpjServer: cnpj,
+          emailServer: email,
+          senhaServer: senha,
+
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json.id);
+            console.log(JSON.stringify(json));
+
+            fkcliente = json.id;
+            console.log(`Esse é o fkcliente ${fkcliente}`)
+
+      fetch("/usuarios/cadastrarMetr", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeSetorServer: NomeSetor,
+                temperaturaMaxServer: TempMax,
+                temperaturaMinServer: TempMin,
+                umidadeMaxServer: UmidadeMax,
+                umidadeMinServer: UmidadeMin,
+                fkClienteSetorServer: fkcliente
+
+
+              }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                  console.log("métricas cadastradas com sucesso")
+
+                  setTimeout(() => {
+                    window.location = "login.html";
+                  }, "2000");
+                  //limparFormulario();
+                  //finalizarAguardar();
+                } else {
+                  throw "Houve um erro ao tentar realizar o cadastro das métricas!";
+                }
+              })
+
+          });
+
+
+        } else {
+
+          resposta.text().then(texto => {
+            console.error(texto);
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+
+    }
+
+          };
+
+        
 
 
 
@@ -347,6 +347,7 @@ fetch(`/medidas/tempo-real/${idSetor}`, { cache: 'no-store' }).then(function (re
   //   }
   // })
 
-  
+
 </script>
+
 </html>

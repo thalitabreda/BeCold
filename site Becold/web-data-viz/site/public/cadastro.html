@@ -225,6 +225,7 @@
   function cadastrar() {
     var fkcliente = "";
 
+
     var email = input_email.value;
     var cnpj = input_Cnpj.value;
     var empresa = input_empresa.value;
@@ -317,7 +318,7 @@
 
             console.log("Usuário cadastrado com sucesso!")
 
-            fetch("/usuarios/acharfk", {
+            fetch("/usuarios/buscarfk", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
@@ -330,7 +331,7 @@
 
               })
             }).then(function (resposta) {
-              console.log("ESTOU NO THEN DO entrar()!")
+              console.log(resposta)
 
               if (resposta.ok) {
                 console.log(resposta);
@@ -338,6 +339,9 @@
                 resposta.json().then(json => {
                   console.log(json.id);
                   console.log(JSON.stringify(json));
+
+
+                  sessionStorage.idcliente = json.id;
 
                   fkcliente = json.id;
                   console.log(`Esse é o fkcliente ${fkcliente}`)
@@ -415,7 +419,7 @@
     if (NomeSetor == "" || TempMin == "" || TempMax == "" || UmidadeMin == "" || UmidadeMax == "" || TempMin >= TempMax | UmidadeMin >= UmidadeMax) {
       div_umidadeErroMax.innerHTML = `Cheque todas as entradas`;
     } else {
-      fetch("/usuarios/acharfk", {
+      fetch("/usuarios/buscarfk", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -453,7 +457,9 @@
                 temperaturaMinServer: TempMin,
                 umidadeMaxServer: UmidadeMax,
                 umidadeMinServer: UmidadeMin,
-                fkclientesetorServer: fkcliente
+                fkClienteSetorServer: fkcliente
+
+
               }),
             })
               .then(function (resposta) {

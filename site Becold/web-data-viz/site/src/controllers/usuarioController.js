@@ -26,7 +26,7 @@ function autenticar(req, res) {
                                     res.json({
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
+                                        empresa: resultadoAutenticar[0].empresa,
                                         senha: resultadoAutenticar[0].senha,
                                         setores: resultadoSetores
                                     });
@@ -34,6 +34,8 @@ function autenticar(req, res) {
                                     res.status(204).json({ setores: [] });
                                 }
                             })
+
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -158,14 +160,14 @@ function cadastrarMetr(req, res) {
     var temperaturaMin = req.body.temperaturaMinServer;
     var umidadeMax = req.body.umidadeMaxServer;
     var umidadeMin = req.body.umidadeMinServer;
-    var fkClienteSetor = req.body.fkclientesetorServer;
+    var idCliente = req.body.idClienteServer;
 
 
     // Faça as validações dos valores
 
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarmetricas(nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, fkClienteSetor
+        usuarioModel.cadastrarmetricas(nomeSetor, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin, idCliente
             )
             .then(
                 function (resultado) {
@@ -220,7 +222,7 @@ function cadastrarUsu(req, res) {
     }
 }
 
-function acharfk(req, res) {
+function buscarfk(req, res) {
     var empresa = req.body.empresaServer
     var cnpj = req.body.cnpjServer
     var email = req.body.emailServer;
@@ -248,7 +250,7 @@ function acharfk(req, res) {
                         console.log(resultadoAutenticar);
 
                                     res.json({
-                                        id: resultadoAutenticar[0].idcliente,
+                                        id: resultadoAutenticar[0].idCliente,
 
                                     });
 
@@ -274,6 +276,6 @@ module.exports = {
     cadastrarUsu,
     cadastrarEnd,
     fkClienteEndereco, 
-    acharfk,
+    buscarfk,
     cadastrarMetr
 }
