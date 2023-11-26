@@ -24,10 +24,11 @@ function autenticar(req, res) {
                             .then((resultadoSetores) => {
                                 if (resultadoSetores.length > 0) {
                                     res.json({
-                                        id: resultadoAutenticar[0].id,
+                                        id: resultadoAutenticar[0].idCliente,
                                         email: resultadoAutenticar[0].email,
                                         empresa: resultadoAutenticar[0].empresa,
                                         senha: resultadoAutenticar[0].senha,
+                                        cnpj: resultadoAutenticar[0].cnpj,
                                         setores: resultadoSetores
                                     });
                                 } else {
@@ -160,7 +161,7 @@ function cadastrarMetr(req, res) {
     var temperaturaMin = req.body.temperaturaMinServer;
     var umidadeMax = req.body.umidadeMaxServer;
     var umidadeMin = req.body.umidadeMinServer;
-    var idCliente = req.body.idClienteServer;
+    var idCliente = req.body.fkClienteSetorServer;
 
 
     // Faça as validações dos valores
@@ -226,13 +227,11 @@ function buscarfk(req, res) {
     var empresa = req.body.empresaServer
     var cnpj = req.body.cnpjServer
     var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    }
+    } 
     else if (empresa == undefined) {
         res.status(400).send("Sua empresa está indefinida!");
     }
@@ -240,7 +239,7 @@ function buscarfk(req, res) {
         res.status(400).send("Seu cnpj está indefinido!");
     } else {
 
-        usuarioModel.buscarfk(empresa, cnpj, email, senha)
+        usuarioModel.buscarfk(empresa, cnpj, email)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -250,7 +249,7 @@ function buscarfk(req, res) {
                         console.log(resultadoAutenticar);
 
                                     res.json({
-                                        id: resultadoAutenticar[0].idCliente,
+                                        id: resultadoAutenticar[0].idcliente,
 
                                     });
 

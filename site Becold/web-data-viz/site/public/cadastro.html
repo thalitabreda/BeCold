@@ -341,7 +341,7 @@
                   console.log(JSON.stringify(json));
 
 
-                  sessionStorage.idcliente = json.id;
+                  sessionStorage.ID_CLIENTE = json.id;
 
                   fkcliente = json.id;
                   console.log(`Esse é o fkcliente ${fkcliente}`)
@@ -428,7 +428,7 @@
           empresaServer: empresa,
           cnpjServer: cnpj,
           emailServer: email,
-          senhaServer: senha,
+          
 
         })
       }).then(function (resposta) {

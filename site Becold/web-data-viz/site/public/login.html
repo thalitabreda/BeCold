@@ -19,7 +19,7 @@
     <header class="  header-background">
         <div class=" margin header-container">
             <div class="logo">
-              <p><img src="assets/img/Servers Group.png" alt="">BeCold</p>
+              <p><img src="assets/img/ServersGroup.png" alt="">BeCold</p>
             </div>
             <div class="navbar home-contato">
               <ul>
@@ -87,6 +87,8 @@
 </body>
 <script>
     function entrar() {
+
+        sessionStorage.clear()
         div_email.innerHTML= ""
         div_password.innerHTML=""
      var senha = input_senha.value
@@ -125,7 +127,7 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.EMPRESA_USUARIO = json.empresa;
-                    //sessionStorage.CPF_USUARIO = json.cpf;
+                    sessionStorage.CNPJ_USUARIO = json.cnpj;
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.SETORES = JSON.stringify(json.setores);
 

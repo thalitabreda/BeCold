@@ -160,7 +160,9 @@
     dashboad.style.display = "none"
     cadastrometricas.style.display = "block"
 
-
+    var empresa = sessionStorage.EMPRESA_USUARIO;
+    var cnpj = sessionStorage.CNPJ_USUARIO;
+    var email = sessionStorage.EMAIL_USUARIO;
     var NomeSetor = input_setor.value;
     var TempMin = Number(input_tempMin.value);
     var TempMax = Number(input_tempMax.value);
@@ -180,7 +182,7 @@
           empresaServer: empresa,
           cnpjServer: cnpj,
           emailServer: email,
-          senhaServer: senha,
+          
 
         })
       }).then(function (resposta) {
