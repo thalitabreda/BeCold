@@ -7,6 +7,22 @@ router.get("/:idCliente", function (req, res) {
   setorController.buscarSetoresPorEmpresa(req, res);
 });
 
+router.get("/sensores/:idSetor", function (req, res) {
+  setorController.buscarSensoresPorSetor(req, res);
+});
+
+router.get("/temp/:idSensor", function (req, res) {
+  setorController.dadosgraficotemp(req, res);
+});
+
+router.get("/umi/:idSensor", function (req, res) {
+  setorController.dadosgraficoumi(req, res);
+});
+
+router.get("/update/:idSensor", function (req, res) {
+  setorController.atualizacaografico(req, res);
+});
+
 router.post("/cadastrar", function (req, res) {
   setorController.cadastrar(req, res);
 })

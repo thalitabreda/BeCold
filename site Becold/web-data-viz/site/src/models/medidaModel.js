@@ -1,68 +1,43 @@
-// var database = require("../database/config");
+var database = require("../database/config");
 
-// function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarkpi1 (idsetor) {
 
-//     instrucaoSql = ''
+    instrucao = `select max(registros.temperatura) as maior_temp, registros.fkSensor as sensores from registros join sensor on registros.fksensor=sensor.idsensor join setor on sensor.fksetor = setor.idsetor where fksetor = '${idsetor}' and registros.horario >= now() - INTERVAL 1 HOUR group by sensores order by maior_temp desc limit 1`
 
-//     if (process.env.AMBIENTE_PROCESSO == "producao") {
-//         instrucaoSql = `select top ${limite_linhas}
-//         dht11_temperatura as temperatura, 
-//         dht11_umidade as umidade,  
-//                         momento,
-//                         FORMAT(momento, 'HH:mm:ss') as momento_grafico
-//                     from medida
-//                     where fk_aquario = ${idAquario}
-//                     order by id desc`;
-//     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-//         instrucaoSql = `select 
-//         dht11_temperatura as temperatura, 
-//         dht11_umidade as umidade,
-//                         momento,
-//                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-//                     from medida
-//                     where fk_aquario = ${idAquario}
-//                     order by id desc limit ${limite_linhas}`;
-//     } else {
-//         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-//         return
-//     }
+    console.log("Executando a instrução SQL: \n", instrucao)
+    return database.executar(instrucao)
+}
 
-//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-//     return database.executar(instrucaoSql);
-// }
+function buscarkpi2 (idsetor) {
 
-// function buscarMedidasEmTempoReal(idAquario) {
+    instrucao = `select min(registros.temperatura) as menor_temp, registros.fkSensor as sensores from registros join sensor on registros.fksensor=sensor.idsensor join setor on sensor.fksetor = setor.idsetor where fksetor = '${idsetor}' and registros.horario >= now() - INTERVAL 1 HOUR group by sensores order by menor_temp limit 1;`
 
-//     instrucaoSql = ''
+    console.log("Executando a instrução SQL: \n", instrucao)
+    return database.executar(instrucao)
+}
 
-//     if (process.env.AMBIENTE_PROCESSO == "producao") {
-//         instrucaoSql = `select top 1
-//         dht11_temperatura as temperatura, 
-//         dht11_umidade as umidade,  
-//                         CONVERT(varchar, momento, 108) as momento_grafico, 
-//                         fk_aquario 
-//                         from medida where fk_aquario = ${idAquario} 
-//                     order by id desc`;
+function buscarkpi3 (idsetor) {
 
-//     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-//         instrucaoSql = `select 
-//         dht11_temperatura as temperatura, 
-//         dht11_umidade as umidade,
-//                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-//                         fk_aquario 
-//                         from medida where fk_aquario = ${idAquario} 
-//                     order by id desc limit 1`;
-//     } else {
-//         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-//         return
-//     }
+    instrucao = `select min(registros.umidade) as menor_umi, registros.fkSensor as sensores from registros join sensor on registros.fksensor=sensor.idsensor join setor on sensor.fksetor = setor.idsetor where fksetor = '${idsetor}' and registros.horario >= now() - INTERVAL 1 HOUR group by sensores order by menor_umi limit 1;`
 
-//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-//     return database.executar(instrucaoSql);
-// }
+    console.log("Executando a instrução SQL: \n", instrucao)
+    return database.executar(instrucao)
+}
+
+function buscarkpi4(idsetor) {
+
+    instrucao = `select max(registros.umidade) as maior_umi, registros.fkSensor as sensores from registros join sensor on registros.fksensor=sensor.idsensor join setor on sensor.fksetor = setor.idsetor where fksetor = '${idsetor}' and registros.horario >= now() - INTERVAL 1 HOUR group by sensores order by maior_umi limit 1;`
+
+    console.log("Executando a instrução SQL: \n", instrucao)
+    return database.executar(instrucao)
+}
+
+ module.exports = {
+
+    buscarkpi1,
+    buscarkpi2,
+    buscarkpi3,
+    buscarkpi4
 
 
-// module.exports = {
-//     buscarUltimasMedidas,
-//     buscarMedidasEmTempoReal
-// }
+}

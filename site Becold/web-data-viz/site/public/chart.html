@@ -17,7 +17,7 @@
 
 </head>
 
-<body onload="exibirSetores(), validarSessao()">
+<body onload="exibirSetores(), validarSessao(), montargraficos()">
   <div class="alhinhamento">
     <div class="menu">
       <img src="assets/img/profile.png">
@@ -86,26 +86,26 @@
     <div id="dashboad" class="dashboard">
       <h1>Selecione o setor que deseja visualizar</h1>
       <div class="alinhamento-custom">
-        <select id="slct_setor">
+        <select id="slct_setor" onclick="setores()">
         </select>
         <button onclick="exibircadastrometricas()"><img style="padding: 0px;" src="assets/img/more.png"></button>
       </div>
       <div class="linha-alhinhamento">
         <div class="KPI">
-          <h5> Média de Umidade mais alta nas últimas 4 horas </h5>
-          <h3> Sensor 3 - 59% <img src="assets/img/umidade.png"></h3>
+          <h5>Umidade mais alta registrada na última hora</h5>
+          <h3 id="umialta"><img src="assets/img/umidade.png"></h3>
         </div>
         <div class="KPI">
-          <h5>Média de Umidade mais baixa nas últimas 4 horas</h5>
-          <h3> Sensor 1 - 40% <img src="assets/img/umidade.png"></h3>
+          <h5>Umidade mais baixa registrada na última hora</h5>
+          <h3 id="umibaixa"><img src="assets/img/umidade.png"></h3>
         </div>
         <div class="KPI">
-          <h5>Média de Temperatura mais alta nas últimas 4 horas</h5>
-          <h3> Sensor 12 - 28ºC <img src="assets/img/temperatura.png"></h3>
+          <h5>Temperatura mais alta registrada na última hora</h5>
+          <h3 id="tempalta"><img src="assets/img/temperatura.png"></h3>
         </div>
         <div class="KPI">
-          <h5>Média de Temperatura mais baixa nas últimas 4 horas</h5>
-          <h3> Sensor 5 - 17ºC <img src="assets/img/temperatura.png"></h3>
+          <h5>Temperatura mais baixa registrada na última hora</h5>
+          <h3 id="tempbaixa"><img src="assets/img/temperatura.png"></h3>
         </div>
       </div>
       <div class="linha-alhinhamento">
@@ -144,6 +144,81 @@
 <script>
   b_usuario.innerHTML = sessionStorage.EMPRESA_USUARIO
 
+  var cliente = sessionStorage.ID_USUARIO
+
+
+
+  async function setores() {
+
+
+
+    var setor_escolhido = slct_setor.value
+
+
+
+
+    const max = await fetch("/medidas/maxtemp", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        idSetor: setor_escolhido
+
+      })
+    });
+
+    var kpi1 = (await max.json())[0]
+
+
+
+    document.getElementById("tempalta").innerHTML = `Sensor ${kpi1.sensores} - ${kpi1.maior_temp}ºC`
+
+
+    const min = await fetch("/medidas/mintemp", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        idSetor: setor_escolhido
+
+      })
+    });
+
+    var kpi2 = (await min.json())[0]
+
+
+
+    document.getElementById("tempbaixa").innerHTML = `Sensor ${kpi2.sensores} - ${kpi2.menor_temp}ºC`
+
+    const min2 = await fetch("/medidas/minumi", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        idSetor: setor_escolhido
+
+      })
+    });
+
+    var kpi3 = (await min2.json())[0]
+
+
+
+    document.getElementById("umibaixa").innerHTML = `Sensor ${kpi3.sensores} - ${kpi3.menor_umi} %`
+
+    const max2 = await fetch("/medidas/maxumi", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        idSetor: setor_escolhido
+
+      })
+    });
+
+    var kpi4 = (await max2.json())[0]
+
+
+
+    document.getElementById("umialta").innerHTML = `Sensor ${kpi4.sensores} - ${kpi4.maior_umi} %`
+
+
+
+  }
+
+
   function exibirSetores() {
     JSON.parse(sessionStorage.SETORES).forEach(item => {
       document.getElementById("slct_setor").innerHTML += `
@@ -151,6 +226,9 @@
             `
 
     });
+
+
+    setores()
   }
 
 
@@ -159,6 +237,8 @@
 
     dashboad.style.display = "none"
     cadastrometricas.style.display = "block"
+
+
 
     var empresa = sessionStorage.EMPRESA_USUARIO;
     var cnpj = sessionStorage.CNPJ_USUARIO;
@@ -182,7 +262,7 @@
           empresaServer: empresa,
           cnpjServer: cnpj,
           emailServer: email,
-          
+
 
         })
       }).then(function (resposta) {
@@ -198,7 +278,7 @@
             fkcliente = json.id;
             console.log(`Esse é o fkcliente ${fkcliente}`)
 
-      fetch("/usuarios/cadastrarMetr", {
+            fetch("/usuarios/cadastrarMetr", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -216,7 +296,7 @@
 
               }),
             })
-            .then(function (resposta) {
+              .then(function (resposta) {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
@@ -249,107 +329,139 @@
 
     }
 
-          };
-
-        
-
-
-
-
-
-
+  };
 
 
   // const é uma forma de declarar váriaveis, é uma constante, a primeira vez que ela é declarada, ela morrre desse jeito
-  // const ctx = document.getElementById('umiChart');
 
-  // new Chart(ctx, {
-  //   type: 'line',
-  //   data: {
-  //     labels: ['12h', '12h30', '13h', '13h30', '14h', '14h30', '15h', '15h30', '16h'],
-  //     datasets: [{
-  //       label: 'Sensor 1',
-  //       data: [40, 42, 48, 51, 55, 60, 59, 57, 52],
-  //       borderColor: 'rgb(252, 252, 28)',
-  //       backgroundColor: 'rgb(252, 252, 28)',
-  //       borderWidth: 2
-  //     }, {
-  //       label: 'Sensor 2',
-  //       data: [50, 48, 45, 46, 49, 50, 55, 56, 57],
-  //       borderColor: 'rgb(252, 252, 28)',
-  //       backgroundColor: 'rgb(252, 252, 28)',
-  //       borderWidth: 2
-  //     },
-  //     {
-  //       label: 'Sensor 3',
-  //       data: [60, 62, 64, 61, 59, 57, 55, 52, 41],
-  //       borderColor: 'green',
-  //       backgroundColor: 'green',
-  //       borderWidth: 2
-  //     }, {
-  //       label: 'Sensor 4',
-  //       data: [41, 44, 43, 47, 48, 49, 51, 54, 45],
-  //       borderColor: 'green',
-  //       backgroundColor: 'green',
-  //       borderWidth: 2
-  //     }
+  let horarios = []
 
-  //     ]
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true
-  //       }
-  //     }
-  //   }
-  // })
+  async function montargraficos() {
+    
+    var setor_escolhido = slct_setor.value
 
-  // const ctx1 = document.getElementById('tempChart');
+    let dadosTemp = {
+      labels: ['', '', '', '', '', '', '', '', '', '', ''],
+      datasets: []
+    };
 
-  // new Chart(ctx1, {
-  //   type: 'line',
-  //   data: {
-  //     labels: ['12h', '12h30', '13h', '13h30', '14h', '14h30', '15h', '15h30', '16h'],
-  //     datasets: [{
-  //       label: 'Sensor 1',
-  //       data: [40, 42, 48, 51, 55, 60, 59, 57, 52],
-  //       borderColor: 'red',
-  //       backgroundColor: 'red',
-  //       borderWidth: 2
-  //     }, {
-  //       label: 'Sensor 2',
-  //       data: [50, 48, 45, 46, 49, 50, 55, 56, 31],
-  //       borderColor: 'orange',
-  //       backgroundColor: 'orange',
-  //       borderWidth: 2
-  //     },
-  //     {
-  //       label: 'Sensor 3',
-  //       data: [60, 62, 64, 61, 59, 57, 55, 52, 41],
-  //       borderColor: 'green',
-  //       backgroundColor: 'green',
-  //       borderWidth: 2
-  //     }, {
-  //       label: 'Sensor 4',
-  //       data: [41, 44, 43, 47, 48, 49, 51, 54, 45],
-  //       borderColor: 'green',
-  //       backgroundColor: 'green',
-  //       borderWidth: 2
-  //     }
+    let dadosUmi = {
+      labels: ['', '', '', '', '', '', '', '', '', '', ''],
+      datasets: []
+    };
 
-  //     ]
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true
-  //       }
-  //     }
-  //   }
-  // })
+    const configTemp = { type: 'line', data: dadosTemp }
+
+    const configUmi = { type: 'line', data: dadosUmi }
 
 
+
+    const sensor = await fetch(`/setores/sensores/${setor_escolhido}`, { cache: 'no-store' });
+
+    var sen = await sensor.json()
+
+
+
+    for (var i = 0; i < sen.length; i++) {
+
+      var r = (Math.random() * 255).toFixed(0)
+      var g = (Math.random() * 255).toFixed(0)
+      var b = (Math.random() * 255).toFixed(0)
+
+      dadosTemp.datasets.push({
+        label: `Sensor ${sen[i].idSensor}`,
+        data: [],
+        fill: false,
+        borderColor: `rgb(${r}, ${g}, ${b})`,
+        backgroundColor: `rgb(${r}, ${g}, ${b})`,
+        borderWidth: 2,
+        tension: 0.1
+      })
+
+      dadosUmi.datasets.push({
+        label: `Sensor ${sen[i].idSensor}`,
+        data: [],
+        fill: false,
+        borderColor: `rgb(${r}, ${g}, ${b})`,
+        backgroundColor: `rgb(${r}, ${g}, ${b})`,
+        borderWidth: 2,
+        tension: 0.1
+      })
+
+// buscando dados de temperatura e umidade para cada sensor 
+      const temp = await fetch(`/setores/temp/${sen[i].idSensor}`, { cache: 'no-store' });
+      var temperature = await temp.json()
+
+      const umi = await fetch(`/setores/umi/${sen[i].idSensor}`, { cache: 'no-store' });
+      var humidity = await umi.json()
+      //console.log(temperature)
+
+      for (var t = 0; t < temperature.length; t++) {
+
+        dadosTemp.datasets[i].data.push(temperature[t].temperatura)
+        
+
+        if(t == temperature.length-1){horarios.push({ [`Sensor${sen[i].idSensor}`] : temperature[t].hora})
+      
+        }
+}
+
+
+
+      for (var u = 0; u < humidity.length; u++) {
+
+        dadosUmi.datasets[i].data.push(humidity[u].umidade)
+
+      }
+
+    }
+
+    console.log(horarios)
+
+    const ctx = new Chart(document.getElementById('tempChart'), configTemp)
+
+    const ctx1 = new Chart(document.getElementById('umiChart'), configUmi)
+
+    setInterval(() => atualizar(setor_escolhido, dadosTemp, dadosUmi,ctx, ctx1), 2000)
+    //setTimeout(() => atualizar(setor_escolhido, dadosTemp, dadosUmi), 2000)
+  }
+
+async function atualizar(idSetor, dados1, dados2, chart1, chart2){
+
+  const sensor = await fetch(`/setores/sensores/${idSetor}`, { cache: 'no-store' });
+
+    var sen = await sensor.json()
+
+    
+
+    for(var h=0; h<sen.length; h++){
+
+      const update = await fetch(`/setores/update/${sen[h].idSensor}`, { cache: 'no-store' });
+
+    var up = await update.json()
+
+    
+
+    if (up[0].hora== horarios[h][`Sensor${sen[h].idSensor}`]){console.log('Valor Atualizado')}
+    else{
+    horarios[h][`Sensor${sen[h].idSensor}`]= up[0].hora
+    dados1.datasets[h].data.shift()
+    dados1.datasets[h].data.push(up[0].temperatura)
+    dados2.datasets[h].data.shift()
+    dados2.datasets[h].data.push(up[0].umidade)
+  
+  
+  
+  }
+
+  
+    
+    }
+    
+    chart1.update()
+    chart2.update()
+
+}
 </script>
 
 </html>

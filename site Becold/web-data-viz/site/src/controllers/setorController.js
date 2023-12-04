@@ -5,6 +5,7 @@ function buscarSetoresPorEmpresa(req, res) {
 
   setorModel.buscarSetoresPorEmpresa(idCliente).then((resultado) => {
     if (resultado.length > 0) {
+      console.log(resultado)
       res.status(200).json(resultado);
     } else {
       res.status(204).json([]);
@@ -16,6 +17,78 @@ function buscarSetoresPorEmpresa(req, res) {
   });
 }
 
+
+function buscarSensoresPorSetor(req, res) {
+  var idsetor = req.params.idSetor;
+
+  console.log(idsetor)
+
+  setorModel.buscarSensoresPorSetor(idsetor).then((resultado) => {
+    if (resultado.length > 0) {      
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
+function dadosgraficotemp(req, res) {
+  var idsensor = req.params.idSensor;
+
+  
+
+  setorModel.dadostemperatura(idsensor).then((resultado) => {
+    if (resultado.length > 0) {      
+      res.status(200).json(resultado.reverse());
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
+function dadosgraficoumi(req, res) {
+  var idsensor = req.params.idSensor;
+
+  
+
+  setorModel.dadosumidade(idsensor).then((resultado) => {
+    if (resultado.length > 0) {      
+      res.status(200).json(resultado.reverse());
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
+function atualizacaografico(req, res) {
+  var idsensor = req.params.idSensor;
+
+  
+
+  setorModel.atualizargrafico(idsensor).then((resultado) => {
+    if (resultado.length > 0) {      
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
 
 function cadastrar(req, res) {
   var nomeSetor = req.body.nomeSetor;
@@ -30,7 +103,7 @@ function cadastrar(req, res) {
 
     sensorModel.cadastrar(nomeSetor, idCliente)
       .then((resultado) => {
-        res.status(201).json(resultado);
+        res.status(201).json(resultado.reverse());
       }
       ).catch((erro) => {
         console.log(erro);
@@ -45,5 +118,9 @@ function cadastrar(req, res) {
 
 module.exports = {
   buscarSetoresPorEmpresa,
-  cadastrar
+  cadastrar,
+  buscarSensoresPorSetor,
+  dadosgraficotemp,
+  dadosgraficoumi,
+  atualizacaografico
 }

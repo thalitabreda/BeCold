@@ -11,7 +11,7 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 // var avisosRouter = require("./src/routes/avisos");
-// var medidasRouter = require("./src/routes/medidas");
+var medidasRouter = require("./src/routes/medidas");
 var setoresRouter = require("./src/routes/setores");
 var empresasRouter = require("./src/routes/empresas");
 
@@ -24,7 +24,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 // app.use("/avisos", avisosRouter);
-// app.use("/medidas", medidasRouter);
+app.use("/medidas", medidasRouter);
 app.use("/setores", setoresRouter);
 app.use("/empresas", empresasRouter);
 
