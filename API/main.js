@@ -14,7 +14,7 @@ const serial = async (
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: 'admin',
+            password: 'headoncollision',
             database: 'Becold'
         }
     ).promise();
@@ -41,7 +41,8 @@ const serial = async (
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
 
-        var idSensor = parseInt(1+Math.random() * 9);
+        var idSensor = parseInt(1+Math.random() * 4);
+
 
         if (true) {
             await poolBancoDados.execute(
@@ -52,7 +53,7 @@ const serial = async (
 
     });
     arduino.on('error', (mensagem) => {
-        console.error(`Erro no arduino (Mensagem: ${mensagem}`)
+        console.error(`Erro no arduino (Mensagem: ${mensagem})`)
     });
 }
 

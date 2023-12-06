@@ -440,28 +440,44 @@ async function atualizar(idSetor, dados1, dados2, chart1, chart2){
 
     var up = await update.json()
 
-    
 
     if (up[0].hora== horarios[h][`Sensor${sen[h].idSensor}`]){console.log('Valor Atualizado')}
     else{
     horarios[h][`Sensor${sen[h].idSensor}`]= up[0].hora
+    console.log(dados1.datasets[h].data.shift())
+    console.log(dados2.datasets[h].data.shift())
+
     dados1.datasets[h].data.shift()
     dados1.datasets[h].data.push(up[0].temperatura)
     dados2.datasets[h].data.shift()
     dados2.datasets[h].data.push(up[0].umidade)
   
   
-  
   }
 
-  
-    
     }
+   // alerta()
     
     chart1.update()
     chart2.update()
 
 }
+
+async function alerta () {
+  var idSetor = slct_setor.value
+  var sensor = ""
+  const limitesuperiortemp = await fetch(`/setores/limitesuperior/${idSetor}`, { cache: 'no-store' });
+
+var limitetemp = await limitesuperiortemp.json()
+
+
+if (limitetemp.length != 0) {for (var  i = 0; i < limitetemp.length; i ++) {
+    alert (`O sensor ${limitetemp[i].nomesensor} ultrapassou o limite de temperatura ${limitetemp[i].temperaturamax}°C ás ${limitetemp[i].hora} \n`)
+}
+
+}
+}
+
 </script>
 
 </html>

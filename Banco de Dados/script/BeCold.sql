@@ -8,15 +8,33 @@ CNPJ Char(14) UNIQUE,
 Email VARCHAR(45),
 senha VARCHAR(45));
 
+
 select * from cliente;
 select * from endereço;
 SELECT * FROM setor;
-SELECT * FROM registros  order by idregistro desc LIMIT 600; 
+SELECT * FROM registros limit 2000; 
+
+update setor set temperaturamax = '27' where idsetor = '2'; 
 select * from sensor;
 
+select setor.idsetor, registros.temperatura, setor.temperaturamin from registros join sensor on idsensor = fksensor join 
+setor on fksetor = idsetor where temperatura < temperaturamin;
+
+select setor.idsetor, MAX(time (registros.horario)) as hora, registros.fksensor, MAX(registros.temperatura), setor.temperaturamax from registros join 
+sensor on idsensor = fksensor join setor on fksetor = idsetor where temperatura > temperaturamax and idsetor = '1' 
+group by registros.fksensor order by hora desc;
+
+select setor.idsetor, setor.fkclientesetor, registros.umidade, setor.umidademax from registros join sensor
+ on idsensor = fksensor join setor on fksetor = idsetor where umidade > umidademax limit 1000;
+
+select setor.idsetor, setor.fkclientesetor, registros.umidade, setor.umidademin from registros join sensor on idsensor = fksensor join
+setor on fksetor = idsetor where umidade < umidademin;
 
 
-select * from sensor where fkSetor='3';
+insert into sensor values 
+(4, '01-SetorA', 3);
+
+
 
 insert into sensor values 
 (null, '2023-12-02', 'Tatuapé', 3);
@@ -122,6 +140,13 @@ fkSetor INT,
 CONSTRAINT FKSetor FOREIGN KEY (fkSetor)
 	REFERENCES Setor (idSetor)
 );
+
+insert into sensor values
+(null, '01-SetorA', 1);
+
+insert into sensor values
+(null, '02-SetorA', 1),
+(null, '03-SetorA', 1);
 
 CREATE TABLE Registros ( 
 idRegistro INT AUTO_INCREMENT, 

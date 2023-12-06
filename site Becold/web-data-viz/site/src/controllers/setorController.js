@@ -17,6 +17,24 @@ function buscarSetoresPorEmpresa(req, res) {
   });
 }
 
+function limitetempmax (req, res) {
+  var idSetor = req.params.idSetor;
+
+  setorModel.limitetempsuperior(idSetor).then((resultado) => {
+    if (resultado.length > 0) {
+      console.log(resultado)
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar o limite superior: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
+
 
 function buscarSensoresPorSetor(req, res) {
   var idsetor = req.params.idSetor;
@@ -122,5 +140,6 @@ module.exports = {
   buscarSensoresPorSetor,
   dadosgraficotemp,
   dadosgraficoumi,
-  atualizacaografico
+  atualizacaografico,
+  limitetempmax
 }
