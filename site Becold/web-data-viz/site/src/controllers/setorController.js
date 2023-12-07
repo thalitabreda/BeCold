@@ -17,10 +17,10 @@ function buscarSetoresPorEmpresa(req, res) {
   });
 }
 
-function limitetempmax (req, res) {
-  var idSetor = req.params.idSetor;
+function limitesetor (req, res) {
+  var idSetor = req.  params.idSetor;
 
-  setorModel.limitetempsuperior(idSetor).then((resultado) => {
+  setorModel.limites(idSetor).then((resultado) => {
     if (resultado.length > 0) {
       console.log(resultado)
       res.status(200).json(resultado);
@@ -141,5 +141,5 @@ module.exports = {
   dadosgraficotemp,
   dadosgraficoumi,
   atualizacaografico,
-  limitetempmax
+  limitesetor
 }

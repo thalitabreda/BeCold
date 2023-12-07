@@ -7,8 +7,8 @@ router.get("/:idCliente", function (req, res) {
   setorController.buscarSetoresPorEmpresa(req, res);
 });
 
-router.get("/limitesuperior/:idSetor", function (req, res) {
-  setorController.limitetempmax(req, res);
+router.get("/limite/:idSetor", function (req, res) {
+  setorController.limitesetor(req, res);
 });
 
 router.get("/sensores/:idSetor", function (req, res) {

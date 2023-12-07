@@ -86,7 +86,7 @@
     <div id="dashboad" class="dashboard">
       <h1>Selecione o setor que deseja visualizar</h1>
       <div class="alinhamento-custom">
-        <select id="slct_setor" onclick="setores()">
+        <select id="slct_setor" onclick="setores(), graficonovo()">
         </select>
         <button onclick="exibircadastrometricas()"><img style="padding: 0px;" src="assets/img/more.png"></button>
       </div>
@@ -146,6 +146,7 @@
 
   var cliente = sessionStorage.ID_USUARIO
 
+  var limitessetor = {}
 
 
   async function setores() {
@@ -154,7 +155,14 @@
 
     var setor_escolhido = slct_setor.value
 
+    const limites = await fetch(`/setores/limite/${setor_escolhido}`, { cache: 'no-store' });
 
+    var lim = await limites.json()
+
+    limitessetor.tempmax = lim[0].temperaturamax
+    limitessetor.tempmin = lim[0].temperaturamin
+    limitessetor.umimax = lim[0].umidademax
+    limitessetor.umimin = lim[0].umidademin
 
 
     const max = await fetch("/medidas/maxtemp", {
@@ -169,7 +177,7 @@
 
 
 
-    document.getElementById("tempalta").innerHTML = `Sensor ${kpi1.sensores} - ${kpi1.maior_temp}ºC`
+    document.getElementById("tempalta").innerHTML = `Sensor ${kpi1.nomesensor} - ${kpi1.maior_temp}ºC`
 
 
     const min = await fetch("/medidas/mintemp", {
@@ -184,7 +192,7 @@
 
 
 
-    document.getElementById("tempbaixa").innerHTML = `Sensor ${kpi2.sensores} - ${kpi2.menor_temp}ºC`
+    document.getElementById("tempbaixa").innerHTML = `Sensor ${kpi2.nomesensor} - ${kpi2.menor_temp}ºC`
 
     const min2 = await fetch("/medidas/minumi", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -198,7 +206,7 @@
 
 
 
-    document.getElementById("umibaixa").innerHTML = `Sensor ${kpi3.sensores} - ${kpi3.menor_umi} %`
+    document.getElementById("umibaixa").innerHTML = `Sensor ${kpi3.nomesensor} - ${kpi3.menor_umi} %`
 
     const max2 = await fetch("/medidas/maxumi", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -212,7 +220,7 @@
 
 
 
-    document.getElementById("umialta").innerHTML = `Sensor ${kpi4.sensores} - ${kpi4.maior_umi} %`
+    document.getElementById("umialta").innerHTML = `Sensor ${kpi4.nomesensor} - ${kpi4.maior_umi} %`
 
 
 
@@ -225,10 +233,27 @@
             <option value="${item.idSetor}">${item.nomeSetor}</option>
             `
 
+
     });
 
 
     setores()
+  }
+
+  let ctx
+
+  let ctx1
+  let horarios = []
+
+  function graficonovo() {
+    ctx.destroy()
+    ctx1.destroy()
+
+    horarios.length = 0
+    //console.log(horarios)
+
+    montargraficos()
+
   }
 
 
@@ -269,14 +294,14 @@
         console.log("ESTOU NO THEN DO entrar()!")
 
         if (resposta.ok) {
-          console.log(resposta);
+          //console.log(resposta);
 
           resposta.json().then(json => {
-            console.log(json.id);
-            console.log(JSON.stringify(json));
+            //console.log(json.id);
+            //console.log(JSON.stringify(json));
 
             fkcliente = json.id;
-            console.log(`Esse é o fkcliente ${fkcliente}`)
+            //console.log(`Esse é o fkcliente ${fkcliente}`)
 
             fetch("/usuarios/cadastrarMetr", {
               method: "POST",
@@ -297,10 +322,10 @@
               }),
             })
               .then(function (resposta) {
-                console.log("resposta: ", resposta);
+                //console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                  console.log("métricas cadastradas com sucesso")
+                  //console.log("métricas cadastradas com sucesso")
 
                   setTimeout(() => {
                     window.location = "login.html";
@@ -334,10 +359,9 @@
 
   // const é uma forma de declarar váriaveis, é uma constante, a primeira vez que ela é declarada, ela morrre desse jeito
 
-  let horarios = []
 
   async function montargraficos() {
-    
+
     var setor_escolhido = slct_setor.value
 
     let dadosTemp = {
@@ -360,7 +384,7 @@
 
     var sen = await sensor.json()
 
-
+    //console.log(sen)
 
     for (var i = 0; i < sen.length; i++) {
 
@@ -369,7 +393,7 @@
       var b = (Math.random() * 255).toFixed(0)
 
       dadosTemp.datasets.push({
-        label: `Sensor ${sen[i].idSensor}`,
+        label: `${sen[i].nomeSensor}`,
         data: [],
         fill: false,
         borderColor: `rgb(${r}, ${g}, ${b})`,
@@ -379,7 +403,7 @@
       })
 
       dadosUmi.datasets.push({
-        label: `Sensor ${sen[i].idSensor}`,
+        label: `${sen[i].nomeSensor}`,
         data: [],
         fill: false,
         borderColor: `rgb(${r}, ${g}, ${b})`,
@@ -388,7 +412,7 @@
         tension: 0.1
       })
 
-// buscando dados de temperatura e umidade para cada sensor 
+      // buscando dados de temperatura e umidade para cada sensor 
       const temp = await fetch(`/setores/temp/${sen[i].idSensor}`, { cache: 'no-store' });
       var temperature = await temp.json()
 
@@ -399,12 +423,15 @@
       for (var t = 0; t < temperature.length; t++) {
 
         dadosTemp.datasets[i].data.push(temperature[t].temperatura)
-        
 
-        if(t == temperature.length-1){horarios.push({ [`Sensor${sen[i].idSensor}`] : temperature[t].hora})
-      
+
+        if (t == temperature.length - 1) {
+
+
+          horarios.push({ [`Sensor${sen[i].idSensor}`]: temperature[t].hora })
+
         }
-}
+      }
 
 
 
@@ -416,67 +443,67 @@
 
     }
 
-    console.log(horarios)
+    //console.log(horarios)
 
-    const ctx = new Chart(document.getElementById('tempChart'), configTemp)
+    ctx = new Chart(document.getElementById('tempChart'), configTemp)
 
-    const ctx1 = new Chart(document.getElementById('umiChart'), configUmi)
+    ctx1 = new Chart(document.getElementById('umiChart'), configUmi)
 
-    setInterval(() => atualizar(setor_escolhido, dadosTemp, dadosUmi,ctx, ctx1), 2000)
+    setInterval(() => atualizar(dadosTemp, dadosUmi, ctx, ctx1), 2000)
     //setTimeout(() => atualizar(setor_escolhido, dadosTemp, dadosUmi), 2000)
   }
 
-async function atualizar(idSetor, dados1, dados2, chart1, chart2){
 
-  const sensor = await fetch(`/setores/sensores/${idSetor}`, { cache: 'no-store' });
+  async function atualizar(dados1, dados2, chart1, chart2) {
+    let idSetor = slct_setor.value
+    const sensor = await fetch(`/setores/sensores/${idSetor}`, { cache: 'no-store' });
 
     var sen = await sensor.json()
 
-    
+    //console.log('idSetor', idSetor)
 
-    for(var h=0; h<sen.length; h++){
+
+
+    for (var h = 0; h < sen.length; h++) {
 
       const update = await fetch(`/setores/update/${sen[h].idSensor}`, { cache: 'no-store' });
 
-    var up = await update.json()
+      var up = await update.json()
 
 
-    if (up[0].hora== horarios[h][`Sensor${sen[h].idSensor}`]){console.log('Valor Atualizado')}
-    else{
-    horarios[h][`Sensor${sen[h].idSensor}`]= up[0].hora
-    console.log(dados1.datasets[h].data.shift())
-    console.log(dados2.datasets[h].data.shift())
+      //console.log(`sen[${h}].idSensor`,sen[h].idSensor)
+      if (up[0].hora == horarios[h][`Sensor${sen[h].idSensor}`]) {
+        console.log('Valor Atualizado')
+      }
+      else {
+        horarios[h][`Sensor${sen[h].idSensor}`] = up[0].hora
 
-    dados1.datasets[h].data.shift()
-    dados1.datasets[h].data.push(up[0].temperatura)
-    dados2.datasets[h].data.shift()
-    dados2.datasets[h].data.push(up[0].umidade)
-  
-  
-  }
+        dados1.datasets[h].data.shift()
+        dados1.datasets[h].data.push(up[0].temperatura)
+        dados2.datasets[h].data.shift()
+        dados2.datasets[h].data.push(up[0].umidade)
+
+        console.log(dados1.datasets[h].data,dados2.datasets[h].data)
+
+        chart1.update()
+        chart2.update()
+
+        if (up[0].temperatura > limitessetor.tempmax || up[0].temperatura < limitessetor.tempmin || up[0].umidade > limitessetor.umimax || up[0].umidade < limitessetor.umimin) {
+          //alert(`O sensor ${sen[h].nomeSensor} está fora dos valores limites estabelecidos de umidade e/ou temperatura`)
+
+
+        }
+      }
 
     }
-   // alerta()
-    
-    chart1.update()
-    chart2.update()
-
-}
-
-async function alerta () {
-  var idSetor = slct_setor.value
-  var sensor = ""
-  const limitesuperiortemp = await fetch(`/setores/limitesuperior/${idSetor}`, { cache: 'no-store' });
-
-var limitetemp = await limitesuperiortemp.json()
 
 
-if (limitetemp.length != 0) {for (var  i = 0; i < limitetemp.length; i ++) {
-    alert (`O sensor ${limitetemp[i].nomesensor} ultrapassou o limite de temperatura ${limitetemp[i].temperaturamax}°C ás ${limitetemp[i].hora} \n`)
-}
 
-}
-}
+  }
+
+
+
+
 
 </script>
 

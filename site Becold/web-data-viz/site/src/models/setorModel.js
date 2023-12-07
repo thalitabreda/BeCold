@@ -50,9 +50,9 @@ function atualizargrafico(idSensor) {
 }
 
 
-function limitetempsuperior (idSetor) {
+function limites (idSetor) {
 
-  instrucaoSql = `select sensor.nomesensor, setor.idsetor, MAX(time (registros.horario)) as hora, registros.fksensor, MAX(registros.temperatura) as maxtemp, setor.temperaturamax from registros join sensor on idsensor = fksensor join setor on fksetor = idsetor where temperatura > temperaturamax and idsetor = ${idSetor} group by registros.fksensor order by hora desc;`;
+  instrucaoSql = `select temperaturamax, temperaturamin, umidademin, umidademax from setor where idsetor = ${idSetor} ;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -67,5 +67,5 @@ module.exports = {
   dadostemperatura,
   dadosumidade,
   atualizargrafico,
-  limitetempsuperior
+  limites
 }

@@ -41,7 +41,7 @@ const serial = async (
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
 
-        var idSensor = parseInt(1+Math.random() * 4);
+        var idSensor = parseInt(1+Math.random() * 5);
 
 
         if (true) {
