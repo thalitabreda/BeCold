@@ -1,4 +1,10 @@
 @import url(global.css);
+/* script{
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+} */
 body{
   background-color: #fafbfd;
 }
