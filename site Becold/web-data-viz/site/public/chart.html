@@ -110,21 +110,28 @@
       </div>
       <div class="linha-alhinhamento">
         <div class="card-metrica">
-          <h2>Métrica</h2>
+          <h2>Métricas Ideais</h2>
           <div class="card-background">
-            <div style="background-color: red;" class="metrica"><span>Critico</span><span>20% - 24%</span><span>5ºC -
+            <div style="background-color: #012569; border: 2px solid black;" class="metrica">
+              <span>Critico</span><span>20% - 24%</span><span>5ºC -
                 14ºC</span></div>
-            <div style="background-color: orange;" class="metrica"><span>Emergência</span><span>25% -
+            <div style="background-color: #012569; border: 2px solid black;" class="metrica">
+              <span>Emergência</span><span>25% -
                 29%</span><span>15ºC - 16ºC</span></div>
-            <div style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span><span>30% - 39%
+            <div style="background-color: #012569; border: 2px solid black;" class="metrica">
+              <span>Alerta</span><span>30% - 39%
               </span><span>17ºC - 19ºC</span></div>
-            <div style="background-color: green;" class="metrica"><span>Ideal</span><span>40% - 55%</span><span>20ºC -
+            <div style="background-color: #012569; border: 2px solid black;" class="metrica"><span>Ideal</span><span>40%
+                - 55%</span><span>20ºC -
                 27ºC</span></div>
-            <div style="background-color: rgb(252, 252, 28);" class="metrica"><span>Alerta</span><span>56% -
+            <div style="background-color: #012569; border: 2px solid black;" class="metrica">
+              <span>Alerta</span><span>56% -
                 65%</span><span>28ºC - 30ºC</span></div>
-            <div style="background-color: orange;" class="metrica"><span>Emergência</span><span>66% -
+            <div style="background-color: #012569; border: 2px solid black;" class="metrica">
+              <span>Emergência</span><span>66% -
                 75%</span><span>31ºC - 35ºC</span></div>
-            <div style="background-color: red;" class="metrica"><span>Critico</span><span>76% - 80%</span><span>36ºC -
+            <div style="background-color:#012569; border: 2px solid black;" class="metrica">
+              <span>Critico</span><span>76% - 80%</span><span>36ºC -
                 50ºC</span></div>
           </div>
         </div>
@@ -426,19 +433,13 @@
 
 
         if (t == temperature.length - 1) {
-
-
           horarios.push({ [`Sensor${sen[i].idSensor}`]: temperature[t].hora })
-
         }
       }
 
 
-
       for (var u = 0; u < humidity.length; u++) {
-
         dadosUmi.datasets[i].data.push(humidity[u].umidade)
-
       }
 
     }
@@ -476,32 +477,29 @@
         console.log('Valor Atualizado')
       }
       else {
-        horarios[h][`Sensor${sen[h].idSensor}`] = up[0].hora
+        if (up[0].temperatura > limitessetor.tempmax || up[0].temperatura < limitessetor.tempmin || up[0].umidade > limitessetor.umimax || up[0].umidade < limitessetor.umimin) {
+          alert(`O sensor ${sen[h].nomeSensor} está fora dos valores limites estabelecidos de umidade e/ou temperatura`)
+        }
+      }
+
+      horarios[h][`Sensor${sen[h].idSensor}`] = up[0].hora
 
         dados1.datasets[h].data.shift()
         dados1.datasets[h].data.push(up[0].temperatura)
         dados2.datasets[h].data.shift()
         dados2.datasets[h].data.push(up[0].umidade)
 
-        console.log(dados1.datasets[h].data,dados2.datasets[h].data)
+        console.log(dados1.datasets[h].data, dados2.datasets[h].data)
 
         chart1.update()
         chart2.update()
 
-        if (up[0].temperatura > limitessetor.tempmax || up[0].temperatura < limitessetor.tempmin || up[0].umidade > limitessetor.umimax || up[0].umidade < limitessetor.umimin) {
-          //alert(`O sensor ${sen[h].nomeSensor} está fora dos valores limites estabelecidos de umidade e/ou temperatura`)
-
-
-        }
-      }
 
     }
 
 
 
   }
-
-
 
 
 

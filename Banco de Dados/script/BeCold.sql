@@ -14,7 +14,6 @@ select * from endereço;
 SELECT * FROM setor; 
 SELECT * FROM registros limit 2000 ; 
 
-
 update sensor set idSensor = '5' where idsensor = '7'; 
 select * from sensor;
 
